@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://11400f.github.io</id>
     <title>11400F的“小”博客</title>
-    <updated>2022-05-05T11:29:49.573Z</updated>
+    <updated>2022-05-05T11:30:42.381Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://11400f.github.io"/>
     <link rel="self" href="https://11400f.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2022, 11400F的“小”博客</rights>
     <entry>
         <title type="html"><![CDATA[第一篇博客]]></title>
-        <id>https://11400f.github.io/post/di-yi-pian-bo-ke/</id>
-        <link href="https://11400f.github.io/post/di-yi-pian-bo-ke/">
+        <id>https://11400f.github.io/post/1stblog/</id>
+        <link href="https://11400f.github.io/post/1stblog/">
         </link>
         <updated>2022-05-04T16:26:05.000Z</updated>
         <content type="html"><![CDATA[<p>emm....怎么说呢？就是一篇拿来<strong>测试</strong>的博客，也没有太大的帮助。<br>
