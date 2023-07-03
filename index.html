@@ -1,0 +1,2939 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="存储一些个人笔记及一些有用的东西（就是主题不固定）">
+<meta name="theme-color" content="#000">
+<title>400F的博客</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1688374020155">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/default.css"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>400F的博客</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">一些笔记及自由发挥的东西</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+            <li class="nav-item nav-item-active">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives" target="_self">
+                  <i class="fa fa-globe"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags" target="_self">
+                  <i class="fa fa-globe"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about" target="_self">
+                  <i class="fa fa-globe"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+          
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">400</p>
+    
+    <div class="site-description right-motion">
+      
+      
+      
+        <p>曾经把U盘暴力拆解的人</p>
+      
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
+    <div class="sidebar-item sidebar-item-social">
+      <div class="social-item">
+        
+          
+            <a href="https://github.com/11400F">
+              <i class="fa fa-github-alt" title="11400F"></i>
+            </a>
+          
+        
+        
+      </div>
+    </div>
+  
+
+  
+
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'pisces';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+        <div class="section-box pisces">
+          <section class="section bg-color posts-expand slide-down-in">
+            
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-7/"> C语言基础知识复习 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-07-03 13:18:24">2023-07-03</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/C-Cpp/"> <span>C/C++</span> </a>、   
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >3<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >637<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="stdinth-简介">stdint.h 简介</h2>
+<p>是从C99中引进的一个标准C库的文件<br>
+路径: MDK根目录:\ARM\ARMCC\include</p>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-7/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-6/"> MDK5使用技巧 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-07-03 12:35:45">2023-07-03</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >2<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >309<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="文本美化">文本美化</h2>
+<p>点击 Edit-Configuration...<br>
+所有改完成的选项都会保存到根目录\UV4\global.prop</p>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-6/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-5/"> MDK5编译例程和串口下载程序 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-06-29 13:36:51">2023-06-29</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >6<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >1368<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="mdk5-编译例程">MDK5 编译例程</h2>
+<h3 id="部分编译按钮">部分编译按钮</h3>
+<img src = "https://s1.ax1x.com/2023/06/29/pCwhuB6.png" title = "部分编译按钮">
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-5/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-4/"> 常用开发工具简介 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-06-29 10:44:34">2023-06-29</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >2<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >381<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="常用开发工具简介">常用开发工具简介</h2>
+<table>
+<tr>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-4/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-3/"> STM32原理图设计 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-06-24 12:43:01">2023-06-24</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >2<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >464<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="学会查看数据手册">学会查看数据手册</h2>
+<p>芯片数据手册获取方式</p>
+<ul>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-3/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-2/"> 初认识STM32 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-06-23 21:51:29">2023-06-23</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >3<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >441<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="stm32是什么">STM32是什么</h2>
+<p>ST: 意法<strong>半导体</strong><br>
+M: MCU/MPU<br>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-2/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/stm32-1/"> 单片机简介与Cortex-M系列介绍 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-06-19 14:50:16">2023-06-19</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >4<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >950<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h1 id="单片机简介">单片机简介</h1>
+<h2 id="电脑-单片机对比">电脑、单片机对比</h2>
+<table>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/stm32-1/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://11400f.github.io/post/about_abbr/"> 关于外设的名称简写以及芯片命名规则 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2023-06-17 01:12:45">2023-06-17</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">标签:</span>
+       
+      <a href="https://11400f.github.io/tag/stm32/">
+        <span>STM32</span>
+      </a>
+       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >2<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >447<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+      <div class="post-body">
+        
+        
+          
+            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
+            
+            
+              
+              
+              
+            
+              
+              
+              
+            
+              
+              
+              
+            
+            
+              <p><h2 id="于stm32f1的基本外设">于STM32F1的基本外设</h2>
+<table>
+<thead>
+
+                
+              <p>
+            
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://11400f.github.io/post/about_abbr/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+  
+            
+            
+<div class="page bg-color">
+  <ul class="pagination-ul">
+    
+    
+      
+        <li class="pagination-li pagination-active">
+            <a href="/page/../">
+              1
+            </a>
+        </li>
+      
+    
+    
+  </ul>
+</div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      这是底部信息。
+    </div>
+  </footer>
+  
+    
+        <div class="pisces back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  let faSearch = document.querySelector("#fa_search");
+  faSearch &&
+    faSearch.addEventListener("click", function () {
+      document.querySelector("#search_mask").style = "";
+    });
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+  </div>
+</body>
+
+  <div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-8/"" data-c="
+          &lt;h2 id=&#34;stm32的系统框架&#34;&gt;STM32的系统框架&lt;/h2&gt;
+&lt;h3 id=&#34;cortex-m内核及芯片&#34;&gt;Cortex M内核及芯片&lt;/h3&gt;
+&lt;h3 id=&#34;f1系统架构&#34;&gt;F1系统架构&lt;/h3&gt;
+&lt;h3 id=&#34;f4系统架构&#34;&gt;F4系统架构&lt;/h3&gt;
+&lt;h3 id=&#34;f7系统架构&#34;&gt;F7系统架构&lt;/h3&gt;
+&lt;h3 id=&#34;h7系统架构&#34;&gt;H7系统架构&lt;/h3&gt;
+&lt;h2 id=&#34;stm32的寻址范围&#34;&gt;STM32的寻址范围&lt;/h2&gt;
+&lt;h2 id=&#34;存储器映射&#34;&gt;存储器映射&lt;/h2&gt;
+&lt;h2 id=&#34;&#34;&gt;&lt;/h2&gt;
+">STM32基础知识</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-7/"" data-c="
+          &lt;h2 id=&#34;stdinth-简介&#34;&gt;stdint.h 简介&lt;/h2&gt;
+&lt;p&gt;是从C99中引进的一个标准C库的文件&lt;br&gt;
+路径: MDK根目录:\ARM\ARMCC\include&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;    /* exact-width signed integer types */
+typedef   signed          char int8_t;
+typedef   signed short     int int16_t;
+typedef   signed           int int32_t;
+typedef   signed       __INT64 int64_t;
+
+    /* exact-width unsigned integer types */
+typedef unsigned          char uint8_t;
+typedef unsigned short     int uint16_t;
+typedef unsigned           int uint32_t;
+typedef unsigned       __INT64 uint64_t;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;e.g. &lt;code&gt;char a;&lt;/code&gt;  =  &lt;code&gt;int8_t a;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打开方式: 魔术棒-C/C++-勾选C99 Mode&lt;/p&gt;
+&lt;h2 id=&#34;位操作&#34;&gt;位操作&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;&amp;amp; | ^ ~ &amp;lt;&amp;lt; &amp;gt;&amp;gt;&lt;/code&gt;&lt;br&gt;
+如何给寄存器某个位赋值:&lt;br&gt;
+e.g. &lt;code&gt;uint32_t temp = 0;&lt;/code&gt;&lt;br&gt;
+方法(给位6赋值为1(第一位为0)):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;1. temp &amp;amp;= 0xFFFFFFBF; (0xFFFFFFBF = 1111 1111 1111 1111 1111 1111 1011 1111)
+2. temp |= 0x00000040; (0x00000040 = 0100 0000) //前两种方法可读性比较差
+3. temp &amp;amp;= ~(1&amp;lt;&amp;lt;6);
+4. temp |= 1&amp;lt;&amp;lt;6;
+5. temp ^= 1&amp;lt;&amp;lt;6; //按位异或
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;宏定义&#34;&gt;宏定义&lt;/h2&gt;
+&lt;p&gt;宏定义可以: 提高效率、可读性、易改性，核心是替换&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#define 标识符 字符串
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;标识符: 宏定义的名字&lt;br&gt;
+字符串: 常数、表达式、格式串等&lt;br&gt;
+&lt;strong&gt;宏定义不用内存&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;e.g.
+#define PI        3.14159
+#define HSE_VALUE 8000000U
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;带参数的宏定义&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#define LED1(x) do{ x ? \
+            HAL_GPIO_WritePin(LED1_GPIO_PORT, LED_GPIO_PIN, GPIO_PIN_SET) : \
+            HAL_GPIO_WritePin(LED1_GPIO_PORT, LED_GPIO_PIN, GPIO_PIN_RESET) ; \
+        }while(0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;P.S. 使用 &lt;code&gt;do{...}while(0)&lt;/code&gt; 来构造宏定义，就不会受到大括号、分号、运算符优先级等的影响&lt;/p&gt;
+&lt;h2 id=&#34;条件编译&#34;&gt;条件编译&lt;/h2&gt;
+&lt;p&gt;让编译器只对满足条件的代码进行编译，不满足条件的不参与编译&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;指令&lt;/strong&gt;&lt;/td&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;作用&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;#if&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;编译预处理条件指令，类似if&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;#ifdef&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;判断某个宏是否已被定义&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;#ifndef&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;判断某个宏是否未被定义&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;#elif&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;若前面的条件不满足，则判定新的条件，类似else if&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;#else&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;若前面的条件不满足，则执行后面的语句，类似else&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;&lt;strong&gt;#endif&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;#if, #ifdef, #ifndef的结束标志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+头文件的条件编译(可以避免该头文件被重复引用):
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#ifndef _LED_H
+#define _LED_H
+#include &amp;quot;./SYSTEM/sys/sys.h&amp;quot;
+code
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码条件编译:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#if SYS_SUPPORT_OS
+    code
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;extern声明&#34;&gt;extern声明&lt;/h2&gt;
+&lt;p&gt;放在函数/变量前，表示此函数/变量在其他文件定义，以便本文件引用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;e.g.
+extern uint16_t g_usart_rx_sta;
+extern void delay_us(uint32_t nus);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;typedef&#34;&gt;typedef&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef 现有类型 新名字;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类型别名应用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;struct name
+{
+    int xxxxx;
+    ...
+};
+struct name val;
+/*-----上下功能基本相同，下面的可以不用输入struct-----*/
+typedef struct
+{
+    int xxxxx;
+    ...
+} name;
+name val;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;结构体&#34;&gt;结构体&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;struct 结构体名
+{
+    成员列表
+}(变量名列表);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;指针&#34;&gt;指针&lt;/h2&gt;
+&lt;p&gt;指针就是内存的地址&lt;br&gt;
+指针变量就是保存了指针的变量&lt;br&gt;
+定义方法: &lt;code&gt;类型名 * 指针变量名&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;e.g.
+char *p = &amp;quot;Hello, World&amp;quot;;
+*p: 取p变量的值
+&amp;amp;p: 取p变量的地址
+&lt;/code&gt;&lt;/pre&gt;
+">C语言基础知识复习</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-6/"" data-c="
+          &lt;h2 id=&#34;文本美化&#34;&gt;文本美化&lt;/h2&gt;
+&lt;p&gt;点击 Edit-Configuration...&lt;br&gt;
+所有改完成的选项都会保存到根目录\UV4\global.prop&lt;/p&gt;
+&lt;h2 id=&#34;代码编辑技巧&#34;&gt;代码编辑技巧&lt;/h2&gt;
+&lt;h3 id=&#34;tab键的妙用&#34;&gt;Tab键的妙用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;可设置一次填充输入4个空格&lt;/li&gt;
+&lt;li&gt;代码段整体左移4个空格: 选中代码段+Shift+Tab&lt;/li&gt;
+&lt;li&gt;代码段整体右移4个空格: 选中代码段+Tab&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;快速定位函数或变量被定义的地方&#34;&gt;快速定位函数或变量被定义的地方&lt;/h3&gt;
+&lt;p&gt;前提: 勾选 魔术棒-Output-Brouse information&lt;br&gt;
+两种方法:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选中该函数或变量+鼠标右键+选择Go to definition of &#39;名称&#39;&lt;/li&gt;
+&lt;li&gt;选中该函数或变量+F12&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;快速注释取消注释&#34;&gt;快速注释/取消注释&lt;/h3&gt;
+&lt;p&gt;快速方法:&lt;br&gt;
+选中要注释/取消注释的代码段，点击快捷栏的//≣或//≣x&lt;/p&gt;
+&lt;h2 id=&#34;查找替换技巧&#34;&gt;查找&amp;amp;替换技巧&lt;/h2&gt;
+&lt;h3 id=&#34;快速打开头文件&#34;&gt;快速打开头文件&lt;/h3&gt;
+&lt;p&gt;选中头文件-右键-点击Open document &amp;quot;路径\名称.h&amp;quot;&lt;/p&gt;
+&lt;h3 id=&#34;查找替换功能&#34;&gt;查找/替换功能&lt;/h3&gt;
+&lt;p&gt;Ctrl+Shift+F或者选择快捷栏的Find in Files&lt;br&gt;
+&lt;img src = &#34;https://s1.ax1x.com/2023/07/03/pCraSRf.png&#34; title = &#34;箭头所指处即为打开此工具的方式&#34;&gt;&lt;br&gt;
+Find in Files/Find为查找&lt;br&gt;
+Replace为替换&lt;/p&gt;
+&lt;h2 id=&#34;工程编译问题定位&#34;&gt;工程编译问题定位&lt;/h2&gt;
+&lt;p&gt;在Build Output窗口，可以双击error/warning, 可定位问题所在位置&lt;br&gt;
+解决error/warning, 建议顺序: 从上往下&lt;/p&gt;
+&lt;h2 id=&#34;窗口视图管理&#34;&gt;窗口视图管理&lt;/h2&gt;
+&lt;p&gt;窗口视图恢复默认状态的方法: 第一栏的Window -&amp;gt;Reset View to Defaults + Reset&lt;/p&gt;
+">MDK5使用技巧</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-5/"" data-c="
+          &lt;h2 id=&#34;mdk5-编译例程&#34;&gt;MDK5 编译例程&lt;/h2&gt;
+&lt;h3 id=&#34;部分编译按钮&#34;&gt;部分编译按钮&lt;/h3&gt;
+&lt;img src = &#34;https://s1.ax1x.com/2023/06/29/pCwhuB6.png&#34; title = &#34;部分编译按钮&#34;&gt;
+&lt;h3 id=&#34;全局编译按钮&#34;&gt;全局编译按钮&lt;/h3&gt;
+&lt;img src = &#34;https://s1.ax1x.com/2023/06/29/pCwhKHK.png&#34; title = &#34;全局编译按钮&#34;&gt;
+&lt;h3 id=&#34;编译结果&#34;&gt;编译结果&lt;/h3&gt;
+&lt;img src = &#34;https://s1.ax1x.com/2023/06/29/pCwfxcn.png&#34; title = &#34;整迷糊了没有&#34;&gt;
+解释: 
+&lt;ol&gt;
+&lt;li&gt;正在编译 .....c&lt;/li&gt;
+&lt;li&gt;连接中...&lt;/li&gt;
+&lt;li&gt;程序大小：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;数据类型&lt;/th&gt;
+&lt;th&gt;占用Flash or SRAM&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Code&lt;/td&gt;
+&lt;td&gt;Flash&lt;/td&gt;
+&lt;td&gt;代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RO-Data(Read only)&lt;/td&gt;
+&lt;td&gt;Flash&lt;/td&gt;
+&lt;td&gt;只读数据，一般是指const修饰的数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RW-Data(Read-write)&lt;/td&gt;
+&lt;td&gt;Flash&amp;amp;SRAM&lt;/td&gt;
+&lt;td&gt;初值为非0的可读可写数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ZI-Data&lt;/td&gt;
+&lt;td&gt;SRAM&lt;/td&gt;
+&lt;td&gt;初值为0的可读可写数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;e.g.该工程Flash占用5614+450+28=6092B, SRAM占用28+1388=1416&lt;br&gt;
+也可以参考.map文件&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;.hex文件为供下载到开发板的文件(在根目录的Output\文件夹下)&lt;/li&gt;
+&lt;li&gt;0错误，0警告(才能生成hex文件)&lt;/li&gt;
+&lt;li&gt;编译时间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;串口下载程序&#34;&gt;串口下载程序&lt;/h2&gt;
+&lt;h3 id=&#34;串口下载程序须知&#34;&gt;串口下载程序须知&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;M3,M4,M7开发板支持串口下载程序，但是ATK-XISP.exe软件只支持下载到内部FLASH&lt;/li&gt;
+&lt;li&gt;STM32的ISP下载，常用串口1下载程序&lt;/li&gt;
+&lt;li&gt;因为使用USB虚拟串口，所以事先得安装&lt;a href=&#34;https://11400f.github.io/post/stm32-4/&#34;&gt;CH340 USB虚拟串口驱动&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;串口下载硬件连接&#34;&gt;串口下载硬件连接&lt;/h3&gt;
+&lt;h3 id=&#34;配置下载工具atk-xispexe&#34;&gt;配置下载工具(ATK-XISP.exe)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;搜索并选择CH340虚拟的串口，然后设置波特率
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;p.s.下载不了时，应把波特率设置的小一些，多试几种波特率&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;选择要下载的hex文件(在Output文件夹)&lt;/li&gt;
+&lt;li&gt;勾选&amp;quot;编程后运行&amp;quot; &amp;quot;校验&amp;quot; &amp;quot;编程前执行全篇擦除&amp;quot;&lt;/li&gt;
+&lt;li&gt;选择&amp;quot;DTR低电平复位，RTS高电平进BootLoader&amp;quot;&lt;/li&gt;
+&lt;li&gt;点击&amp;quot;开始编程&amp;quot;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;stm32启动模式m3和m4&#34;&gt;STM32启动模式(M3和M4)&lt;/h3&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td colspan = &#34;2&#34; align = &#34;center&#34;&gt;&lt;strong&gt;启动模式选择引脚&lt;/strong&gt;&lt;/td&gt;
+&lt;td rowspan = &#34;2&#34; align = &#34;center&#34;&gt;&lt;strong&gt;启动模式&lt;/strong&gt;&lt;/td&gt;
+&lt;td rowspan = &#34;2&#34; align = &#34;center&#34;&gt;&lt;strong&gt;说明&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;BOOT1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;BOOT0&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;X&lt;/td&gt;
+&lt;td align = &#34;center&#34;&gt;0&lt;/td&gt;
+&lt;td&gt;主闪存存储器&lt;/td&gt;
+&lt;td&gt;主闪存存储器被选为启动区域&lt;em&gt;(地址:0x08000000)&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;0&lt;/td&gt;
+&lt;td align = &#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td&gt;系统存储器(BootLoader程序(引导程序))&lt;/td&gt;
+&lt;td&gt;系统存储器被选为启动区域，可以进行ISP下载，一般选串口1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align = &#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align = &#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td&gt;内置SRAM&lt;/td&gt;
+&lt;td&gt;内置SRAM被选为启动区域(一般用于调试)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;ISP下载程序一般步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;BOOT0接高电平，BOOT1接低电平&lt;/li&gt;
+&lt;li&gt;按复位键&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;程序执行一般步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;BOOT0接低电平，BOOT1接任意&lt;/li&gt;
+&lt;li&gt;按复位键&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;dap下载程序&#34;&gt;DAP下载程序&lt;/h2&gt;
+&lt;h3 id=&#34;连接初始化&#34;&gt;连接初始化&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;魔术棒-Debug-Use: ...debugger&lt;/li&gt;
+&lt;/ol&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; class=&#34;task-list-item-checkbox&#34; checked=&#34;true&#34; disabled=&#34;disabled&#34;&gt; Load Application at Startup&lt;/li&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; class=&#34;task-list-item-checkbox&#34; checked=&#34;true&#34; disabled=&#34;disabled&#34;&gt; Run to main()&lt;/li&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;点击Debug-Use.....的Settings-Debug, 选择仿真器(CMSIS-DAP - JTAG/SW Adapter)&lt;/li&gt;
+&lt;li&gt;返回上一页，点击Utilities-&lt;/li&gt;
+&lt;/ol&gt;
+&lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; class=&#34;task-list-item-checkbox&#34; checked=&#34;true&#34; disabled=&#34;disabled&#34;&gt; Use Debug Driver&lt;/li&gt;
+&lt;h3 id=&#34;setup&#34;&gt;Setup&lt;/h3&gt;
+&lt;p&gt;魔术棒-Utilities-Settings设置&lt;/p&gt;
+&lt;h3 id=&#34;下载&#34;&gt;下载&lt;/h3&gt;
+&lt;p&gt;编译按钮: F7&lt;br&gt;
+下载按钮: F8&lt;br&gt;
+注意：&lt;strong&gt;先编译后下载！！！&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;dap调试程序&#34;&gt;DAP调试程序&lt;/h2&gt;
+&lt;h3 id=&#34;jtagswd调试原理概述&#34;&gt;JTAG/SWD调试原理概述&lt;/h3&gt;
+&lt;p&gt;Cortex-M内核含有硬件调试模块，该模块可在取指(指令断点)或访问数据(数据断点)时停止。&lt;br&gt;
+内核停止时，可以查询内核的内部状态（内核）和系统的外部状态（外设）。完成查询后，可恢复程序执行。&lt;/p&gt;
+&lt;p&gt;SW调试接口:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SWDIO 串行数据输入/输出 PA13&lt;/li&gt;
+&lt;li&gt;SWCLK 串行时钟 PA14&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;在mdk配置dap仿真调试&#34;&gt;在MDK配置DAP仿真调试&lt;/h3&gt;
+&lt;p&gt;与上文&amp;quot;连接初始化&amp;quot;处相同&lt;/p&gt;
+&lt;h3 id=&#34;基础执行控制按钮介绍&#34;&gt;基础执行控制按钮介绍&lt;/h3&gt;
+&lt;p&gt;从左到右: 开始/停止仿真按钮、插入/移除断点、使能/失能断点、失能所有断点、移除所有断点&lt;br&gt;
+&lt;img src=&#34;https://s1.ax1x.com/2023/07/02/pCDzkE8.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+从左到右: 复位、执行到断点处、停止运行、执行进去、执行过去、执行出去、执行到光标处&lt;br&gt;
+&lt;img src=&#34;https://s1.ax1x.com/2023/07/02/pCDziHf.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;设置断点方法(2种类):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将光标选择某行，然后点击“插入/移除断点”&lt;/li&gt;
+&lt;li&gt;将鼠标点击代码左侧深灰色区域某处&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;查看程序段函数执行时间&#34;&gt;查看程序段/函数执行时间&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;点击魔术棒-Utilities-Settings-Trace-&lt;/li&gt;
+&lt;li&gt;需要追踪程序执行时间时设置，根据系统时钟频率的实际值设置&lt;br&gt;
+(F407: 168MHz)&lt;br&gt;
+将运行完此程序段的Sec(t1)减去运行完之前的Sec(t1)即为运行时间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;由于MDK5.23之后的版本对中文的支持不太友好，设置断点时仿真直接退出会退不出去(弹出一个错误框)，点确定后就会直接卡死在那里，点都点不动。（可暴力使用任务管理器）&lt;br&gt;
+解决方法:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;仿真结束前将所有断点清除&lt;/li&gt;
+&lt;li&gt;将工程路径改浅，并改成全英文路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;工具栏常用窗口按钮介绍&#34;&gt;工具栏常用窗口按钮介绍&lt;/h3&gt;
+&lt;p&gt;从左到右: Command Window. 反汇编窗口. 符号窗口. 寄存器窗口. Call Stack窗口. Watch(观察)窗口. Memory(内存查看)窗口. 系统分析窗口. Tracec Window. 系统查看窗口&lt;br&gt;
+&lt;img src=&#34;https://s1.ax1x.com/2023/07/03/pCrShl9.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Call Stack 窗口: 调用栈窗口， 查看函数调用关系&amp;amp;局部变量&lt;br&gt;
+e.g.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;地址(值)&lt;/th&gt;
+&lt;th&gt;返回类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;main&lt;/td&gt;
+&lt;td&gt;0x00000000&lt;/td&gt;
+&lt;td&gt;int f()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Watch窗口:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看函数首地址&amp;amp;变量值&lt;br&gt;
+右击变量, Add to Watch1, 之后就可以看见&lt;/li&gt;
+&lt;li&gt;设置全局变量在被读或写后自动停止运行&lt;br&gt;
+右击Watchn的temp - Set Access to Breakpoint at &#39;变量名&#39;&lt;br&gt;
+根据判断该变量为读或写而tick Read或者Write, 之后点击Define, 然后点击Close&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Memory窗口:  内存查看窗口&lt;br&gt;
+Memory窗口有1 - 4&lt;br&gt;
+Address输入变量/数组 的 名称/地址&lt;br&gt;
+注: M3/M4/M7内核是小端模式，内存的值得倒着读&lt;br&gt;
+e.g. &lt;img src=&#34;https://s1.ax1x.com/2023/07/03/pCrJJ0I.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+P.S. 16位: 两个部分一个数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Peripheral窗口: 查看寄存器的值&lt;br&gt;
+可在系统查看窗口打开, 也可以在第一栏的Peripherals打开&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;仿真时要注意的点&#34;&gt;仿真时要注意的点&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;仿真时，使用MDK的Level 0 等级优化&lt;br&gt;
+魔术棒-C/C++-Optimization-Level0&lt;/li&gt;
+&lt;li&gt;调试停止在断点处时，只是内核停止，外设会继续运行&lt;/li&gt;
+&lt;li&gt;断点的设置要有时间观念，考虑是否会打断正常通信&lt;/li&gt;
+&lt;/ol&gt;
+">MDK5编译例程和串口下载程序</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-4/"" data-c="
+          &lt;h2 id=&#34;常用开发工具简介&#34;&gt;常用开发工具简介&lt;/h2&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;工具&lt;/td&gt;
+&lt;td&gt;名称&lt;/td&gt;
+&lt;td&gt;所属公司&lt;/td&gt;
+&lt;td&gt;说明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan = &#34;2&#34;&gt;集成开发环境&lt;/td&gt;
+&lt;td&gt;MDK&lt;/td&gt;
+&lt;td&gt;Keil&lt;/td&gt;
+&lt;td&gt;STM32最常用的集成开发环境，简单易用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EWARM&lt;/td&gt;
+&lt;td&gt;IAR&lt;/td&gt;
+&lt;td&gt;支持STM32开发，用的人少一些&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan = &#34;3&#34;&gt;仿真器&lt;/td&gt;
+&lt;td&gt;DAP&lt;/td&gt;
+&lt;td&gt;ARM&lt;/td&gt;
+&lt;td&gt;开源、免驱、带虚拟串口功能、速度快、廉价&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STLINK&lt;/td&gt;
+&lt;td&gt;ST&lt;/td&gt;
+&lt;td&gt;支持全面、稳定、廉价&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;JLINK&lt;/td&gt;
+&lt;td&gt;Segger&lt;/td&gt;
+&lt;td&gt;稳定、高速、价格贵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan = &#34;2&#34;&gt;串口调试助手&lt;/td&gt;
+&lt;td&gt;XCOM&lt;/td&gt;
+&lt;td&gt;正点原子&lt;/td&gt;
+&lt;td&gt;功能多、稳定、简单易用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SSCOM&lt;/td&gt;
+&lt;td&gt;丁丁&lt;/td&gt;
+&lt;td&gt;稳定、小巧、简单易用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;安装mdk&#34;&gt;安装MDK&lt;/h2&gt;
+&lt;h3 id=&#34;mdk不同版本说明&#34;&gt;MDK不同版本说明&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;MDK版本&lt;/th&gt;
+&lt;th&gt;是否收费&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;MDK - Lite(免费版)&lt;/td&gt;
+&lt;td&gt;免费&lt;/td&gt;
+&lt;td&gt;支持少部分MCU和中间件，代码限制32KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MDK - Essential(基础版)&lt;/td&gt;
+&lt;td&gt;收费&lt;/td&gt;
+&lt;td&gt;支持部分MCU和中间件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MDK - Plus(增强版)&lt;/td&gt;
+&lt;td&gt;收费&lt;/td&gt;
+&lt;td&gt;支持所有MCU和部分中间件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MDK - Professional(专业版)&lt;/td&gt;
+&lt;td&gt;收费&lt;/td&gt;
+&lt;td&gt;支持所有MCU和中间件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MDK - Community(社区版)&lt;/td&gt;
+&lt;td&gt;免费&lt;/td&gt;
+&lt;td&gt;支持少部分MCU和中间件，非商用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;a href=&#34;https://www2.keil.com/mdk5/selector&#34;&gt;不同MDK版本的支持情况&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MDK安装 = MDK软件安装 + 器件支持包&lt;/p&gt;
+&lt;h3 id=&#34;获取mdk方式&#34;&gt;获取MDK方式&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.keil.com/download/product/&#34;&gt;MDK软件下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.keil.com/dd2/pack/&#34;&gt;器材支持包下载&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;开发板光盘路径: A:\6\1\1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;安装仿真器驱动&#34;&gt;安装仿真器驱动&lt;/h2&gt;
+&lt;p&gt;DAP仿真器免驱&lt;br&gt;
+STLINK要驱动，驱动路径: A:\6\1\5\STLINK驱动及教程&lt;/p&gt;
+&lt;h2 id=&#34;安装ch340-usb虚拟串口驱动&#34;&gt;安装CH340 USB虚拟串口驱动&lt;/h2&gt;
+&lt;h3 id=&#34;原因&#34;&gt;原因&lt;/h3&gt;
+&lt;p&gt;要使用CH340C芯片&lt;/p&gt;
+&lt;h3 id=&#34;usb虚拟串口作用&#34;&gt;USB虚拟串口作用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;USB口当串口来使用&lt;/li&gt;
+&lt;li&gt;如果USB连接的是&lt;strong&gt;串口1&lt;/strong&gt;，那么USB口还可以当作串口来下载程序&lt;/li&gt;
+&lt;li&gt;当USB供电口&lt;/li&gt;
+&lt;/ol&gt;
+">常用开发工具简介</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-3/"" data-c="
+          &lt;h2 id=&#34;学会查看数据手册&#34;&gt;学会查看数据手册&lt;/h2&gt;
+&lt;p&gt;芯片数据手册获取方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;STM32F407IGT6.pdf(E:\A盘\7\2)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.st.com&#34;&gt;ST官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.stmcu.org.cn&#34;&gt;ST中文社区网&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;芯片的基本参数&#34;&gt;芯片的基本参数&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;主频/FLASH/SRAM 168MHz/1Mbyte/192+4Kbytes&lt;/li&gt;
+&lt;li&gt;工作电压 1.8V~3.6V&lt;/li&gt;
+&lt;li&gt;I/O引脚接入电压范围 CMOS: 1.8V~3.6V TTL: 2.7V~3.6V&lt;/li&gt;
+&lt;li&gt;单个IO引脚最大电流：20mA&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;芯片封装：&lt;br&gt;
+e.g. STM32F407ZGT6:  LQFP144封装&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://s1.ax1x.com/2023/06/24/pCtDedf.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;引脚作用详见PDF45~?页&lt;br&gt;
+每列译文：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;脚位&lt;/li&gt;
+&lt;li&gt;管脚名称&lt;/li&gt;
+&lt;li&gt;类型&lt;/li&gt;
+&lt;li&gt;I/O电平&lt;/li&gt;
+&lt;li&gt;备注&lt;/li&gt;
+&lt;li&gt;主功能&lt;/li&gt;
+&lt;li&gt;可选的复用功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;###引脚分类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;电源引脚 (V字母开头)&lt;/li&gt;
+&lt;li&gt;晶振引脚 (第一组：8.9, 第二组(高速晶振引脚)：23.24)&lt;/li&gt;
+&lt;li&gt;复位引脚 (25)&lt;/li&gt;
+&lt;li&gt;下载引脚
+&lt;ul&gt;
+&lt;li&gt;JTAG: 可以仿真、调试、下载，但占用5个IO口&lt;/li&gt;
+&lt;li&gt;SWD: 可以仿真、调试、下载，只用2个IO口
+&lt;ul&gt;
+&lt;li&gt;PA13: 输入/输出， 串行数据输入/输出&lt;/li&gt;
+&lt;li&gt;PA14: 输入， 串行时钟&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;串口: 不能调试，只用2个IO口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BOOT引脚 (BOOT0:138, PB2(BOOT1， M3/M4才有，M7没有): 48)&lt;/li&gt;
+&lt;li&gt;GPIO引脚 (P字母开头)&lt;br&gt;
+识别：&lt;br&gt;
+实物也是逆时针排序。小圆圈起始处为1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看绝对额定值&#34;&gt;查看绝对额定值&lt;/h2&gt;
+&lt;p&gt;PDF 5.2&lt;br&gt;
+有时候因为电流不能太大，可以接一个电阻&lt;/p&gt;
+&lt;h2 id=&#34;最小系统&#34;&gt;最小系统&lt;/h2&gt;
+&lt;p&gt;最小系统: 保证MCU正常工作的最小电路工作单元&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;电源电路
+&lt;ul&gt;
+&lt;li&gt;VDD/VSS: 电源正(VDD)负(VSS)引脚，供电&lt;/li&gt;
+&lt;li&gt;VDDA/VSSA: 模拟部分电源正/负引脚，给STM32&lt;/li&gt;
+&lt;li&gt;VREF+/VREF-: 参考电压正/负引脚，给STM32内部ADC/DAC提供参考电压&lt;/li&gt;
+&lt;li&gt;VBAT: RTC&amp;amp;后备区域供电引脚&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;晶振电路&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;低速晶振: OSC32_IN/OSC32_OUT 32.768K&lt;/li&gt;
+&lt;li&gt;高速晶振: OSC_IN/OSC_OUT 8MHz/25MHz&lt;/li&gt;
+&lt;li&gt;(F407IGT6: 4-to-26 MHz crystal oscillator)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;复位电路
+&lt;ul&gt;
+&lt;li&gt;NRST&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BOOT启动电路
+&lt;ul&gt;
+&lt;li&gt;BOOT0/BOOT1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;下载调试电路
+&lt;ul&gt;
+&lt;li&gt;JTAG&lt;/li&gt;
+&lt;li&gt;SWD&lt;/li&gt;
+&lt;li&gt;串口1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;io分配&#34;&gt;IO分配&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;优先分配特定外设IO, 然后分配通用IO, 最后微调&lt;/strong&gt;&lt;/p&gt;
+">STM32原理图设计</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-2/"" data-c="
+          &lt;h2 id=&#34;stm32是什么&#34;&gt;STM32是什么&lt;/h2&gt;
+&lt;p&gt;ST: 意法&lt;strong&gt;半导体&lt;/strong&gt;&lt;br&gt;
+M: MCU/MPU&lt;br&gt;
+32: 32位&lt;/p&gt;
+&lt;h2 id=&#34;stm32芯片分类&#34;&gt;STM32芯片分类&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://stmcu.org.cn&#34;&gt;ST中文社区网&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.st.com&#34;&gt;ST官网&lt;/a&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://s1.ax1x.com/2023/06/23/pCtSqje.png&#34; alt=&#34;分类&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;stm32命名规则&#34;&gt;STM32命名规则&lt;/h2&gt;
+&lt;p&gt;E.g.①STM32②F③407④Z⑤G⑥T⑦6⑧x⑨xx&lt;/p&gt;
+&lt;h3 id=&#34;1家族&#34;&gt;①家族&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;STM32: 32位MCU/MPU&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;STM8: 8位MCU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2产品类别&#34;&gt;②产品类别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A: 汽车级&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;F: 基础型&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;L: 超低功耗&lt;/li&gt;
+&lt;li&gt;S: 标准型&lt;/li&gt;
+&lt;li&gt;WB: 蓝牙及802.15.4&lt;/li&gt;
+&lt;li&gt;WL: 长距离无线产品&lt;/li&gt;
+&lt;li&gt;H: 高性能&lt;/li&gt;
+&lt;li&gt;G: 主流型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3特定功能&#34;&gt;③特定功能&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;32位：
+&lt;ul&gt;
+&lt;li&gt;051: 入门级&lt;/li&gt;
+&lt;li&gt;103: STM32基础型&lt;/li&gt;
+&lt;li&gt;303: 103升级版, 带DSP和模拟外设&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;407: 高性能，带DSP和FPU&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;152: 超低功耗&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;8位：
+&lt;ul&gt;
+&lt;li&gt;103: 主流入门型&lt;/li&gt;
+&lt;li&gt;F52: 汽车级CAN&lt;/li&gt;
+&lt;li&gt;L31: 低端汽车级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4引脚数&#34;&gt;④引脚数&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;符号&lt;/th&gt;
+&lt;th&gt;引脚数&lt;/th&gt;
+&lt;th&gt;符号&lt;/th&gt;
+&lt;th&gt;引脚数&lt;/th&gt;
+&lt;th&gt;符号&lt;/th&gt;
+&lt;th&gt;引脚数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;14&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;48&amp;amp;49&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;169&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;20(STM8)&lt;/td&gt;
+&lt;td&gt;U&lt;/td&gt;
+&lt;td&gt;63&lt;/td&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;176&amp;amp;201&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;20(STM32)&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td&gt;64&amp;amp;66&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;208&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;24&amp;amp;25&lt;/td&gt;
+&lt;td&gt;J&lt;/td&gt;
+&lt;td&gt;72&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;216&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;G&lt;/td&gt;
+&lt;td&gt;28&lt;/td&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;256&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;K&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;汽车级&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;100&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;48&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;Q&lt;/td&gt;
+&lt;td&gt;132&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;td&gt;44&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Z&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;144&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;5闪存容量kbytes&#34;&gt;⑤闪存容量(Kbytes)&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;编号&lt;/th&gt;
+&lt;th&gt;容量(Kbytes)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;48&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;72&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;96 or &lt;em&gt;128(STM8A)&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;128&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Z&lt;/td&gt;
+&lt;td&gt;192&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;256&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;384&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;512&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;768&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;G&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;1024&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;1536&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;2048&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;6封装&#34;&gt;⑥封装&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;编号&lt;/th&gt;
+&lt;th&gt;封装&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Plastic DIP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;Ceramic DIP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;G&lt;/td&gt;
+&lt;td&gt;Ceramic DIP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;LFBGA/TFBGA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;UFBGA Pitch 0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;J&lt;/td&gt;
+&lt;td&gt;UFBGA Pitch 0.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;K&lt;/td&gt;
+&lt;td&gt;UFBGA Pitch 0.65&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;Plastic SO&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P&lt;/td&gt;
+&lt;td&gt;TSSOP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Q&lt;/td&gt;
+&lt;td&gt;Plastic QFP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;T&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;QFP&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;U&lt;/td&gt;
+&lt;td&gt;UFQFPN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;VFQFPN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;WLCSP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;7温度范围&#34;&gt;⑦温度范围&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;6/A -40~85℃&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;7/B -40~105℃&lt;/li&gt;
+&lt;li&gt;5/C -40~125℃&lt;/li&gt;
+&lt;li&gt;D -40~150℃&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8固件版税&#34;&gt;⑧固件版税&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;U Universal 不用于生产&lt;/li&gt;
+&lt;li&gt;V MP3解码器&lt;/li&gt;
+&lt;li&gt;W MP3编解码器&lt;/li&gt;
+&lt;li&gt;D IS2T JAVA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;9选项&#34;&gt;⑨选项&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;xxx Fastrom code&lt;/li&gt;
+&lt;li&gt;xTR Tape and Real&lt;/li&gt;
+&lt;li&gt;Dxx No RTC(STM8L)&lt;/li&gt;
+&lt;li&gt;Dxx BOR OFF with Special bonding + Boot standard&lt;/li&gt;
+&lt;li&gt;Dxx BOR OFF with Boot I2CS(Special)&lt;/li&gt;
+&lt;li&gt;Sxx BOR OFF&lt;/li&gt;
+&lt;li&gt;Ixx BOR ON&lt;/li&gt;
+&lt;li&gt;No Letter BOR ON + Boot standard&lt;/li&gt;
+&lt;li&gt;Yxx Die rev(Y)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;stm32选型&#34;&gt;STM32选型&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;由高到低，由大到小&lt;/strong&gt;&lt;/p&gt;
+">初认识STM32</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/stm32-1/"" data-c="
+          &lt;h1 id=&#34;单片机简介&#34;&gt;单片机简介&lt;/h1&gt;
+&lt;h2 id=&#34;电脑-单片机对比&#34;&gt;电脑、单片机对比&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;对比项&lt;/th&gt;
+&lt;th&gt;电脑&lt;/th&gt;
+&lt;th&gt;单片机&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;内存&lt;/td&gt;
+&lt;td&gt;SRAM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;硬盘&lt;/td&gt;
+&lt;td&gt;FLASH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;主板&lt;/td&gt;
+&lt;td&gt;外设&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU主频&lt;/td&gt;
+&lt;td&gt;x86, 2-5GHz&lt;/td&gt;
+&lt;td&gt;51/ARM/RISC-V, 72MHz(STM32F1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;内存容量&lt;/td&gt;
+&lt;td&gt;GB级, 约40GB/s (DDR4)&lt;/td&gt;
+&lt;td&gt;KB级, 约300MB/s(STM32F1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;硬盘容量&lt;/td&gt;
+&lt;td&gt;TB级, 约500MB/s (SATA3)&lt;/td&gt;
+&lt;td&gt;KB级, 约100MB/s(STM32F1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;功耗&lt;/td&gt;
+&lt;td&gt;数百W&lt;/td&gt;
+&lt;td&gt;小于0.5W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;价格&lt;/td&gt;
+&lt;td&gt;￥2000-10000&lt;/td&gt;
+&lt;td&gt;小于￥10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;单片机的特点&#34;&gt;单片机的特点&lt;/h2&gt;
+&lt;p&gt;体积小、功耗低、集成度高、使用方便(C/debug)、扩展灵活&lt;/p&gt;
+&lt;h2 id=&#34;单片机的作用&#34;&gt;单片机的作用&lt;/h2&gt;
+&lt;p&gt;仪器仪表、家用电器(4、8位机)、工业控制、汽车电子&lt;/p&gt;
+&lt;h2 id=&#34;单片机发展历程&#34;&gt;单片机发展历程&lt;/h2&gt;
+&lt;h3 id=&#34;时间角度&#34;&gt;时间角度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;探索阶段(1976-1978) MCS-48&lt;/li&gt;
+&lt;li&gt;完善阶段(1978-1982) MCS-51(最出名的是8051内核)&lt;/li&gt;
+&lt;li&gt;向微控制器发展阶段(1982-1990) MCS-96&lt;/li&gt;
+&lt;li&gt;微控制器全面发展阶段(1990-) ARM、RISC-V(开源)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;产品目的&#34;&gt;产品目的&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;SCM单片微型计算机阶段：单片形态&lt;/li&gt;
+&lt;li&gt;MCU微控制器阶段：完善控制&lt;/li&gt;
+&lt;li&gt;SoC嵌入式系统阶段：软硬件协同设计&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;单片机发展趋势&#34;&gt;单片机发展趋势&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU: 主频高/64位/双CPU/流水线&lt;/li&gt;
+&lt;li&gt;存储器: MB级/片内ROM开始FLASH化/程序加密化&lt;/li&gt;
+&lt;li&gt;IO: 提高并行口驱动能力/增加IO功能&lt;/li&gt;
+&lt;li&gt;外围电路内置化（提高集成度）DMA/AD/DA/液晶驱动等内置到片内&lt;/li&gt;
+&lt;li&gt;品种多样化: 低功耗化/微型化/低价格/专用化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;冯诺依曼结构-vs-哈佛结构&#34;&gt;冯诺依曼结构 vs 哈佛结构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;冯诺依曼：程序指令和数据存放到同一个存储器的不同的物理空间，要通过同一个地址线进行访问。（分时复用：同一时间只能读取程序or数据）&lt;br&gt;
+优点：总线资源占用少；缺点：执行效率较低&lt;/li&gt;
+&lt;li&gt;哈佛：程序指令和数据存放到不同的存储器，要通过不同的地址线进行访问。&lt;br&gt;
+优点：执行效率较高；缺点：总线资源占用高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;cortex-m系列&#34;&gt;Cortex-M系列&lt;/h1&gt;
+&lt;h2 id=&#34;arm公司&#34;&gt;ARM公司&lt;/h2&gt;
+&lt;p&gt;只做内核设计和IP授权，不参与芯片设计&lt;br&gt;
+（ARM公司给合作伙伴IP授权，合作伙伴给ARM授权费，合作伙伴有华为、高通、ST、NXP等）&lt;br&gt;
+即FLASH、SRAM、总线、时钟、外设等是合作伙伴做的&lt;br&gt;
+合作伙伴寻找施工队（代工厂，有台积电、中芯国际等），代工厂生产芯片，交付芯片给合作伙伴，合作伙伴给代工厂代工费。&lt;br&gt;
+合作伙伴给芯片用户出售芯片。&lt;/p&gt;
+&lt;h2 id=&#34;arm架构能风靡全球的原因&#34;&gt;ARM架构能风靡全球的原因&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;低功耗、低成本、高性能&lt;/li&gt;
+&lt;li&gt;支持16/32位双指令集&lt;/li&gt;
+&lt;li&gt;拥有众多合作伙伴&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;cortex内核分类及特征&#34;&gt;Cortex内核分类及特征&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;对比项&lt;/th&gt;
+&lt;th&gt;Cortex-A(Application)&lt;/th&gt;
+&lt;th&gt;Cortex-R(Real-time)&lt;/th&gt;
+&lt;th&gt;Cortex-M(Microcontroller)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;特点&lt;/td&gt;
+&lt;td&gt;高时钟频率，长流水线，高性能&lt;/td&gt;
+&lt;td&gt;较高时钟频率，较长的流水线，实时性强&lt;/td&gt;
+&lt;td&gt;时钟频率较低，通常较短的流水线，超低功耗&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;应用场景&lt;/td&gt;
+&lt;td&gt;移动计算、智能手机、平板电脑、数字电视&lt;/td&gt;
+&lt;td&gt;军工、汽车电子、无线基带、硬盘控制器&lt;/td&gt;
+&lt;td&gt;工控、传感器、消费电子、家用电器、医疗器械&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;cortex-m347介绍&#34;&gt;Cortex-M3/4/7介绍&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.arm.com&#34;&gt;ARM公司导引&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;类别&lt;/th&gt;
+        &lt;th&gt;Cortex-M3&lt;/th&gt;
+        &lt;th&gt;Cortex-M4&lt;/th&gt;
+        &lt;th&gt;Cortex-M7&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;核心版本&lt;/td&gt;
+        &lt;td&gt;ARMV7-M&lt;/td&gt;
+        &lt;td colspan=&#34;2&#34;&gt;ARMv7E-M&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;指令系统&lt;/td&gt;
+        &lt;td colspan=&#34;3&#34;&gt;Thumb/Thumb-2&lt;/td&gt;
+     &lt;/tr&gt;
+     &lt;tr&gt;
+        &lt;td&gt;DSP指令扩展&lt;/td&gt;
+        &lt;td&gt;无&lt;/td&gt;
+        &lt;td&gt;有&lt;/td&gt;
+        &lt;td&gt;有&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;浮点单元&lt;/td&gt;
+        &lt;td&gt;无&lt;/td&gt;
+        &lt;td&gt;单精度浮点单元&lt;/td&gt;
+        &lt;td&gt;可选单/双精度浮点单元&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;流水线&lt;/td&gt;
+        &lt;td&gt;3级&lt;/td&gt;
+        &lt;td&gt;3级+分支预测&lt;/td&gt;
+        &lt;td&gt;6级+分支预测&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;中断&lt;/td&gt;
+        &lt;td colspan=&#34;3&#34;&gt;NVIC, NMI+1~240物理中断源, 8~256个中断优先级&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;系统定时器&lt;/td&gt;
+        &lt;td colspan=&#34;3&#34;&gt;24位系统滴答定时器&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;睡眠模式&lt;/td&gt;
+        &lt;td colspan=&#34;3&#34;&gt;集成WFI和WFE指令以及退出睡眠功能&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;调试&lt;/td&gt;
+        &lt;td colspan=&#34;3&#34;&gt;可选JTAG和SWD调试接口&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;内存保护&lt;/td&gt;
+        &lt;td&gt;可选8个区域MPU&lt;/td&gt;
+        &lt;td&gt;可选8个区域MPU&lt;/td&gt;
+        &lt;td&gt;可选8、16个区域MPU&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;DMIPS/MHz&lt;/td&gt;
+        &lt;td&gt;1.25&lt;/td&gt;
+        &lt;td&gt;1.25&lt;/td&gt;
+        &lt;td&gt;2.14&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;CoreMark®/MHz&lt;/td&gt;
+        &lt;td&gt;3.34&lt;/td&gt;
+        &lt;td&gt;3.43&lt;/td&gt;
+        &lt;td&gt;5.01&lt;/td&gt;
+        &lt;/tr&gt;
+&lt;/table&gt;
+">单片机简介与Cortex-M系列介绍</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/about_abbr/"" data-c="
+          &lt;h2 id=&#34;于stm32f1的基本外设&#34;&gt;于STM32F1的基本外设&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;英文缩写&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NVIC&lt;/td&gt;
+&lt;td&gt;嵌套向量中断控制器&lt;/td&gt;
+&lt;td&gt;用于管理中断&lt;/td&gt;
+&lt;td&gt;位于Cortex-M3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SysTick&lt;/td&gt;
+&lt;td&gt;系统滴答定时器&lt;/td&gt;
+&lt;td&gt;给操作系统提供定时服务/Delay&lt;/td&gt;
+&lt;td&gt;位于Cortex-M3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RCC&lt;/td&gt;
+&lt;td&gt;复位和时钟控制&lt;/td&gt;
+&lt;td&gt;对系统的时钟进行配置&lt;/td&gt;
+&lt;td&gt;从这里以下都在内核&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GPIO&lt;/td&gt;
+&lt;td&gt;通用IO口&lt;/td&gt;
+&lt;td&gt;点灯、读取按键等&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXTI&lt;/td&gt;
+&lt;td&gt;外部中断&lt;/td&gt;
+&lt;td&gt;复用功能端口的重定义、中断端口的配置&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TIM&lt;/td&gt;
+&lt;td&gt;定时器&lt;/td&gt;
+&lt;td&gt;高级、通用、基本定时器（定时中断、测频率、生成PWM波形...）&lt;/td&gt;
+&lt;td&gt;最常用、功能最多&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ADC&lt;/td&gt;
+&lt;td&gt;模数转换器&lt;/td&gt;
+&lt;td&gt;直接读取IO口的模拟电压值&lt;/td&gt;
+&lt;td&gt;12位ID转换器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DAC&lt;/td&gt;
+&lt;td&gt;数模转换器&lt;/td&gt;
+&lt;td&gt;在IO口直接输出模拟电压&lt;/td&gt;
+&lt;td&gt;ADC模数转换的逆过程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DMA&lt;/td&gt;
+&lt;td&gt;直接内存访问&lt;/td&gt;
+&lt;td&gt;搬运大量数据&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USART&lt;/td&gt;
+&lt;td&gt;同步/异步串口通信&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;UART:异步&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I2C&lt;/td&gt;
+&lt;td&gt;I2C通信&lt;/td&gt;
+&lt;td&gt;用硬件输出时序波形&lt;/td&gt;
+&lt;td&gt;通信协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SPI&lt;/td&gt;
+&lt;td&gt;SPI通信&lt;/td&gt;
+&lt;td&gt;用硬件输出时序波形&lt;/td&gt;
+&lt;td&gt;通信协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CAN&lt;/td&gt;
+&lt;td&gt;CAN通信&lt;/td&gt;
+&lt;td&gt;主要用于汽车领域&lt;/td&gt;
+&lt;td&gt;通信协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USB&lt;/td&gt;
+&lt;td&gt;USB通信&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;通信协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RTC&lt;/td&gt;
+&lt;td&gt;实时时钟&lt;/td&gt;
+&lt;td&gt;年月日、时分秒的计时功能&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CRC&lt;/td&gt;
+&lt;td&gt;CRC校验&lt;/td&gt;
+&lt;td&gt;判断数据的正确性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PWR&lt;/td&gt;
+&lt;td&gt;电源控制&lt;/td&gt;
+&lt;td&gt;让芯片进入睡眠模式&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;BKP&lt;/td&gt;
+&lt;td&gt;备份寄存器&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;存储器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IWDG&lt;/td&gt;
+&lt;td&gt;独立看门狗&lt;/td&gt;
+&lt;td&gt;及时复位芯片，保持系统稳定&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WWDG&lt;/td&gt;
+&lt;td&gt;窗口看门狗&lt;/td&gt;
+&lt;td&gt;及时复位芯片，保持系统稳定&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SDIO&lt;/td&gt;
+&lt;td&gt;SD卡接口&lt;/td&gt;
+&lt;td&gt;读取SD卡&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FSMC&lt;/td&gt;
+&lt;td&gt;可变静态存储控制器&lt;/td&gt;
+&lt;td&gt;扩展内存、配置成其他总线协议&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USB OTG&lt;/td&gt;
+&lt;td&gt;USB主机接口&lt;/td&gt;
+&lt;td&gt;作为主机读取其他USB设备&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;P.S.看有哪些外设具体要看&lt;strong&gt;数据手册&lt;/strong&gt;！！！&lt;/p&gt;
+&lt;h2 id=&#34;芯片命名规则&#34;&gt;芯片命名规则：&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://11400f.github.io/post/stm32-2&#34;&gt;链接&lt;/a&gt;&lt;/p&gt;
+">关于外设的名称简写以及芯片命名规则</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/photopp/"" data-c="
+          &lt;p&gt;IMG_1165.jpg&lt;br&gt;
+&lt;img src=&#34;https://s1.ax1x.com/2023/06/23/pCtpS4P.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+">照片++</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://11400f.github.io/post/about/"" data-c="
+          &lt;h2 id=&#34;关于我&#34;&gt;关于我：&lt;/h2&gt;
+&lt;p&gt;我会在这里不定时的投稿一些不确定的东西。所以的话...我也不知道该怎么整&lt;/p&gt;
+&lt;h2 id=&#34;关于markdown&#34;&gt;关于Markdown:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+**B** *I* ***BI***
+***
+---
+~~S~~ &amp;lt;u&amp;gt;U&amp;lt;/u&amp;gt;
+1.
+- No.1
+- No.2
+&amp;gt;a
+&amp;gt;&amp;gt;b
+&amp;gt;&amp;gt;&amp;gt;c
+![image](https://cdn.luogu.com.cn/upload/image_hosting/nom7hvhc.png)
+
+|左对齐|右对齐|居中|默认|
+| :--- | ---: | :--: | ---- |
+|1|2|3|4|
+
+&amp;lt;kbd&amp;gt;Del&amp;lt;/kbd&amp;gt;
+
+$$ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
+&lt;h2 id=&#34;二级标题&#34;&gt;二级标题&lt;/h2&gt;
+&lt;h3 id=&#34;三级标题&#34;&gt;三级标题&lt;/h3&gt;
+&lt;h4 id=&#34;四级标题&#34;&gt;四级标题&lt;/h4&gt;
+&lt;h5 id=&#34;五级标题&#34;&gt;五级标题&lt;/h5&gt;
+&lt;h6 id=&#34;六级标题&#34;&gt;六级标题&lt;/h6&gt;
+&lt;p&gt;&lt;strong&gt;B&lt;/strong&gt; &lt;em&gt;I&lt;/em&gt; &lt;em&gt;&lt;strong&gt;BI&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;s&gt;S&lt;/s&gt; &lt;u&gt;U&lt;/u&gt;&lt;br&gt;
+1.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No.1&lt;/li&gt;
+&lt;li&gt;No.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;a&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;b&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;c&lt;br&gt;
+&lt;img src=&#34;https://cdn.luogu.com.cn/upload/image_hosting/nom7hvhc.png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;左对齐&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;右对齐&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;居中&lt;/th&gt;
+&lt;th&gt;默认&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;kbd&gt;Del&lt;/kbd&gt;&lt;/p&gt;
+&lt;p class=&#39;katex-block&#39;&gt;&lt;span class=&#34;katex-display&#34;&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mo&gt;±&lt;/mo&gt;&lt;msqrt&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;/mrow&gt;&lt;/msqrt&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:2.276389em;vertical-align:-0.686em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mopen nulldelimiter&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mfrac&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:1.590389em;&#34;&gt;&lt;span style=&#34;top:-2.314em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.23em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;frac-line&#34; style=&#34;border-bottom-width:0.04em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.677em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;±&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord sqrt&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.913389em;&#34;&gt;&lt;span class=&#34;svg-align&#34; style=&#34;top:-3em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34; style=&#34;padding-left:0.833em;&#34;&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.740108em;&#34;&gt;&lt;span style=&#34;top:-2.9890000000000003em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;c&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-2.873389em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;hide-tail&#34; style=&#34;min-width:0.853em;height:1.08em;&#34;&gt;&lt;svg width=&#39;400em&#39; height=&#39;1.08em&#39; viewBox=&#39;0 0 400000 1080&#39; preserveAspectRatio=&#39;xMinYMin slice&#39;&gt;&lt;path d=&#39;M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z&#39;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.12661100000000003em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.686em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mclose nulldelimiter&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+">关于</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
+</script>
+
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+
+
+
+
+</html>
