@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>多项式入门：快速傅里叶变换 - 11400F&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="11400F&#039;s Blog"><meta name="msapplication-TileImage" content="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="11400F&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="Title"><meta property="og:url" content="http://www.11490dx.net/2024/12/12/math-fft/"><meta property="og:site_name" content="11400F&#039;s Blog"><meta property="og:locale" content="ja_JP"><meta property="og:image" content="https://s21.ax1x.com/2024/12/12/pAbsN6S.png"><meta property="og:image" content="https://s21.ax1x.com/2024/12/13/pAb2VMV.png"><meta property="article:published_time" content="2024-12-12T14:00:00.000Z"><meta property="article:modified_time" content="2024-12-17T00:06:09.395Z"><meta property="article:author" content="Author"><meta property="article:tag" content="C++"><meta property="article:tag" content="数学"><meta property="article:tag" content="多项式"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s21.ax1x.com/2024/12/12/pAbsN6S.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://www.11490dx.net/2024/12/12/math-fft/"},"headline":"TTTT","image":["https://s21.ax1x.com/2024/12/12/pAbsN6S.png","https://s21.ax1x.com/2024/12/13/pAb2VMV.png"],"datePublished":"2024-12-12T14:00:00.000Z","dateModified":"2024-12-17T00:06:09.395Z","author":{"@type":"Person","name":"AAAA"},"publisher":{"@type":"Organization","name":"11400F's Blog","logo":{"@type":"ImageObject","url":{"text":"Bye, Gekichumai!"}}},"description":""}</script><link rel="canonical" href="http://www.11490dx.net/2024/12/12/math-fft/"><link rel="icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bye, Gekichumai!</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/2000/02/29/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Github" href="https://github.com">Github</a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="検索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-12-12T14:00:00.000Z" title="2024/12/12 22:00:00">2024-12-12</time>に投稿</span><span class="level-item"><time dateTime="2024-12-17T00:06:09.395Z" title="2024/12/17 08:06:09">2024-12-17</time>に更新</span><span class="level-item">13分で読む (約2017語)</span></div></div><h1 class="title is-3 is-size-4-mobile">多项式入门：快速傅里叶变换</h1><div class="content"><p> </p>
+<span id="more"></span>
+<p>前传：<a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/article/w8kcegmm">根神基础之最小圆覆盖</a></p>
+<hr />
+<p>我们现在有两个多项式： <span class="math display">\[
+A(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_{n-1}x^{n-1}\\
+B(x) = b_0 + b_1x + b_2x^2 + b_3x^3 + \cdots + b_{m-1}x^{m-1}
+\]</span> 我们想算他们两个乘起来的多项式 <span
+class="math inline">\(C(x)\)</span> 的每一项的系数，该怎么算呢？</p>
+<h4 id="法一系数乘法">法一：系数乘法</h4>
+<p>直接暴力算，<span class="math inline">\(c_x = \sum_{i=0}^{x}
+a_ib_{x-i}\)</span>。我们成功地得到了答案，但是这样子做的话时间复杂度是
+<span class="math inline">\(O(n^2)\)</span>，你这 <span
+class="math inline">\(n\)</span>
+一大，程序就跑不动了。但是我们还有其他方法：</p>
+<h4 id="法二点值乘法">法二：点值乘法</h4>
+<p>众所周知，两点可以确定一条直线，三个点可以确定一条抛物线，那么以此类推，<span
+class="math inline">\(n\)</span> 个不同的点就可以确定 <span
+class="math inline">\(n-1\)</span> 次函数的图像了！</p>
+<p>于是我们选 <span class="math inline">\(n+m-1\)</span> 个不同的 <span
+class="math inline">\(x\)</span> 值 <span class="math inline">\(x_0,
+x_1, x_2, \cdots, x_{n+m-2}\)</span> 进去，然后算出 <span
+class="math inline">\(A(x_0),  A(x_1), \cdots, A(n+m-2)\)</span> 和
+<span class="math inline">\(B(x_0), B(x_1), \cdots
+,B(n+m-2)\)</span>，因为 <span class="math inline">\(C(x) = A(x) \times
+B(x)\)</span>，所以可以直接 <span class="math inline">\(O(n)\)</span>
+算出 <span class="math inline">\(C(x_0), C(x_1), \cdots,
+C(x_{n+m-2})\)</span>，最后用插值法计算 <span
+class="math inline">\(C\)</span> 的系数即可。时间复杂度依然为 <span
+class="math inline">\(O(n^2)\)</span>。</p>
+<p>那么我们该如何优化呢？法一似乎没有多大前途，我们来看法二该怎么优化。这就要请出我们今天的主角：<strong>FFT</strong>！</p>
+<p><a target="_blank" rel="noopener" href="https://maimai.fandom.com/zh/wiki/FFT"><img
+src="https://maimai.sega.jp/storage/jacket/190524_img4.jpg" /></a></p>
+<p><del>哦不，不是这个FFT</del></p>
+<h3 id="快速傅里叶变换">快速傅里叶变换</h3>
+<p>快速傅里叶变换可以把法二的求点值（即 <span
+class="math inline">\(A(x_k)\)</span>、<span
+class="math inline">\(B(x_k)\)</span>
+的值）和最终求系数的过程的时间复杂度都优化到 <span
+class="math inline">\(O(n\log
+n)\)</span>。不过需要借助<strong>复数运算</strong>。</p>
+<p>那么我们首先回顾以下复数有关的知识吧！</p>
+<h4 id="复数">复数</h4>
+<p>众所周知，复数的基本形式是 <span
+class="math inline">\(z=x+iy\)</span>。<span
+class="math inline">\(x\)</span> 是实部，<span
+class="math inline">\(y\)</span> 是虚部。</p>
+<p>加法和减法就是实部和虚部分别相加或相减。而乘法就是运用和乘法分配律相似的思路：</p>
+<p><span class="math inline">\(z_1 \times z_2 = (x_1x_2-y_1y_2) +
+i(x_1y_2 + x_2y_1)\)</span>。</p>
+<h4 id="单位圆单位根">单位圆、单位根</h4>
+<p>我们可以把复数 <span class="math inline">\(x+iy\)</span> 看作一个点
+<span class="math inline">\((x,y)\)</span>
+把他搬到<strong>复平面</strong>上，复平面就是 <span
+class="math inline">\(x\)</span> 轴表示实部，<span
+class="math inline">\(y\)</span> 轴表示虚部的一个平面。</p>
+<p>而单位圆就是一个圆心在 <span class="math inline">\((0,0)\)</span>
+并且半径为 <span class="math inline">\(1\)</span> 的圆。</p>
+<p>假设圆上的某点 <span class="math inline">\(z\)</span> 绕点 <span
+class="math inline">\(O\)</span> 顺时针旋转 <span
+class="math inline">\(\theta\)</span> 可以落在点 <span
+class="math inline">\((1,0)\)</span> 上，那么这个点 <span
+class="math inline">\(z = \cos\theta + i\sin\theta\)</span>。</p>
+<p>证明是好证的，可以过该点做一条向 <span
+class="math inline">\(x\)</span> 轴的垂线，然后用三角函数求即可。</p>
+<p><img src="https://s21.ax1x.com/2024/12/12/pAbsN6S.png" /></p>
+<p>我们把这个圆 <span class="math inline">\(n\)</span> 等分，那么这
+<span class="math inline">\(n\)</span> 个点 <span
+class="math inline">\(z_0, z_1, \cdots, z_{n-1}\)</span> 就都是方程
+<span class="math inline">\(z^n = 1\)</span> 的 <span
+class="math inline">\(n\)</span> 个复数根。</p>
+<p>那么我们定义：<strong>单位根</strong> <span
+class="math inline">\(\omega_{n}^{k}\)</span> 是把这个圆 <span
+class="math inline">\(n\)</span> 等分，然后从 <span
+class="math inline">\((1,0)\)</span> 开始逆时针数的第 <span
+class="math inline">\(k\)</span> 个点，也就是在这 <span
+class="math inline">\(n\)</span> 个复数根里第 <span
+class="math inline">\(k\)</span> 个根（这里的 <span
+class="math inline">\(k\)</span> 是从 <span
+class="math inline">\(0\)</span> 开始数的。其实 <span
+class="math inline">\(\omega_n^n = \omega_n^0\)</span>）。</p>
+<p>我们知道，把一个圆分为了 <span class="math inline">\(n\)</span>
+份，那每一份的角度就是 <span
+class="math inline">\(\frac{2\pi}{n}\)</span>，第 <span
+class="math inline">\(k\)</span> 份的 <span
+class="math inline">\(\theta\)</span> 其实就是 <span
+class="math inline">\(\frac{2\pi k}{n}\)</span>。那么就可以得出：</p>
+<p><strong>单位根</strong> <span class="math inline">\(\omega_n^k =
+\cos\frac{2\pi k}{n} + i\sin\frac{2\pi k}{n}\)</span>。</p>
+<p>单位根有一些性质：</p>
+<ul>
+<li>相乘时：<span class="math inline">\(\omega_{n}^{k}\omega_{n}^{m} =
+\omega_{n}^{k+m}\)</span></li>
+<li>乘方时：<span class="math inline">\((\omega_{n}^{k})^{m} =
+\omega_{n}^{km}\)</span>（其实就是 <span
+class="math inline">\(m\)</span> 个 <span
+class="math inline">\(\omega_{n}^{k}\)</span> 相乘）</li>
+</ul>
+<p>而 FFT 在运算的时候要求 <span class="math inline">\(n =
+2^j(j\in\N)\)</span>，也就是 <span class="math inline">\(n\)</span>
+必须是 <span class="math inline">\(2\)</span>
+的整数次幂，那么它也就有了以下几种特殊性质：</p>
+<ol type="1">
+<li>周期性：<span class="math inline">\(\omega_{n}^{k+n} =
+\omega_{n}^{k}\)</span>。也就是它其实是 <span
+class="math inline">\(n\)</span> 个一循环的。</li>
+<li>对称性：<span class="math inline">\(\omega_{n}^{k+n/2} =
+-\omega_{n}^{k}\)</span>。因为这里的 <span
+class="math inline">\(n\)</span> 它是 <span
+class="math inline">\(2\)</span>
+的整数次幂，所以可以证明这一点。就如上图的 <span
+class="math inline">\(\omega_8^1\)</span> 和 <span
+class="math inline">\(\omega_{8}^{5}\)</span>。</li>
+<li>折半性：<span class="math inline">\(\omega_{n}^{2k} =
+\omega_{n/2}^{k}\)</span>。也比如上面的 <span
+class="math inline">\(\omega_8^2\)</span> 和 <span
+class="math inline">\(\omega_{4}^{1}\)</span>。</li>
+</ol>
+<h4 id="快速傅里叶变换-1">快速傅里叶变换</h4>
+<p>于是我们就可以开始 FFT 来求一个多项式的点值了！</p>
+<p>我们现在有 <span class="math inline">\(A(x) = a_0 + a_1x + a_2x^2 +
+\cdots a_{n-1}x^{n-1}\)</span>，我们要求它在 <span
+class="math inline">\(n\)</span> 个不同的值时的点值。</p>
+<p>我们可以利用上面的单位根，把这 <span class="math inline">\(n\)</span>
+个不同的 <span class="math inline">\(x\)</span> 分别赋为 <span
+class="math inline">\(\omega_{n}^{0}, \omega_{n}^{1}, \cdots,
+\omega_{n}^{n-1}\)</span>。然后来求点值。</p>
+<p>于是我们考虑把 <span class="math inline">\(A(x)\)</span> 拆开： <span
+class="math display">\[
+A(x) = (a_0 + a_2x^2 + a_4x^4 + \cdots + a_{n-2}x^{n-2}) + x \times(a_1
++ a_3x^2 + a_5x^4 + \cdots + a_{n-1}x^{n-1})
+\]</span> 然后我们再设 <span class="math inline">\(A_1(x) = a_0 + a_2x +
+a_4x^2 + \cdots + a_{n-2}x^{n/2-1}\)</span>，<span
+class="math inline">\(A_2(x) = a_1+a_3x + a_5x^2 + \cdots +
+a_{n-1}^{n/2-1}\)</span>。</p>
+<p>这时我们只要把 <span class="math inline">\(x^2\)</span> 代入 <span
+class="math inline">\(A_1\)</span> 和 <span
+class="math inline">\(A_2\)</span> 函数就会发现： <span
+class="math display">\[
+A(x) = A_1(x^2) + xA_2(x^2)
+\]</span> 然后我们将 <span class="math inline">\(\omega_{n}^{k} (k &lt;
+n/2)\)</span> 代入 <span class="math inline">\(x\)</span> 得： <span
+class="math display">\[
+\begin{aligned}
+A(\omega_{n}^{k}) &amp;= A_1((\omega_n^k)^2) +
+\omega_n^kA_2((\omega_{n}^{k})^2)\\
+&amp;= A_1(\omega_{n}^{2k}) + \omega_{n}^{k}A_2(\omega_{n}^{2k}) \\
+&amp;= A_1(\omega_{n/2}^{k}) + \omega_{n}^{k}A_2(\omega_{n/2}^{k})
+\end{aligned}
+\]</span> 于是我们发现当 <span class="math inline">\(k &lt; n/2\)</span>
+时，我们可以将其拆成两半算。</p>
+<p>我们再将 <span class="math inline">\(\omega_{n}^{k+n/2}\)</span> 代入
+<span class="math inline">\(x\)</span> 得： <span
+class="math display">\[
+\begin{aligned}
+A(\omega_{n}^{k+n/2}) &amp;= A_1((\omega_{n}^{k+n/2})^2) +
+\omega_{n}^{k+n/2}A_2((\omega_{n}^{k+n/2})^2) \\
+&amp;= A_1(\omega_{n}^{2k+n}) - \omega_{n}^{k}A_2(\omega_{n}^{2k+n})\\
+&amp;= A_1(\omega_{n}^{2k}) - \omega_{n}^{k}A_2(\omega_{n}^{2k})\\
+&amp;= A_1(\omega_{n/2}^{k}) - \omega_{n}^{k}A_2(\omega_{n/2}^{k})
+\end{aligned}
+\]</span>
+发现和上面有什么不同的没有？其实答案就只是变了一个符号而已。</p>
+<p>所以对于所有的 <span class="math inline">\(0 \le k &lt;
+n\)</span>，我们都可以将 <span
+class="math inline">\(A(\omega_{n}^{k})\)</span> 拆为两半来算。</p>
+<p>只要我们算出了 <span class="math inline">\(A_1\)</span> 和 <span
+class="math inline">\(A_2\)</span> 的点值，我们就可以根据这个来推出
+<span class="math inline">\(A\)</span> 的点值。</p>
+<p>于是我们就可以利用分治的思想，将 <span
+class="math inline">\(a_i\)</span> 里 <span
+class="math inline">\(i\)</span> 为偶数的部分塞给 <span
+class="math inline">\(A_1\)</span>，将 <span
+class="math inline">\(i\)</span> 为奇数的部分塞给 <span
+class="math inline">\(A_2\)</span>。然后递归下去。</p>
+<p>求出 <span class="math inline">\(A_1\)</span> 和 <span
+class="math inline">\(A_2\)</span> 的点值之后，枚举 <span
+class="math inline">\(0\le k &lt; n/2\)</span>，将 <span
+class="math inline">\(A(\omega_{n}^{k})\)</span> 赋为 <span
+class="math inline">\(A_1(\omega_{n/2}^{k}) +
+\omega_{n}^{k}A_2(\omega_{n/2}^{k})\)</span>，将 <span
+class="math inline">\(A(\omega_{n}^{k+n/2})\)</span> 赋为 <span
+class="math inline">\(A_1(\omega_{n/2}^{k}) -
+\omega_{n}^{k}A_2(\omega_{n/2}^{k})\)</span>，然后再递归上去即可。</p>
+<p>边界条件就是：当 <span class="math inline">\(n = 1\)</span>
+时，直接返回该数组即可。因为其实 <span
+class="math inline">\(\omega_{1}^{1}\)</span> 就等于 <span
+class="math inline">\(1\)</span>。</p>
+<p>最后，我们发现，传进去的是参数数组，返回的就是点值数组了。这就是 FFT
+的神奇之处！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> cplx complex<span class="string">&lt;double&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FFT</span><span class="params">(cplx A[], <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> ;</span><br><span class="line">    cplx A1[n/<span class="number">2</span>], A2[n/<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        A1[i] = A[i*<span class="number">2</span>], A2[i] = A[i*<span class="number">2</span><span class="number">+1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">FFT</span>(A1, n/<span class="number">2</span>, op), <span class="built_in">FFT</span>(A2, n/<span class="number">2</span>, op);</span><br><span class="line">    cplx w1 = &#123;<span class="built_in">cos</span>(<span class="number">2</span>*Pi/n), <span class="built_in">sin</span>(<span class="number">2</span>*Pi/n)&#125;;</span><br><span class="line">    cplx wk = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        A[i] = A1[i] + A2[i] * wk;</span><br><span class="line">        A[i+n/<span class="number">2</span>] = A1[i] - A2[i] * wk;</span><br><span class="line">        wk *= w1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<p>现在，我们用快速傅里叶变换求出了多项式 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 的点值，然后将他们乘起来得到了多项式
+<span class="math inline">\(C\)</span> 的点值。那么我们现在该怎么用
+<span class="math inline">\(O(n\log n)\)</span>
+的时间复杂度来根据这个来倒推回 <span class="math inline">\(C\)</span>
+的参数呢？</p>
+<p>就要用<strong>快速傅里叶逆变换</strong>！</p>
+<h4 id="快速傅里叶逆变换">快速傅里叶逆变换</h4>
+<p>假设多项式 <span class="math inline">\(A(x) = a_0 + a_1x + a_2x^2 +
+a_3x^3 + \cdots + a_{n-1}x^{n-1}\)</span>，代入了 <span
+class="math inline">\(\omega_n^0,\omega_n^1,\omega_n^2,\cdots,\omega_n^{n-1}\)</span>
+求出来的点值为 <span
+class="math inline">\(y_0,y_1,y_2,\cdots,y_{n-1}\)</span>，我们要还原出多项式
+<span class="math inline">\(A\)</span> 的系数。</p>
+<p>我们知道，<span class="math inline">\(y_k =
+\displaystyle\sum_{i=0}^{n-1}a_i(\omega_{n}^{k})^i\)</span>。于是我们可以构造多项式
+<span class="math inline">\(B(x) = y_0 + y_1x + y_2x^2 + \cdots +
+y_{n-1}x^{n-1}\)</span>。</p>
+<p>然后把这 <span class="math inline">\(n\)</span> 个单位根的倒数 <span
+class="math inline">\(\omega_{n}^{0}, \omega_{n}^{-1}, \omega_{n}^{-2},
+\cdots, \omega_{n}^{-(n-1)}\)</span> 代入 <span
+class="math inline">\(B(x)\)</span> 得到的点值设为 <span
+class="math inline">\(z_0, z_1, z_2, \cdots, z_{n-1}\)</span>。</p>
+<p>注：这里可以有倒数，因为 <span class="math inline">\(\omega_{n}^{k} =
+\cos\theta + i\sin\theta\)</span>，那么 <span
+class="math inline">\(\frac{1}{\omega_{n}^{k}} = \frac{1}{\cos\theta  +
+i\sin\theta} = \cos\theta - i\sin\theta = \cos(-\theta) + i\sin(-\theta)
+= \omega_{n}^{-k}\)</span>。</p>
+然后 $$
+<span class="math display">\[\begin{aligned}
+z_k &amp;= \displaystyle\sum_{i=0}^{n-1}y_i(\omega_{n}^{-k})^i\\
+&amp;= \sum_{i=0}^{n-1}\sum_{j=0}^{n-1}
+a_j(\omega_{n}^{i})^j\cdot(\omega_{n}^{-k})^i\\
+&amp;= \sum_{i=0}^{n-1}a_j\sum_{j=0}^{n-1}(\omega_{n}^{j-k})^i
+
+\end{aligned}\]</span>
+<p>$$ 我们记后面的那一项和式 <span
+class="math inline">\(\sum_{j=0}^{n-1}(\omega_{n}^{j-k})^i\)</span> 为
+<span class="math inline">\(S\)</span>。</p>
+<p>那么这个 <span class="math inline">\(S\)</span> 分两种情况：</p>
+<ul>
+<li><span class="math inline">\(j = k\)</span>，此时 <span
+class="math inline">\(\omega_{n}^{0} = 1 + 0i\)</span>。于是 <span
+class="math inline">\(S = n\)</span>。</li>
+<li><span class="math inline">\(j \neq
+k\)</span>，此时根据等比数列公式可得：<span class="math inline">\(S =
+\frac{(\omega_{n}^{j-k})^n-1}{\omega_{n}^{j-k}-1}
+=  \frac{(\omega_{n}^{n})^{j-k}-1}{\omega_{n}^{j-k}-1}\)</span>。因为
+<span class="math inline">\(\omega_{n}^{n} =
+1+0i\)</span>，所以原式答案为 <span
+class="math inline">\(0\)</span>。</li>
+</ul>
+<p>所以 <span class="math inline">\(z_k = na_k\)</span>，即 <span
+class="math inline">\(a_k = \frac{z_k}{n}\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> cplx complex<span class="string">&lt;double&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">IFFT</span><span class="params">(cplx A[], <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> ;</span><br><span class="line">    cplx A1[n/<span class="number">2</span>], A2[n/<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        A1[i] = A[i*<span class="number">2</span>], A2[i] = A[i*<span class="number">2</span><span class="number">+1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">FFT</span>(A1, n/<span class="number">2</span>, op), <span class="built_in">FFT</span>(A2, n/<span class="number">2</span>, op);</span><br><span class="line">    cplx w1 = &#123;<span class="built_in">cos</span>(<span class="number">2</span>*Pi/n), -<span class="built_in">sin</span>(<span class="number">2</span>*Pi/n)&#125;;</span><br><span class="line">    cplx wk = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        A[i] = A1[i] + A2[i] * wk;</span><br><span class="line">        A[i+n/<span class="number">2</span>] = A1[i] - A2[i] * wk;</span><br><span class="line">        wk *= w1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<p>我们发现这两个代码：变换和逆变换，只有一个地方，就是第九行的
+<code>sin(2*Pi/n)</code> 的符号不同，于是我们可以加一个变量
+<code>op</code>，正变换时赋为 <span
+class="math inline">\(1\)</span>，逆变换时赋为 <span
+class="math inline">\(-1\)</span>，然后那个地方就改为
+<code>op*sin(2*Pi/n)</code> 即可。</p>
+<p>并且注意：如果题目给了我们最高 <span class="math inline">\(n\)</span>
+次的 <span class="math inline">\(A\)</span> 多项式和最高 <span
+class="math inline">\(m\)</span> 次的 <span
+class="math inline">\(B\)</span> 多项式，那么 <span
+class="math inline">\(C\)</span> 多项式最高 <span
+class="math inline">\(n+m\)</span> 次，因为至少 <span
+class="math inline">\(n+m+1\)</span> 个点才能确定 <span
+class="math inline">\(n+m\)</span> 次函数，于是我们扔进 FFT
+函数里的那项数组长度必须是<strong>大于</strong> <span
+class="math inline">\(n+m\)</span> 的<strong>第一个 <span
+class="math inline">\(2\)</span> 的整数次方</strong>的数。</p>
+<p>最后，对于<a
+target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3803">这道题</a>的代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2.5e6</span><span class="number">+6</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cplx complex<span class="string">&lt;double&gt;</span></span></span><br><span class="line"></span><br><span class="line">cplx a[N], b[N], c[N];</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> Pi = <span class="number">3.14159265358979323846264338327895</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FFT</span><span class="params">(cplx A[], <span class="type">int</span> n, <span class="type">int</span> op)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> ;</span><br><span class="line">    cplx A1[n/<span class="number">2</span>], A2[n/<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        A1[i] = A[i*<span class="number">2</span>], A2[i] = A[i*<span class="number">2</span><span class="number">+1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">FFT</span>(A1, n/<span class="number">2</span>, op), <span class="built_in">FFT</span>(A2, n/<span class="number">2</span>, op);</span><br><span class="line">    cplx w1 = &#123;<span class="built_in">cos</span>(<span class="number">2</span>*Pi/n), op*<span class="built_in">sin</span>(<span class="number">2</span>*Pi/n)&#125;;</span><br><span class="line">    cplx wk = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        A[i] = A1[i] + A2[i] * wk;</span><br><span class="line">        A[i+n/<span class="number">2</span>] = A1[i] - A2[i] * wk;</span><br><span class="line">        wk *= w1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> eps = <span class="number">1e-5</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> tmp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++) cin&gt;&gt;tmp, a[i].<span class="built_in">real</span>(tmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=m;i++) cin&gt;&gt;tmp, b[i].<span class="built_in">real</span>(tmp);</span><br><span class="line">    <span class="type">int</span> len = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> all = n+m;</span><br><span class="line">    <span class="keyword">for</span>(len = <span class="number">1</span>; len &lt;= all; len &lt;&lt;= <span class="number">1</span>)&#123;&#125;</span><br><span class="line">    <span class="built_in">FFT</span>(a, len, <span class="number">1</span>), <span class="built_in">FFT</span>(b, len, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        c[i] = a[i] * b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">FFT</span>(c, len, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=all;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%.0lf &quot;</span>, c[i].<span class="built_in">real</span>()/len+eps);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="fft-优化">FFT 优化</h3>
+<p>我们现在可以给他优化。</p>
+<p>我们首先来画一个示意图，表示现在递归法的过程：</p>
+<p><img src="https://s21.ax1x.com/2024/12/13/pAb2VMV.png" /></p>
+<p>我们来看原序列（最上层）顺序和返回序列（最下层）顺序的关系：</p>
+<table>
+<thead>
+<tr>
+<th>原序列</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二进制</td>
+<td>000</td>
+<td>001</td>
+<td>010</td>
+<td>011</td>
+<td>100</td>
+<td>101</td>
+<td>110</td>
+<td>111</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>返回序列</th>
+<th>0</th>
+<th>4</th>
+<th>2</th>
+<th>6</th>
+<th>1</th>
+<th>5</th>
+<th>3</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二进制</td>
+<td>000</td>
+<td>100</td>
+<td>010</td>
+<td>110</td>
+<td>001</td>
+<td>101</td>
+<td>011</td>
+<td>111</td>
+</tr>
+</tbody>
+</table>
+<p>看出来了什么没有？原序列每个数的二进制把他颠倒过来就是返回序列每个数的二进制！e.g.
+<span class="math inline">\((3)_{10} = (011)_2
+\stackrel{swap}{\longrightarrow} (110)_2 = (6)_{10}\)</span>。</p>
+<p>那么我们发现，新序列的每一个元素下标就是原序列的元素下标的<strong>二进制翻转</strong>，这个变换叫做<strong>位逆序变换</strong>。</p>
+<p>我们可以先让原序列位逆序变换，得到最底下的序列，然后再自下而上合并就行了。</p>
+<p>于是现在我们就需要求 <span class="math inline">\([0,n-1]\)</span>
+中每一个数它的二进制数颠倒过来是什么数。</p>
+<hr />
+<p>我们有一个数组 <span
+class="math inline">\(R\)</span>，来存每一个数它在 <span
+class="math inline">\(k = \log_2 n\)</span>
+二进制位下的二进制翻转的数。假设我们先把 <span
+class="math inline">\(R_{1} \sim R_{i-1}\)</span>
+都求出来了，我们现在要求 <span class="math inline">\(R_i\)</span>。</p>
+<p>我们可以这么做：先把 <span class="math inline">\(R_{i/2}\)</span>
+提出来，然后让它除以 <span
+class="math inline">\(2\)</span>，最后在最高位填上 <span
+class="math inline">\(i\)</span> 的个位二进制位即可。</p>
+<p>举个例子：我们要求 <span
+class="math inline">\(R_{(11001)_2}\)</span>，那么就可以先求得 <span
+class="math inline">\(R_{(01100)_2} =
+(00110)_2\)</span>（前四位），然后将它除以 <span
+class="math inline">\(2\)</span> 变为 <span
+class="math inline">\((00011)_2\)</span>，最后，因为个位为 <span
+class="math inline">\(1\)</span>，那么就在最高位上填 <span
+class="math inline">\(1\)</span>，答案就是 <span
+class="math inline">\((10011)_2\)</span>。</p>
+<p>这种方法的原理其实就是先翻转前 <span
+class="math inline">\(k-1\)</span>
+位，然后最后再把原数的最后一位提到新数的最高位去，就完成了一次翻转的过程。</p>
+<p>我们可以用一个公式概括：<span class="math inline">\(R_i =
+\lfloor\frac{R_{i/2}}{2}\rfloor + [i为奇数] \times
+(\frac{n}{2})\)</span>。</p>
+<p>于是我们就有了翻转序列的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">change</span><span class="params">(cplx A[], <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        r[i] = (r[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)+(i&amp;<span class="number">1</span>)*(n&gt;&gt;<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;r[i]) <span class="built_in">swap</span>(A[i], A[r[i]]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后翻转完序列之后，我们就从下到上合并。</p>
+<p>我们枚举块长、每一个块的起始点和块里面的点，过程其实和递归法差不多。</p>
+<p>但是要注意：一定要把 <span class="math inline">\(A_{i+j}\)</span> 和
+<span class="math inline">\(A_{i+j+m/2}\)</span>
+提取出来，否则会因重复计算和覆盖问题而答案错误。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">FFT</span><span class="params">(cplx A[], <span class="type">int</span> n, <span class="type">int</span> op)</span></span>&#123;</span><br><span class="line">    <span class="built_in">change</span>(A, n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> m=<span class="number">2</span>;m&lt;=n;m&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        cplx w1 = &#123;<span class="built_in">cos</span>(<span class="number">2</span>*Pi/m), <span class="built_in">sin</span>(<span class="number">2</span>*Pi/m)*op&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i+=m)&#123;</span><br><span class="line">            cplx wk = &#123;<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;m/<span class="number">2</span>;j++)&#123;</span><br><span class="line">                cplx x = A[i+j], y = A[i+j+m/<span class="number">2</span>]*wk;</span><br><span class="line">                A[i+j] = x+y, A[i+j+m/<span class="number">2</span>] = x-y;</span><br><span class="line">                wk = wk * w1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="article-licensing box"><div class="licensing-title"><p>多项式入门：快速傅里叶变换</p><p><a href="http://www.11490dx.net/2024/12/12/math-fft/">http://www.11490dx.net/2024/12/12/math-fft/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>11400F</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2024-12-12</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2024-12-17</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/">多项式</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/12/13/math-ntt/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">多项式入门：快速数论变换</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/12/12/min-circle/"><span class="level-item">一点点计算几何：最小圆覆盖</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg" alt="11400F"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">11400F</p><p class="is-size-6 is-block">那我们的11490DX又去哪了？</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Maimai Festival Area</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">投稿</p><a href="/archives"><p class="title">27</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">カテゴリ</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">タグ</p><a href="/tags"><p class="title">21</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/11400F" target="_blank" rel="me noopener">フォローする</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/11400F"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">リンク</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://atcoder.jp/users/tofsox" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Atcoder</span></span><span class="level-right"><span class="level-item tag">atcoder.jp</span></span></a></li><li><a class="level is-mobile" href="https://chunithm.sega.jp" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Chunithm</span></span><span class="level-right"><span class="level-item tag">chunithm.sega.jp</span></span></a></li><li><a class="level is-mobile" href="https://codeforces.com/profile/11400F" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Codeforces</span></span><span class="level-right"><span class="level-item tag">codeforces.com</span></span></a></li><li><a class="level is-mobile" href="https://maimai.sega.jp/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Maimai</span></span><span class="level-right"><span class="level-item tag">maimai.sega.jp</span></span></a></li><li><a class="level is-mobile" href="https://ongeki.sega.jp/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Ongeki-纪念即将逝去的机厅</span></span><span class="level-right"><span class="level-item tag">ongeki.sega.jp</span></span></a></li><li><a class="level is-mobile" href="https://phira.moe/user/1289910/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Phira</span></span><span class="level-right"><span class="level-item tag">phira.moe</span></span></a></li><li><a class="level is-mobile" href="https://pjsekai.sega.jp/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Project Sekai</span></span><span class="level-right"><span class="level-item tag">pjsekai.sega.jp</span></span></a></li><li><a class="level is-mobile" href="https://www.taptap.cn/user/21526114/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Taptap</span></span><span class="level-right"><span class="level-item tag">www.taptap.cn</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">アーカイブ</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/12/"><span class="level-start"><span class="level-item">12月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/11/"><span class="level-start"><span class="level-item">11月 2024</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/10/"><span class="level-start"><span class="level-item">10月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2024/09/"><span class="level-start"><span class="level-item">9月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">タグ</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">25</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%AD%E4%BA%8C%E8%8A%82%E5%A5%8F/"><span class="tag">中二节奏</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/"><span class="tag">二分图</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"><span class="tag">位运算</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E6%B2%BB/"><span class="tag">分治</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"><span class="tag">单调栈</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%91%E7%99%AB/"><span class="tag">发癫</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/"><span class="tag">可持久化线段树</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E8%AE%BA/"><span class="tag">图论</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/"><span class="tag">多项式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/"><span class="tag">数学</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="tag">数据结构</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%9E%84%E9%80%A0/"><span class="tag">构造</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"><span class="tag">树形结构</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"><span class="tag">树状数组</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"><span class="tag">树链剖分</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"><span class="tag">网络流</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%88%9E%E8%90%8C/"><span class="tag">舞萌</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/"><span class="tag">计算几何</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/"><span class="tag">贪心</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/"><span class="tag">逆序对</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bye, Gekichumai!</a><p class="is-size-7"><span>&copy; 2024 11400F</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© Reiwa-6 (Yokuru ↔ Tofuso) → 11400F ? 11490DX</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ja");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="トップに戻る" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "このウェブサイトはあなたの経験を改善するためにCookieを使用しています。",
+          dismiss: "了解しました",
+          allow: "Cookiesを許可する",
+          deny: "拒否する",
+          link: "もっと詳しく知る",
+          policy: "Cookieポリシー",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="何かを入力してください..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"何かを入力してください...","untitled":"(無題)","posts":"投稿","pages":"ページ","categories":"カテゴリ","tags":"タグ"});
+        });</script></body></html>
