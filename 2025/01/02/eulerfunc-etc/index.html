@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>中国剩余定理，顺带着exgcd求逆元 - 11400F&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="11400F&#039;s Blog"><meta name="msapplication-TileImage" content="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="11400F&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="Title"><meta property="og:url" content="http://www.11490dx.net/2024/11/14/crt-with-exgcd/"><meta property="og:site_name" content="11400F&#039;s Blog"><meta property="og:locale" content="ja_JP"><meta property="og:image" content="http://www.11490dx.net/img/og_image.png"><meta property="article:published_time" content="2024-11-14T04:04:00.000Z"><meta property="article:modified_time" content="2024-11-14T11:35:08.000Z"><meta property="article:author" content="Author"><meta property="article:tag" content="C++"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://www.11490dx.net/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://www.11490dx.net/2024/11/14/crt-with-exgcd/"},"headline":"TTTT","image":["http://www.11490dx.net/img/og_image.png"],"datePublished":"2024-11-14T04:04:00.000Z","dateModified":"2024-11-14T11:35:08.000Z","author":{"@type":"Person","name":"AAAA"},"publisher":{"@type":"Organization","name":"11400F's Blog","logo":{"@type":"ImageObject","url":{"text":"Bye, Gekichumai!"}}},"description":""}</script><link rel="canonical" href="http://www.11490dx.net/2024/11/14/crt-with-exgcd/"><link rel="icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛…… - 11400F&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="11400F&#039;s Blog"><meta name="msapplication-TileImage" content="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="11400F&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="&amp;nbsp;"><meta property="og:type" content="blog"><meta property="og:title" content="Title"><meta property="og:url" content="http://www.11490dx.net/2025/01/02/eulerfunc-etc/"><meta property="og:site_name" content="11400F&#039;s Blog"><meta property="og:description" content="&amp;nbsp;"><meta property="og:locale" content="ja_JP"><meta property="og:image" content="http://www.11490dx.net/img/og_image.png"><meta property="article:published_time" content="2025-01-02T07:17:04.000Z"><meta property="article:modified_time" content="2025-01-02T09:21:07.078Z"><meta property="article:author" content="Author"><meta property="article:tag" content="C++"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://www.11490dx.net/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://www.11490dx.net/2025/01/02/eulerfunc-etc/"},"headline":"TTTT","image":["http://www.11490dx.net/img/og_image.png"],"datePublished":"2025-01-02T07:17:04.000Z","dateModified":"2025-01-02T09:21:07.078Z","author":{"@type":"Person","name":"AAAA"},"publisher":{"@type":"Organization","name":"11400F's Blog","logo":{"@type":"ImageObject","url":{"text":"Bye, Gekichumai!"}}},"description":"&nbsp;"}</script><link rel="canonical" href="http://www.11490dx.net/2025/01/02/eulerfunc-etc/"><link rel="icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,183 +29,70 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bye, Gekichumai!</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/2000/02/29/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Github" href="https://github.com">Github</a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="検索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-11-14T04:04:00.000Z" title="2024/11/14 12:04:00">2024-11-14</time>に投稿</span><span class="level-item"><time dateTime="2024-11-14T11:35:08.000Z" title="2024/11/14 19:35:08">2024-11-14</time>に更新</span><span class="level-item">9分で読む (約1410語)</span></div></div><h1 class="title is-3 is-size-4-mobile">中国剩余定理，顺带着exgcd求逆元</h1><div class="content"><p> </p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bye, Gekichumai!</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/2000/02/29/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Github" href="https://github.com">Github</a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="検索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-01-02T07:17:04.000Z" title="2025/1/2 15:17:04">2025-01-02</time>に投稿</span><span class="level-item"><time dateTime="2025-01-02T09:21:07.078Z" title="2025/1/2 17:21:07">2025-01-02</time>に更新</span><span class="level-item">7分で読む (約1073語)</span></div></div><h1 class="title is-3 is-size-4-mobile">一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……</h1><div class="content"><p>&nbsp;</p>
 <span id="more"></span>
+<p>上次讲了莫比乌斯函数和莫比乌斯反演，这次就来补充一下之前没讲到的东西吧。</p>
+<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>定义一个数的欧拉函数 $\varphi(x)$ 为小于 $x$ 并且与 $x$ 的最大公约数为 $1$（即互质）的数的个数。</p>
+<p>例如：$\varphi(9) = 6$，因为 $1,2,4,5,7,8$ 均与 $9$ 互质。</p>
+<p>我们在这里探讨一下欧拉函数的性质：</p>
+<ul>
+<li><p>如果 $x$ 是质数，那么很明显的、$\varphi(x) = x-1$。</p>
+</li>
+<li><p>欧拉函数是<strong>积性函数</strong>，所以当两个数 $x, y$ 互质时，$\varphi(xy) = \varphi(x) \times \varphi(y)$。</p>
+</li>
+<li><p>$\displaystyle\sum_{d|n} \varphi(d)  = n$。考虑如何证明。</p>
 <blockquote>
-<p>“有物不知其数。三三数之剩二，五五数之剩三，七七数之剩二，问物几何？”</p>
+<p>假设这里设 $n = 12$。先把所有以 $12$ 为分母，分子小于等于 $12$ 的分数列出来。</p>
+<script type="math/tex; mode=display">
+\frac{1}{12},\frac{2}{12},\frac{3}{12},\frac{4}{12},\frac{5}{12},\frac{6}{12},\frac{7}{12},\frac{8}{12},\frac{9}{12},\frac{10}{12},\frac{11}{12},\frac{12}{12}</script><p>然后约分：</p>
+<script type="math/tex; mode=display">
+\frac{1}{12},\frac{1}{6},\frac{1}{4},\frac{1}{3},\frac{5}{12},\frac{1}{2},\frac{7}{12},\frac{2}{3},\frac{3}{4},\frac{5}{6},\frac{11}{12},\frac{1}{1}</script><p>会发现这里的所有分子和分母都是互质的。而这里的分母全部都是 $n$ 的因数，并且这些因数的所有和这些因数互质的数都做了这些因数的分子。就拿 $6$ 举例，与 $6$ 互质的所有数 $1, 5$ 都在已 $6$ 为分母的分子上，一共 $\varphi(6)=  2$ 个互质的数。</p>
+<p>所以可以发现，$12 = \varphi(1) + \varphi(2) + \varphi(3) + \varphi(6) + \varphi(12)$。</p>
+<p>由特殊到一般，对于 $n$ 的每一个因数 $d$，和与 $d$ 互质并 $\le d$ 的数 $x$，$x$ 和 $d$ 组成的分数 $\frac{x}{d}$ 和原来以 $n$ 为分母的分数 $\frac{\frac{xn}{d}}{n}$ 是一一对应的。即可证明。</p>
 </blockquote>
-<p>这道题非常的古老。</p>
-<p>把他转化成现代数学表示就是 <span class="math display">\[
-\begin{cases}
-x\equiv 2\pmod3 \\
-x\equiv 3\pmod5 \\
-x \equiv 2\pmod7
-\end{cases}
-\]</span> 然后让我们求 <span class="math inline">\(x\)</span>。</p>
-<p>我们把它转化为以下式子（其中 <span class="math inline">\(m\)</span>
-序列<strong>两两互质</strong>）： <span class="math display">\[
-\begin{cases}
-x\equiv r_1\pmod {m_1} \\
-x\equiv r_2\pmod {m_2} \\
-x\equiv r_3\pmod {m_3} \\
-\cdots \\
-x\equiv r_n\pmod {m_n}
-\end{cases}
-\]</span> <strong>(记住这个<u>两两互质</u>！！！)</strong></p>
-<p>就变成了<strong>一般的</strong>中国剩余定理。</p>
-<h2 id="一般中国剩余定理解法">一般中国剩余定理解法</h2>
-<ol type="1">
-<li>首先求出 <span class="math inline">\(M = m_1 \times m_2 \times
-\cdots \times m_n\)</span>。</li>
-<li>然后令 <span class="math inline">\(c_i =
-\frac{M}{m_i}\)</span>。</li>
-<li>求出 <span class="math inline">\(c_i\)</span> 在 mod <span
-class="math inline">\(m_i\)</span> 意义下的逆元 <span
-class="math inline">\(p_i\)</span>。</li>
-<li>最后答案 <span class="math inline">\(x\)</span> 就等于 <span
-class="math inline">\((\sum_{i=1}^{n} r_i c_i p_i) \mod
-M\)</span>。</li>
+</li>
+<li><p>若 $n = p^k$ 且 $p$ 为质数，那么只有 $n \div p = p^{k-1}$ 个数与其不互质，那么 $\varphi(n) = p^k - p^{k-1} = n \times \frac{p-1}{p}$。</p>
+</li>
+<li><p>因为每一个数可以被分解为一堆质数的和，设 $n = p<em>1^{a_1}p_2^{a_2}\cdots p_x^{a_x}$（其中 $p_i$ 为质数），那么因为 $p_1^{a_1}p_2^{a_2}\cdots p_i^{a_i}$ 和 $p</em>{i+1}^{a<em>{i+1}}$ 一定是互质的，所以 $\varphi(n) = \varphi(p_1^{a_1})\varphi(p_2^{a_2})\cdots\varphi(p_x^{a_x}) = \displaystyle n\times \prod</em>{i=1}^{x} \frac{p_i-1}{p_i}$。</p>
+</li>
+</ul>
+<p>根据最后一个定理，我们就可以使用<strong>线性筛</strong>求 $1\sim n$ 的所有欧拉函数了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> phi[N], prime[N], primecnt;</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    vis[<span class="number">1</span>] = phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">            prime[++primecnt] = i;</span><br><span class="line">            phi[i] = i<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;prime[j]*i&lt;=n&amp;&amp;j&lt;=primecnt;j++)&#123;</span><br><span class="line">            vis[i*prime[j]] = <span class="number">1</span>;</span><br><span class="line">            phi[i*prime[j]] = (i%prime[j]? phi[i]*(prime[j]<span class="number">-1</span>): phi[i]*prime[j]);</span><br><span class="line">            <span class="keyword">if</span>(i%prime[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>根据这个定理：</p>
+<script type="math/tex; mode=display">
+\sum_{d\mid n} \varphi(d) = n</script><p>可以解决一系列的问题。这种思想和莫比乌斯反演非常相似，这里<strong>暂且</strong>先把它叫做欧拉反演。</p>
+<h3 id="欧拉反演"><a href="#欧拉反演" class="headerlink" title="欧拉反演"></a>欧拉反演</h3><p>还是以 $\gcd$ 举例子：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\sum_{i=1}^{n}\sum_{j=1}^{n} \gcd(i, j)\\
+= &\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{d\mid i \land d \mid j}\varphi(d) \\
+= & \sum_{d\mid i \land d \mid j} \varphi(d)\sum_{i=1}^{n}\sum_{j=1}^{n} 1\\
+= & \sum_{d=1}\varphi(d) \lfloor\frac{n}{d}\rfloor^2
+\end{aligned}</script><p>然后，处理前缀和，整除分块，步骤和莫比乌斯反演一样。</p>
+<h3 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h3><p>若 $\gcd(a, x) = 1$，则 $a^{\varphi(x)} \equiv 1 \pmod m$。</p>
+<p>这个定理经常用于大家都熟悉的费马小定理快速幂求逆元。</p>
+<h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h2><p>对于两个数论函数（定义域为正整数、值域为复数的函数）$f(x)$ 和 $g(x)$，定义两个函数的狄利克雷卷积 $(f<em>g)(x)$ 为（此处令 $h(x) = (f</em>g)(x)$）：</p>
+<script type="math/tex; mode=display">
+(f*g)(x) = \sum_{d\mid x}f(d)g(\frac{x}{d}) = \sum_{d\mid x}f(\frac{x}{d})g(d)</script><p>狄利克雷卷积运算满足交换律、结合律和分配律。</p>
+<p>而狄利克雷卷积中有三个特殊的函数：</p>
+<ul>
+<li>元函数 $\varepsilon(x)$：$\varepsilon(x) = [x=  1]$</li>
+<li>常数函数 $1(x)$：$1(x) = 1$</li>
+<li>恒等函数 $id(x)$：$id(x) = x$</li>
+</ul>
+<p>这里列举一些常考的一些函数的卷积关系：</p>
+<ol>
+<li>$\mu <em> 1 = \varepsilon$。因为根据莫比乌斯反演：$\displaystyle \sum_{d\mid n} \mu(d) = [n=1]$，$\mu </em> 1 = \displaystyle\sum<em>{d\mid x}\mu(d)1(\frac{x}{d}) = \sum</em>{d\mid x} \mu(d) = [x=1] = \varepsilon$</li>
+<li>$\varphi * 1 = id$。根据欧拉反演：$\displaystyle\sum_{d\mid x}\varphi(x) = n$，类似上面的证明即得证。</li>
+<li></li>
 </ol>
-<p>如何证明？</p>
-<p>我们先不考虑这个 mod，</p>
-<p>证明：当 <span class="math inline">\(x = \sum_{i=1}^{n} r_i c_i
-p_i\)</span> 时，原式子成立。</p>
-<blockquote>
-<p>因为 <span class="math inline">\(x\)</span> 是一堆 <span
-class="math inline">\(r_i, c_i, p_i\)</span> 的和，所以对于 <span
-class="math inline">\(x\)</span> 对应的某一个 <span
-class="math inline">\(r_j\)</span> 和 <span
-class="math inline">\(m_j\)</span>，我们分情况讨论：</p>
-<ul>
-<li>当 <span class="math inline">\(i \neq j\)</span> 时，因为根据 <span
-class="math inline">\(c_i\)</span> 的定义并且 <span
-class="math inline">\(i \neq j\)</span>，他包含了 <span
-class="math inline">\(c_j\)</span>。所以 <span class="math inline">\(c_i
-\equiv 0 \pmod {m_j}\)</span>。所以 <span class="math inline">\(r_i c_i
-p_i \equiv 0 \pmod {m_j}\)</span>。</li>
-<li>当 <span class="math inline">\(i = j\)</span> 时，<span
-class="math inline">\(c_i\)</span> 在 mod <span
-class="math inline">\(m_j\)</span> 意义下的逆元一定存在。所以 <span
-class="math inline">\(c_i p_i \equiv 1 \pmod {m_j}\)</span>。</li>
-</ul>
-<p><span class="math display">\[
-\begin{equation}
-\begin{aligned}
-x &amp;\equiv \sum_{i=1}^{n} r_i c_i p_i &amp;\pmod {m_j}\\
-&amp;\equiv r_j c_j p_j &amp; \pmod {m_j}\\
-&amp;\equiv r_j &amp;\pmod {m_j}
-\end{aligned}
-\end{equation}
-\]</span></p>
-<p>于是对于某一个 <span class="math inline">\(r_j\)</span> 和 <span
-class="math inline">\(m_j\)</span> 成立。而又因为 <span
-class="math inline">\(j\)</span> 未定，所以其实对于所有的 <span
-class="math inline">\(j\)</span> 都成立。所以原式子成立。</p>
-<p>Q.E.D.</p>
-</blockquote>
-<p>那么加了 mod M 之后的呢？</p>
-<p>因为 mod M 相当于是减去 <span class="math inline">\(m_j\)</span>
-的整数倍，对余数没有任何影响。对上述式子也成立。</p>
-<p>就这样就证明完了！</p>
-<p>……</p>
-<p>坏了，搞忘逆元怎么求了！</p>
-<h2 id="exgcd-求逆元">exgcd 求逆元</h2>
-<p>众所周知，考试中用的最多的求逆元的方式就是快速幂求逆元。但是快速幂求逆元有一个缺点，就是那个
-“mod <span class="math inline">\(p\)</span> 意义下” 的那个 <span
-class="math inline">\(p\)</span>，他只能是质数！</p>
-<p>所以要引用另外一种求逆元的方式：<strong>Exgcd</strong>！</p>
-<p>exgcd 的本职工作是求出 <span class="math inline">\(ax + by = \gcd(a,
-b)\)</span> 的整数解的。但是因为逆元的定义是 <span
-class="math inline">\(a \times a^{\prime} \equiv 1 \pmod
-m\)</span>，所以把他转化一下，就变成了：<span class="math inline">\(a
-a^\prime + m y =
-1\)</span>。就变成了上面这个样子。因为有逆元的条件就是互质，所以它们的
-gcd 自然就是 <span
-class="math inline">\(1\)</span>。所以只需带入，然后求出上面的那个 <span
-class="math inline">\(x\)</span> 就可以了。</p>
-<p>下文将讲一般的 exgcd。</p>
-<p>首先一般的 gcd 是怎么求的？那就是 <span class="math inline">\(\gcd(a,
-b) = \gcd(b, a\bmod b)\)</span>。</p>
-<p>那么这个 exgcd 其实也和上面的差不多，也是推到底了之后递归算。</p>
-<p>手推一下就行。分两种情况：</p>
-<ul>
-<li>如果 <span class="math inline">\(b=0\)</span>，那么就说明 <span
-class="math inline">\(a\)</span>
-就是原来的最大公因数了。那么此时的方程就变成了 <span
-class="math inline">\(ax + by = a\)</span>。很明显，<span
-class="math inline">\(x=1, y = 0\)</span>。</li>
-<li>如果 <span class="math inline">\(b \neq
-0\)</span>，那么就可以从上一层递归过来。具体步骤如下：</li>
-</ul>
-<p>$$ <span class="math display">\[\begin{equation}
-\begin{aligned}
-ax + by &amp;= \gcd(a, b) \\
-        &amp;= \gcd(b, a \bmod b) \\
-        &amp;= bx_0 + (a \bmod b)y_0
-&amp;（这里设上一层的解为x_0和y_0）\\
-        &amp;= bx_0 + (a - \lfloor a/b \rfloor b)y_0 \\
-        &amp;= bx_0 + ay_0 - \lfloor a/b \rfloor by_0 \\
-        &amp;= ay_0 + b(x_0 - \lfloor a/b \rfloor y_0) \\
-        
-\end{aligned}
-\end{equation}\]</span> $$</p>
-<p>即可得出<span class="math inline">\(x = y_0, y = x_0 - \lfloor a/b
-\rfloor y_0\)</span>。</p>
-<p>然后一层一层递归就行。</p>
-<hr />
-<p>好。那回到正题。回到中国剩余定理。</p>
-<p>那么要是 <span class="math inline">\(m\)</span>
-序列<strong>不是两两互质</strong>的话呢？</p>
-<p>那么就只能用到<strong>扩展</strong>中国剩余定理了！</p>
-<h2 id="扩展中国剩余定理">扩展中国剩余定理</h2>
-<p>现在不互质，就不能用求逆元的方法了，因为根本没有逆元！</p>
-<p>那就用<strong>逐个合并</strong>的方法。</p>
-<p>我们先来看前两个： <span class="math display">\[
-\begin{cases}
-x\equiv r_1 \pmod {m_1} \\
-x\equiv r_2 \pmod {m_2}
-\end{cases}
-\]</span> 发现它们两个可以变为不定方程： <span class="math display">\[
-\begin{cases}
-x = m_1p+r_1 \\
-x = m_2q+r_2
-\end{cases}
-\]</span> 然后合并成： <span class="math display">\[
-m_1p - m_2q = r_2 - r_1
-\]</span> 这时我们要求出 <span class="math inline">\(p\)</span> 和 <span
-class="math inline">\(q\)</span> 这两个未知量。</p>
-<p>根据裴蜀定理（不定方程 <span class="math inline">\(ax+by=c\)</span>
-有解当且仅当 <span class="math inline">\(\gcd(a, b) \mid c\)</span>
-）可得：</p>
-<ul>
-<li>当 <span class="math inline">\(\gcd(m_1, m_2) \nmid (r_2 -
-r_1)\)</span> 时，原方程无解。</li>
-<li>当 <span class="math inline">\(\gcd(m_1, m_2) \mid (r_2 -
-r_1)\)</span> 时，原方程有解。此时可以用上文所述的 exgcd 求得此解。</li>
-</ul>
-<p>求出 exgcd 里面的解是 <span class="math inline">\(x_0, y_0\)</span>
-了之后（因为说 exgcd 求出的其实是 <span class="math inline">\(m_1p -
-m_2q = \gcd(m_1, m_2)\)</span> 的一组解），就可以得出（后面都用 <span
-class="math inline">\(\gcd\)</span> 代替 <span
-class="math inline">\(\gcd(m_1, m_2)\)</span>）：</p>
-<p>真正的特解 <span class="math inline">\(p = x_0 \times \frac{r_2 -
-r_1}{\gcd}, q = y_0 \times \frac{r_2 - r_1}{\gcd}\)</span>。</p>
-<p>它们的通解 $P = p+ k,Q = q + k $。</p>
-<p>所以 <span class="math inline">\(x = m_1 P + r_1 = \frac{m_1\times
-m_2}{\gcd} \times k + m_1 p + r_1 = k \times \text{lcm}(m_1, m_2) + m_1
-p+ r_1\)</span>。</p>
-<p>于是可以转化为一个同余方程式： <span class="math display">\[
-x \equiv m_1 p + r_1 \pmod {\text{lcm}(m_1, m_2)}
-\]</span> 这就又变回原来的那样了！</p>
-<p>于是我们可以一个一个合并下去，直到最终，求出答案。</p>
-<p><code>Auth0r: Tofsox</code></p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>中国剩余定理，顺带着exgcd求逆元</p><p><a href="http://www.11490dx.net/2024/11/14/crt-with-exgcd/">http://www.11490dx.net/2024/11/14/crt-with-exgcd/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>11400F</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2024-11-14</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2024-11-14</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/11/15/sqrt-decom/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">数论分块的模板，附带一些小证明</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/11/12/mai/"><span class="level-item">mai</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">コメント</h3><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script src="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js"></script><script>new DisqusJS({
+</div><div class="article-licensing box"><div class="licensing-title"><p>一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……</p><p><a href="http://www.11490dx.net/2025/01/02/eulerfunc-etc/">http://www.11490dx.net/2025/01/02/eulerfunc-etc/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>11400F</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-01-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-01-02</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/12/30/mobius-inversion/"><span class="level-item">莫比乌斯反演</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">コメント</h3><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script src="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js"></script><script>new DisqusJS({
             shortname: 'HexoBlog',
             apikey: "cDWdsmy8Uegbv22xNYuFVpRGBMsDbU3O6hnUs28kShPkIzzGxdOkjW5h1jPwrQkw",
             siteName: "11400F's Blog",
-            identifier: "2024/11/14/crt-with-exgcd/",
-            url: "http://www.11490dx.net/2024/11/14/crt-with-exgcd/",
-            title: "中国剩余定理，顺带着exgcd求逆元",
+            identifier: "2025/01/02/eulerfunc-etc/",
+            url: "http://www.11490dx.net/2025/01/02/eulerfunc-etc/",
+            title: "一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……",
             
             
             
