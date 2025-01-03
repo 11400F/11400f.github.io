@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……【未完成】 - 11400F&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="11400F&#039;s Blog"><meta name="msapplication-TileImage" content="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="11400F&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="Title"><meta property="og:url" content="http://www.11490dx.net/2025/01/02/eulerfunc-etc/"><meta property="og:site_name" content="11400F&#039;s Blog"><meta property="og:locale" content="ja_JP"><meta property="og:image" content="http://www.11490dx.net/img/og_image.png"><meta property="article:published_time" content="2025-01-02T07:17:04.000Z"><meta property="article:modified_time" content="2025-01-02T09:21:42.772Z"><meta property="article:author" content="Author"><meta property="article:tag" content="C++"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://www.11490dx.net/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://www.11490dx.net/2025/01/02/eulerfunc-etc/"},"headline":"TTTT","image":["http://www.11490dx.net/img/og_image.png"],"datePublished":"2025-01-02T07:17:04.000Z","dateModified":"2025-01-02T09:21:42.772Z","author":{"@type":"Person","name":"AAAA"},"publisher":{"@type":"Organization","name":"11400F's Blog","logo":{"@type":"ImageObject","url":{"text":"Bye, Gekichumai!"}}},"description":""}</script><link rel="canonical" href="http://www.11490dx.net/2025/01/02/eulerfunc-etc/"><link rel="icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛 - 11400F&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="11400F&#039;s Blog"><meta name="msapplication-TileImage" content="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="11400F&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content=""><meta property="og:type" content="blog"><meta property="og:title" content="Title"><meta property="og:url" content="http://www.11490dx.net/2025/01/02/eulerfunc-etc/"><meta property="og:site_name" content="11400F&#039;s Blog"><meta property="og:locale" content="ja_JP"><meta property="og:image" content="http://www.11490dx.net/img/og_image.png"><meta property="article:published_time" content="2025-01-02T07:17:04.000Z"><meta property="article:modified_time" content="2025-01-03T07:02:57.926Z"><meta property="article:author" content="Author"><meta property="article:tag" content="C++"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://www.11490dx.net/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://www.11490dx.net/2025/01/02/eulerfunc-etc/"},"headline":"TTTT","image":["http://www.11490dx.net/img/og_image.png"],"datePublished":"2025-01-02T07:17:04.000Z","dateModified":"2025-01-03T07:02:57.926Z","author":{"@type":"Person","name":"AAAA"},"publisher":{"@type":"Organization","name":"11400F's Blog","logo":{"@type":"ImageObject","url":{"text":"Bye, Gekichumai!"}}},"description":""}</script><link rel="canonical" href="http://www.11490dx.net/2025/01/02/eulerfunc-etc/"><link rel="icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,7 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bye, Gekichumai!</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/2000/02/29/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Github" href="https://github.com">Github</a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="検索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-01-02T07:17:04.000Z" title="2025/1/2 15:17:04">2025-01-02</time>に投稿</span><span class="level-item"><time dateTime="2025-01-02T09:21:42.772Z" title="2025/1/2 17:21:42">2025-01-02</time>に更新</span><span class="level-item">7分で読む (約1073語)</span></div></div><h1 class="title is-3 is-size-4-mobile">一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……【未完成】</h1><div class="content"><p> </p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bye, Gekichumai!</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/2000/02/29/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Github" href="https://github.com">Github</a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="検索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2025-01-02T07:17:04.000Z" title="2025/1/2 15:17:04">2025-01-02</time>に投稿</span><span class="level-item"><time dateTime="2025-01-03T07:02:57.926Z" title="2025/1/3 15:02:57">2025-01-03</time>に更新</span><span class="level-item">13分で読む (約1979語)</span></div></div><h1 class="title is-3 is-size-4-mobile">一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛</h1><div class="content"><p> </p>
 <span id="more"></span>
 <p>上次讲了莫比乌斯函数和莫比乌斯反演，这次就来补充一下之前没讲到的东西吧。</p>
 <h2 id="欧拉函数">欧拉函数</h2>
@@ -150,15 +150,99 @@ class="math inline">\(\displaystyle \sum_{d\mid n} \mu(d) =
 id\)</span>。根据欧拉反演：<span
 class="math inline">\(\displaystyle\sum_{d\mid x}\varphi(x) =
 n\)</span>，类似上面的证明即得证。</li>
-<li></li>
+<li><span class="math inline">\(\mu * id =
+\varphi\)</span>。我们可以根据关系 2 把 <span
+class="math inline">\(id\)</span> 拆为 <span
+class="math inline">\(\varphi * 1\)</span>，于是原式就变为 <span
+class="math inline">\(\mu*\varphi*1 = \mu*1*\varphi = \varepsilon *
+\varphi = \varphi\)</span>。</li>
 </ol>
-</div><div class="article-licensing box"><div class="licensing-title"><p>一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……【未完成】</p><p><a href="http://www.11490dx.net/2025/01/02/eulerfunc-etc/">http://www.11490dx.net/2025/01/02/eulerfunc-etc/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>11400F</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-01-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-01-02</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/12/30/mobius-inversion/"><span class="level-item">莫比乌斯反演</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">コメント</h3><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script src="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js"></script><script>new DisqusJS({
+<p>注意：定理 3
+是莫比乌斯函数和欧拉函数的关系，一定要理解、记住、背过！</p>
+<p>根据上面的卷积关系，我们引入一个复杂度为 <span
+class="math inline">\(O(n^{\frac{2}{3}})\)</span> 求 <span
+class="math inline">\(\displaystyle\sum_{i=1}^{n} f(i)\)</span>（<span
+class="math inline">\(f\)</span> 为积性函数）的一种新算法：杜教筛。</p>
+<h2 id="杜教筛">杜教筛</h2>
+<p>这里令 <span class="math inline">\(s(x) = \sum_{i=1}^{x}
+f(i)\)</span>。我们要求的就是 <span
+class="math inline">\(s(n)\)</span>。</p>
+<p>之前我们学了狄利克雷卷积，而杜教筛就是利用了卷积，先构造积性函数
+<span class="math inline">\(g(x)\)</span>，使 <span
+class="math inline">\(\sum_{i=1}^{x}(f*g)(i)\)</span>
+能够在非常小的时间复杂度内算出来，然后利用下列递推式递归求出： <span
+class="math display">\[
+g(1)s(n) = \sum_{i=1}^{n} (f * g)(i) - \sum_{i=2}^{n}
+g(i)s(\lfloor\frac{n}{i}\rfloor)
+\]</span> 考虑这个递推式如何证明： <span class="math display">\[
+\begin{aligned}
+&amp;\sum_{i=1}^{n} (f*g)(i) \\
+= &amp;\sum_{i=1}^{n}\sum_{d\mid i} f(\frac{i}{d})g(d) \\
+= &amp;\sum_{i=1}^{n}\sum_{d=1}^{n} [d\mid i] f(\frac{i}{d}) g(d) \\
+= &amp;\sum_{d=1}^{n}\sum_{i=1}^{n} [d\mid i] f(\frac{i}{d}) g(d) \\
+= &amp;\sum_{d=1}^{n}\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}f(i)g(d) \\
+= &amp;\sum_{d=1}^{n}g(d)s(\lfloor\frac{n}{d}\rfloor) \\
+= &amp;g(1)s(n) + \sum_{d=2}^{n} g(d)s(\lfloor\frac{n}{d}\rfloor)
+\end{aligned}
+\]</span> 于是，我们就可以根据之前的 <span
+class="math inline">\(s\)</span> 值得出 <span
+class="math inline">\(s(n)\)</span>。</p>
+<p>在做杜教筛时要有几个小技巧：</p>
+<ol type="1">
+<li>首先预处理 <span class="math inline">\(s(1) \sim
+s(L)\)</span>（这里的 <span class="math inline">\(L\)</span>
+一般较小，在 <span class="math inline">\(n^{\frac{2}{3}}\)</span>
+左右），只要 <span class="math inline">\(s(i)\)</span> 的 <span
+class="math inline">\(i\le L\)</span>，就直接返回预处理的 <span
+class="math inline">\(s\)</span> 值。</li>
+<li>用一个 <code>map</code> 来存储已经算过的 <span
+class="math inline">\(s(i)\)</span>，记忆化搜索，使其不会重复计算。</li>
+<li>因为其中带了一个 <span class="math inline">\(\lfloor
+\frac{n}{d}\rfloor\)</span>，所以可以用整除分块做。</li>
+</ol>
+<p>现在以一道例题来讲一下杜教筛的应用。</p>
+<h3 id="on23-求莫比乌斯函数和欧拉函数前-n-项的和">O(n^2/3)
+求莫比乌斯函数和欧拉函数前 n 项的和</h3>
+<p>现在要求 <span class="math inline">\(s(n) = \sum_{i=1}^{n}
+\mu(i)\)</span>，那就要构造一个函数 <span
+class="math inline">\(g\)</span> 使得 <span
+class="math inline">\((f*g)\)</span> 是非常好求的。</p>
+<p>回想一下之前的一些常考的卷积关系，里面有一项：<span
+class="math inline">\(\mu * 1 = \varepsilon\)</span>，于是就可以令 <span
+class="math inline">\(g(x) = 1\)</span>，然后带入杜教筛的式子得： <span
+class="math display">\[
+\begin{aligned}
+1 \times s(n) &amp;= \sum_{i=1}^{n} \varepsilon(i) - \sum_{i=2}^{n}
+1\times s(\lfloor\frac{n}{i}\rfloor)\\
+s(n) &amp;= 1 - \sum_{i=2}^{n}s(\lfloor\frac{n}{i}\rfloor)
+\end{aligned}
+\]</span> 于是就可以预处理 <span class="math inline">\(s(1\sim 2\times
+10^6)\)</span> + <code>map</code> 记忆化 + 整除分块来递归求 <span
+class="math inline">\(n = 2\times 10^9\)</span> 这种数据规模的值了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> L = <span class="number">2e6</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; mob_map;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getsummob</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= L) <span class="keyword">return</span> summob[x];</span><br><span class="line">    <span class="keyword">if</span>(mob_map.<span class="built_in">count</span>(x)) <span class="keyword">return</span> mob_map[x];</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(ll l=<span class="number">2</span>,r;l&lt;=x;l=r<span class="number">+1</span>)&#123;</span><br><span class="line">        r = (x/(x/l));</span><br><span class="line">        ans -= (r-l<span class="number">+1</span>)*<span class="built_in">getsummob</span>(x/l);</span><br><span class="line">    &#125;</span><br><span class="line">    mob_map[x] = ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求欧拉函数前缀和也类似，设 <span class="math inline">\(s(n) =
+\sum_{i=1}^{n}\varphi(i)\)</span>，根据 <span
+class="math inline">\(\varphi * 1 = id\)</span>，带入杜教筛式子可得：
+<span class="math display">\[
+\begin{aligned}
+s(n) = (1 + 2 + \cdots + n) - \sum_{i=2}^{n} s(\lfloor
+\frac{n}{i}\rfloor)
+\end{aligned}
+\]</span> 前面那个等差数列就用求和公式求，后面那个一样用整除分块。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>, ll&gt; phi_map;</span><br><span class="line"><span class="function">ll <span class="title">getsumphi</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= L) <span class="keyword">return</span> sumphi[x];</span><br><span class="line">    <span class="keyword">if</span>(phi_map.<span class="built_in">count</span>(x)) <span class="keyword">return</span> phi_map[x];</span><br><span class="line">    ll ans = <span class="number">1ll</span>*(x)*(x<span class="number">+1</span>)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(ll l=<span class="number">2</span>,r;l&lt;=x;l=r<span class="number">+1</span>)&#123;</span><br><span class="line">        r = (x/(x/l));</span><br><span class="line">        ans -= (r-l<span class="number">+1</span>)*<span class="built_in">getsumphi</span>(x/l);</span><br><span class="line">    &#125;</span><br><span class="line">    phi_map[x] = ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<p>其它的杜教筛求前缀和也和这个思想一样，只要构造出好求的 <span
+class="math inline">\(f*g\)</span>，<span
+class="math inline">\(n\)</span> 规模在 <span class="math inline">\(10^9
+\sim 5\times 10^{10}\)</span>
+左右，就可以用杜教筛来求一个积性函数的前缀和。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛</p><p><a href="http://www.11490dx.net/2025/01/02/eulerfunc-etc/">http://www.11490dx.net/2025/01/02/eulerfunc-etc/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>11400F</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-01-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-01-03</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/12/30/mobius-inversion/"><span class="level-item">莫比乌斯反演</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">コメント</h3><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script src="https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js"></script><script>new DisqusJS({
             shortname: 'HexoBlog',
             apikey: "cDWdsmy8Uegbv22xNYuFVpRGBMsDbU3O6hnUs28kShPkIzzGxdOkjW5h1jPwrQkw",
             siteName: "11400F's Blog",
             identifier: "2025/01/02/eulerfunc-etc/",
             url: "http://www.11490dx.net/2025/01/02/eulerfunc-etc/",
-            title: "一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛……【未完成】",
+            title: "一堆数学的玩意和补充：欧拉函数、狄利克雷卷积、杜教筛",
             
             
             
