@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Maimai">
+    
+    <meta name="author" content="11400F">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://11400f.github.io/2025/01/08/math-bsgs/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大步小步算法：婴儿一小步，巨人一大步。">
+<meta property="og:url" content="https://11400f.github.io/2025/01/08/math-bsgs/index.html">
+<meta property="og:site_name" content="11400F&#39;s Blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://11400f.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-01-08T13:19:03.000Z">
+<meta property="article:modified_time" content="2025-01-17T07:09:48.589Z">
+<meta property="article:author" content="11400F">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://11400f.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <meta name="theme-color" content="#181A1B">
+    <link rel="shortcut icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            大步小步算法：婴儿一小步，巨人一大步。 | 11400F&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"11400f.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#181A1B","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to my NEW sekai!","subtitle":{"text":["要开始了哟~","欢迎回来！","加入游戏！可玩乐曲数增加","噔↑噔↓噔↑噔↓ 用游客模式吗？","啊~啊~啊咦~啊咦~啊→啊↑啊→啊↓嗯哎","憋 -我ら神祖と共に玩む原な神-","I LOVE CHUNITHM","很简单对吧~（中二企鹅音）","企鹅演示中……","ねっ、簡単でしょ？","→↓↑→→↓→→↑↑↓↓←→←→","------SAKUZYO---BEAM------■","兄弟，提一把？"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#101010","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/11400f","Blog":"https://www.11490dx.net","Friends":"/friends"}},"Links":{"icon":"fa-regular fa-link","submenus":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Gallery":{"path":"/gallery","icon":"fa-solid fa-image"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/02/08 10:51:40"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                11400F&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400f">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.11490dx.net">
+                                                    BLOG
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    FRIENDS
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">
+                                                    ATCODER
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">
+                                                    CODEFORCES
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400F">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">
+                                                    LUOGU
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400f">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.11490dx.net">BLOG</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">FRIENDS</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">ATCODER</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">CODEFORCES</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400F">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">LUOGU</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/gallery"
+                        >
+                            <span>Gallery</span>
+                            <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">29</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">大步小步算法：婴儿一小步，巨人一大步。</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="https://cdn.luogu.com.cn/upload/image_hosting/ftr99ezk.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">11400F</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-01-08 21:19:03</span>
+        <span class="mobile">2025-01-08 21:19:03</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-01-17 15:09:48</span>
+            <span class="mobile">2025-01-17 15:09:48</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p> </p>
+<span id="more"></span>
+<h1 id="bsgs-算法">BSGS 算法</h1>
+<blockquote>
+<p>给定一个<strong>质数</strong> <span
+class="math inline">\(p\)</span>，以及一个整数 <span
+class="math inline">\(a\)</span>，一个整数 <span
+class="math inline">\(b\)</span>。</p>
+<p>现在要求你计算一个最小的非负整数 <span
+class="math inline">\(x\)</span>，满足 <span class="math inline">\(a^x
+\equiv b \pmod p\)</span>。保证 <span class="math inline">\(2\le a,b
+&lt; p&lt;2^{31}\)</span>。</p>
+</blockquote>
+<p>因为 <span class="math inline">\(a &lt; p\)</span>，并且 <span
+class="math inline">\(p\)</span> 是质数，我们很容易就得到了 <span
+class="math inline">\(a\)</span> 和 <span
+class="math inline">\(p\)</span> 是互质的。</p>
+<p>根据扩展欧拉定理：当 <span class="math inline">\(\gcd(a, m) =
+1\)</span> 时，<span class="math inline">\(a^b \equiv a^{b \bmod
+\varphi(m)} \pmod m\)</span>。于是我们可以得出，最小的非负整数 <span
+class="math inline">\(x\)</span> 一定在 <span class="math inline">\([0,
+\varphi(p))\)</span> 之间。可以看作在 <span class="math inline">\([0,
+p]\)</span> 之间一定可以找出答案。</p>
+<p>这个算法就是利用了把 <span class="math inline">\(x\)</span> 拆开，在
+<span class="math inline">\(O(\sqrt n)\)</span>
+的时间复杂度内计算出答案。具体地说就是：</p>
+<p>我们把 <span class="math inline">\(x\)</span> 拆为 <span
+class="math inline">\(im - j\)</span>，这里令 <span
+class="math inline">\(m = \lceil \sqrt n \rceil, i \in [1, m],j \in [0,
+m-1]\)</span>。</p>
+<p>那么变换一下原式： <span class="math display">\[
+\begin{aligned}
+a^x &amp;\equiv b &amp;\pmod p \\
+a^{im-j} &amp;\equiv b &amp;\pmod p \\
+a^{im} &amp;\equiv b\cdot a^j &amp;\pmod p\\
+(a^m)^i &amp;\equiv b \cdot a^j &amp;\pmod p
+\end{aligned}
+\]</span> 于是可以发现 <span class="math inline">\((a^m)^i\)</span>
+的值域最多只有 <span class="math inline">\(m\)</span> 即 <span
+class="math inline">\(\sqrt n\)</span> 个，可以首先把这 <span
+class="math inline">\(\sqrt n\)</span> 个值域先插入到哈希表内。</p>
+<p>具体地、从 <span class="math inline">\(0\)</span> 到 <span
+class="math inline">\(m-1\)</span> 枚举 <span
+class="math inline">\(j\)</span>，然后计算出每一个 <span
+class="math inline">\(j\)</span> 对应的 <span
+class="math inline">\(b\cdot a^j\)</span>，然后把它当作哈希表的 <span
+class="math inline">\(key\)</span>，其对应的 <span
+class="math inline">\(val\)</span> 就是 <span
+class="math inline">\(j\)</span>。如果后面有覆盖，那么取更大的那个。因为
+<span class="math inline">\(x = im-j\)</span>，<span
+class="math inline">\(j\)</span> 更大，相应的 <span
+class="math inline">\(x\)</span>
+就可以更小了。<del>这一步操作就相当于是婴儿一小步。</del></p>
+<p>然后从 <span class="math inline">\(1\)</span> 到 <span
+class="math inline">\(m\)</span> 枚举 <span
+class="math inline">\(i\)</span>，计算这个时候的 <span
+class="math inline">\((a^m)^i\)</span>。如果有在哈希表内存在 <span
+class="math inline">\(key_j =
+(a^m)^i\)</span>，那么我们就得出来答案了。最小的 <span
+class="math inline">\(x\)</span> 就是 <span
+class="math inline">\(im-j\)</span>。<del>这一步操作就可以看作巨人一大步。</del></p>
+<p>如果遍历完了 <span class="math inline">\(i \in [1,m]\)</span>
+还是没有找到那个 <span
+class="math inline">\(key\)</span>，那么无解。</p>
+<p>由于这种方法算不出来 <span class="math inline">\(b = 1\)</span>
+的情况，所以当 <span class="math inline">\(b=1\)</span>
+的时候，就特判，然后直接输出 <span
+class="math inline">\(0\)</span>。</p>
+<p>所以这种方法非常之妙，把原本 <span
+class="math inline">\(O(p)\)</span> 的复杂度直接砍到 <span
+class="math inline">\(O(\sqrt p)\)</span>。</p>
+<p>只有 676 Bytes 的简短 Code:</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> p, b, n;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; hashtb;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="type">int</span> p, a, b;</span><br><span class="line">    cin&gt;&gt;p&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">1</span>) <span class="keyword">return</span> cout&lt;&lt;<span class="string">&#x27;0&#x27;</span>, <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">    ll bas = b;</span><br><span class="line">    ll stt = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        hashtb[bas] = i;</span><br><span class="line">        bas = bas * a % p;</span><br><span class="line">        stt = stt * a % p;</span><br><span class="line">    &#125;</span><br><span class="line">    ll now = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        now = now * stt % p;</span><br><span class="line">        <span class="keyword">if</span>(hashtb.<span class="built_in">count</span>(now))&#123;</span><br><span class="line">            cout&lt;&lt;i*m-hashtb[now]&lt;&lt;<span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;no solution\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>所以其实，普通的 BSGS 算法只要求 <span
+class="math inline">\(a\)</span> 和 <span
+class="math inline">\(p\)</span> 互质即可。<strong>不要求 p
+为质数</strong>。</p>
+<h2 id="例题">例题</h2>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4884" >P4884 多少个
+1？<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<blockquote>
+<p>给定整数 <span class="math inline">\(K\)</span> 和质数 <span
+class="math inline">\(m\)</span>，求最小的正整数 <span
+class="math inline">\(N\)</span>，使得 $ 11<span
+class="math inline">\(（\)</span>N$ 个 <span
+class="math inline">\(1\)</span>）<span class="math inline">\(\equiv K
+\pmod m\)</span>。</p>
+<p>说人话：就是 <span class="math inline">\(111\cdots 1111 \bmod m =
+K\)</span>。</p>
+<p><span class="math inline">\(100\%\)</span> 的数据保证 <span
+class="math inline">\(6\leq m\leq 10^{11}\)</span>，<span
+class="math inline">\(0&lt; K&lt; m\)</span>，保证 <span
+class="math inline">\(m\)</span> 是质数。</p>
+</blockquote>
+<p>从这个鬼玩意想到 BSGS 还是比较有难度的。</p>
+<p>具体来说，就是 <span class="math inline">\(N\)</span> 个 <span
+class="math inline">\(1\)</span> 组成的数 <span
+class="math inline">\(111\cdots111\)</span>，把它乘上 <span
+class="math inline">\(9\)</span> 就变成了 <span
+class="math inline">\(N\)</span> 个 <span
+class="math inline">\(9\)</span> 组成的数，再加上 <span
+class="math inline">\(1\)</span> 就变成了 <span
+class="math inline">\(10^N\)</span>。</p>
+<p>于是原式就可以转化为： <span class="math display">\[
+\frac{10^N-1}{9}\equiv K \pmod m
+\]</span> 然后移项： <span class="math display">\[
+10^N \equiv 9K+1 \pmod m
+\]</span> 然后就变成了板子。就可以做了。但是因为 <span
+class="math inline">\(m \le
+10^{11}\)</span>，所以我的代码中使用了龟速乘。</p>
+<hr />
+<h1 id="ex-bsgs-算法">Ex-BSGS 算法</h1>
+<blockquote>
+<p>给定一个<strong>整数</strong> <span
+class="math inline">\(p\)</span>，以及一个整数 <span
+class="math inline">\(a\)</span>，一个整数 <span
+class="math inline">\(b\)</span>。</p>
+<p>现在要求你计算一个最小的非负整数 <span
+class="math inline">\(x\)</span>，满足 <span class="math inline">\(a^x
+\equiv b \pmod p\)</span>。保证 <span class="math inline">\(1\le a,b, p
+\le 10^9\)</span>。</p>
+</blockquote>
+<p>和之前的题目有什么不同？这里的 <span class="math inline">\(p\)</span>
+不再和 <span class="math inline">\(a\)</span>
+互质了。也就是说，我们不能再直接用 BSGS
+算法来计算出答案了。但是我们可以对 BSGS
+算法稍微加以改造，就可以过这道题。</p>
+<p>首先还是原式 <span class="math inline">\(a^x \equiv b \pmod
+p\)</span>，如果 <span class="math inline">\(\gcd(a,p) =
+1\)</span>，那么直接搞 BSGS。否则按照以下步骤进行：</p>
+<p>原式它可以等价于 <span class="math inline">\(a\cdot a^{x-1} + py =
+b\)</span>。这个方程可以看成 exgcd 状物，有解的条件显然就是 <span
+class="math inline">\(\gcd(a, p) \mid b\)</span>。如果 <span
+class="math inline">\(\gcd(a,p) \nmid b\)</span>，那么原方程就无解。</p>
+<p>如果有解的话，设 <span class="math inline">\(g = \gcd(a,
+p)\)</span>，可以把这个方程化为 <span
+class="math inline">\(\frac{a}{g}\cdot a^{x-1} + \frac{p}{g}\cdot y =
+\frac{b}{g}\)</span>。然后就等价于 <span
+class="math inline">\(\frac{a}{g}\cdot a^{x-1} \equiv \frac{b}{g} \pmod
+{\frac{p}{g}}\)</span>。就变为了一个新的类似 <span
+class="math inline">\(a^x \equiv b \pmod p\)</span> 的式子。</p>
+<p>然后继续检查 <span class="math inline">\(\gcd(a,
+\frac{p}{g})\)</span> 是否为 <span
+class="math inline">\(1\)</span>，如果不是，那么就继续按照上面的步骤进行。</p>
+<p>最终，等到最大公约数为 <span class="math inline">\(1\)</span>
+之后，令 <span class="math inline">\(G = \displaystyle\prod_{i=1}^{k}
+g_i\)</span>，就得到了一个形如 <span class="math inline">\(\frac{a^k}{G}
+\cdot a^{x-k} \equiv \frac{b}{G} \pmod {\frac{p}{G}}\)</span>
+的式子。这里的 <span class="math inline">\(k\)</span> 就是转化 <span
+class="math inline">\(a,b,p\)</span> 的次数。</p>
+<p>令 <span class="math inline">\(A = \frac{a^k}{G}, B = \frac{b}{G},P =
+\frac{p}{G}\)</span>。原式就变为了 <span class="math inline">\(A\cdot
+a^{x-k} \equiv B \pmod P\)</span>。</p>
+<p>由于此时的 <span class="math inline">\(a\)</span> 和 <span
+class="math inline">\(P\)</span> 是互质的，<span class="math inline">\(A
+= \frac{a^k}{G}\)</span>，所以 <span class="math inline">\(A\)</span>
+也和 <span class="math inline">\(P\)</span> 互质。所以 <span
+class="math inline">\(A\)</span> 就有了模 <span
+class="math inline">\(P\)</span>
+意义下的逆元（<strong>但是千万不要用快速幂求！因为 P
+不一定是质数！！！</strong>）。</p>
+<p>然后求出 <span class="math inline">\(a\)</span> 的指数了之后，加上
+<span class="math inline">\(k\)</span> 就是我们要求的 <span
+class="math inline">\(x\)</span> 了。</p>
+<p>核心代码 - Ex-BSGS 和改装后的 BSGS：</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bsgs</span><span class="params">(ll a, ll b, ll mod, ll k, ll A)</span></span>&#123;</span><br><span class="line">    a %= mod, b %= mod;</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;mp;</span><br><span class="line">    ll m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(mod));</span><br><span class="line">    ll bas=<span class="number">1</span>, now=b;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        mp[now] = i;</span><br><span class="line">        now=now*a%mod;</span><br><span class="line">        bas=bas*a%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    now = A;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        now = now*bas%mod;</span><br><span class="line">        <span class="keyword">if</span>(mp.<span class="built_in">count</span>(now))&#123;</span><br><span class="line">            cout&lt;&lt;i*m-mp[now]+k&lt;&lt;<span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;No Solution\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">exbsgs</span><span class="params">(ll a, ll b, ll mod)</span></span>&#123;</span><br><span class="line">    a %= mod, b %= mod;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">1</span>||mod==<span class="number">1</span>) <span class="keyword">return</span> cout&lt;&lt;<span class="string">&quot;0\n&quot;</span>, <span class="built_in">void</span>();</span><br><span class="line">    ll g = <span class="built_in">gcd</span>(a, mod);</span><br><span class="line">    ll k = <span class="number">0</span>;</span><br><span class="line">    ll A = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(g^<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b%g) <span class="keyword">return</span> cout&lt;&lt;<span class="string">&quot;No Solution\n&quot;</span>, <span class="built_in">void</span>();</span><br><span class="line">        k ++;</span><br><span class="line">        b /= g, mod /= g;</span><br><span class="line">        A = (A*(a/g)) % mod;</span><br><span class="line">        g = <span class="built_in">gcd</span>(a, mod);</span><br><span class="line">        <span class="keyword">if</span>(A == b) <span class="keyword">return</span> cout&lt;&lt;k&lt;&lt;<span class="string">&#x27;\n&#x27;</span>, <span class="built_in">void</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">bsgs</span>(a, b, mod, k, A);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<hr />
+<p>Link：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/1893" >BSGS
+算法练习题单<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 大步小步算法：婴儿一小步，巨人一大步。</li>
+        <li><strong>Author:</strong> 11400F</li>
+        <li><strong>Created at
+                :</strong> 2025-01-08 21:19:03</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-01-17 15:09:48
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://11400f.github.io/2025/01/08/math-bsgs/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/C/">#C++</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/01/09/20250109-P1/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">P11490 Staring Contest 题解</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/01/05/2-sat/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">2-SAT 算法</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '11400F/giscus-save',
+                'data-repo-id': 'R_kgDONty5DQ',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDONty5Dc4CmOyS',
+                'data-mapping': 'pathname',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'en',
+                'data-input-position': 'top',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">大步小步算法：婴儿一小步，巨人一大步。</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bsgs-%E7%AE%97%E6%B3%95"><span class="nav-text">BSGS 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ex-bsgs-%E7%AE%97%E6%B3%95"><span class="nav-text">Ex-BSGS 算法</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">Chu2thm Rating 14.99...</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">11400F</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        39 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/build/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/build/plugins/masonry.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

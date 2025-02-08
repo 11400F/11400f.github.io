@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Maimai">
+    
+    <meta name="author" content="11400F">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://11400f.github.io/2024/11/26/graph-connecting/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于图的连通性：连通分量、割点、割边……">
+<meta property="og:url" content="https://11400f.github.io/2024/11/26/graph-connecting/index.html">
+<meta property="og:site_name" content="11400F&#39;s Blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://11400f.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2024-11-26T13:04:05.000Z">
+<meta property="article:modified_time" content="2024-11-29T09:00:19.892Z">
+<meta property="article:author" content="11400F">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="图论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://11400f.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <meta name="theme-color" content="#181A1B">
+    <link rel="shortcut icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            关于图的连通性：连通分量、割点、割边…… | 11400F&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"11400f.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#181A1B","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to my NEW sekai!","subtitle":{"text":["要开始了哟~","欢迎回来！","加入游戏！可玩乐曲数增加","噔↑噔↓噔↑噔↓ 用游客模式吗？","啊~啊~啊咦~啊咦~啊→啊↑啊→啊↓嗯哎","憋 -我ら神祖と共に玩む原な神-","I LOVE CHUNITHM","很简单对吧~（中二企鹅音）","企鹅演示中……","ねっ、簡単でしょ？","→↓↑→→↓→→↑↑↓↓←→←→","------SAKUZYO---BEAM------■","兄弟，提一把？"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#101010","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/11400f","Blog":"https://www.11490dx.net","Friends":"/friends"}},"Links":{"icon":"fa-regular fa-link","submenus":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Gallery":{"path":"/gallery","icon":"fa-solid fa-image"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/02/08 10:51:40"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                11400F&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400f">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.11490dx.net">
+                                                    BLOG
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    FRIENDS
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">
+                                                    ATCODER
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">
+                                                    CODEFORCES
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400F">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">
+                                                    LUOGU
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400f">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.11490dx.net">BLOG</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">FRIENDS</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">ATCODER</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">CODEFORCES</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400F">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">LUOGU</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/gallery"
+                        >
+                            <span>Gallery</span>
+                            <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">29</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">关于图的连通性：连通分量、割点、割边……</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="https://cdn.luogu.com.cn/upload/image_hosting/ftr99ezk.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">11400F</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-11-26 21:04:05</span>
+        <span class="mobile">2024-11-26 21:04:05</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-11-29 17:19</span>
+            <span class="mobile">2024-11-29 17:19</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p> </p>
+<span id="more"></span>
+<p>一个图的<strong>连通分量</strong>就是一个图中所有能互通的点组成的集合。一个连通图的连通分量只有
+<span class="math inline">\(1\)</span> 个。</p>
+<p>一个连通分量里，如果把某个点删除了之后，这个连通分量就会断开，变成多个，那么这个点就是<strong>割点</strong>。一个连通分量里可能有多个割点。相应的，如果删除某条边会断开一个连通分量，那这条边就是一条<strong>割边</strong>。</p>
+<p>首先我们来讲无向图的连通性。</p>
+<h2 id="无向图">无向图</h2>
+<h3 id="连通无向图求割点">连通无向图求割点</h3>
+<p>现在，你有一个无向连通图。请问怎么求割点？</p>
+<p>我们首先以一个点为根，求一个 DFS
+树。求出来这棵树了之后，可能会有一些回退边。下面有两个定理：</p>
+<blockquote>
+<p>定理 <span class="math inline">\(1\)</span>：如果一棵树的根 <span
+class="math inline">\(rt\)</span> 要成为割点，那么他一定要有 <span
+class="math inline">\(\ge 2\)</span> 个儿子（这里指的是下一层）。</p>
+</blockquote>
+<p>证明：树的根 <span class="math inline">\(rt\)</span>
+是肯定没有回退边的，于是要删除他之后让一个连通分量断为多个，只能让他有多个儿子。</p>
+<blockquote>
+<p>定理 <span class="math inline">\(2\)</span>：如果一棵树的非根节点
+<span class="math inline">\(x\)</span>
+要成为割点，那么就一定存在一个儿子（也指的是下一层）<span
+class="math inline">\(v\)</span>，并且 <span
+class="math inline">\(v\)</span> 及 <span
+class="math inline">\(v\)</span> 的后代都没有一条回退边连向 <span
+class="math inline">\(x\)</span> 的祖先（不包括 <span
+class="math inline">\(x\)</span>）。</p>
+</blockquote>
+<p>证明：如果 <span class="math inline">\(x\)</span>
+的某一个儿子存在一个后代点 <span class="math inline">\(v\)</span> 连向
+<span class="math inline">\(x\)</span> 的祖先，那么你断掉点 <span
+class="math inline">\(x\)</span> 了之后下面的点也可以通过 <span
+class="math inline">\(v\)</span> 的回退边回到 <span
+class="math inline">\(x\)</span> 的祖先，<del>再回到已经不存在的 <span
+class="math inline">\(x\)</span> 点</del>。</p>
+<p>而如果有一个点他的后代不存在连向祖先的回退边，那么断掉 <span
+class="math inline">\(x\)</span>，后面的点没有回到他祖先的边，然后这些点就只能自己成一个连通分量了。</p>
+<figure>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/26/pA4ACDg.png"
+                      alt="img" 
+                >
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>介绍完这两个定理之后，定理 <span class="math inline">\(1\)</span>
+是好实现的，那么定理 <span class="math inline">\(2\)</span>
+怎么实现呢？</p>
+<p>我们定义两个数组：<span class="math inline">\(low\)</span> 和 <span
+class="math inline">\(dfn\)</span>。<span
+class="math inline">\(dfn_i\)</span> 表示 <span
+class="math inline">\(i\)</span> 点的 DFS
+序。如果<strong>在一条固定的链上</strong>，若 <span
+class="math inline">\(x\)</span> 点的 DFS 序小于 <span
+class="math inline">\(y\)</span> 的，那么就说明 <span
+class="math inline">\(x\)</span> 为 <span
+class="math inline">\(y\)</span> 的祖先。<span
+class="math inline">\(low_i\)</span> 表示 <span
+class="math inline">\(i\)</span> 点和 <span
+class="math inline">\(i\)</span> 的后代能跳到的祖先的 <span
+class="math inline">\(dfn\)</span>。</p>
+<p>根据定理 <span
+class="math inline">\(2\)</span>，只要<strong>存在</strong>一个 <span
+class="math inline">\(v\)</span> 为 <span
+class="math inline">\(x\)</span> 的直接儿子，并且 <span
+class="math inline">\(low_v \ge dfn_x\)</span>，那么就说明 <span
+class="math inline">\(x\)</span> 点就是一个割点。</p>
+<p><span class="math inline">\(dfn\)</span> 数组只需通过 DFS
+取得，现在我们要实现 <span class="math inline">\(low\)</span>
+数组的更新。</p>
+<p>我们知道，如果一个点 <span class="math inline">\(x\)</span>
+有一个后代 <span
+class="math inline">\(v\)</span>，他有回退边，那么我们就可以用 <span
+class="math inline">\(dfn_x\)</span> 来更新 <span
+class="math inline">\(low_v\)</span>。然后递归回去的时候，<span
+class="math inline">\(low_x = \min(dfn_x, low_{son_x})\)</span>（<span
+class="math inline">\(son\)</span> 指的是直接儿子）。</p>
+<p>就是说，我们可以从这个点往下跑到回退边，然后再通过回退边来到<strong>正在
+DFS 的这条链上</strong>的祖先。然后再对这些取最小值。</p>
+<p>于是，我们就可以愉快的求出 <span class="math inline">\(low\)</span>
+和 <span class="math inline">\(dfn\)</span>
+数组，并且判断这个点是否为割点了！</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//iscut 数组：表示 i 点是否为割点。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> soncnt = <span class="number">0</span>;</span><br><span class="line">    low[x] = dfn[x] = ++idx;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])&#123;</span><br><span class="line">            soncnt++;</span><br><span class="line">            <span class="built_in">dfs</span>(v, x);</span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x], low[v]);</span><br><span class="line">            <span class="keyword">if</span>(low[v] &gt;= dfn[x] &amp;&amp; x != <span class="number">1</span>)&#123;</span><br><span class="line">                iscut[x] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(v != fa)&#123;</span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x], dfn[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">1</span> &amp;&amp; soncnt &gt;= <span class="number">2</span>) iscut[x] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="连通无向图求割边">连通无向图求割边</h3>
+<p>先说结论：<strong>只要把 <span class="math inline">\(low_v \ge
+dfn_x\)</span> 改为 <span class="math inline">\(low_v &gt;
+dfn_x\)</span> 即可！</strong></p>
+<p>考虑 <span class="math inline">\(low_v \ge dfn_x\)</span> 的意思是从
+<span class="math inline">\(v\)</span> 及其儿子最远可以跳到 <span
+class="math inline">\(x\)</span> <strong>及后代</strong>。而 <span
+class="math inline">\(low_v &gt; dfn_x\)</span> 表示的就是从 <span
+class="math inline">\(v\)</span> 及其儿子最远可以跳到 <span
+class="math inline">\(x\)</span> <strong>的后代，不包括
+x</strong>。因为我们求的是割边，如果从 <span
+class="math inline">\(v\)</span> 跳到了 <span
+class="math inline">\(x\)</span>，而 <span
+class="math inline">\(x\)</span>
+又不像割点一样，它这次并没有被删除。所以还是能连通（例如上图的 <span
+class="math inline">\(v → w\)</span> 的这条边和 <span
+class="math inline">\(w\)</span> 的关系。<span
+class="math inline">\(w\)</span> 是割点，但 <span
+class="math inline">\(w → x\)</span> 不是割边）。所以如果 <span
+class="math inline">\(low_v &gt; dfn_x\)</span>，那么边 <span
+class="math inline">\(x → v\)</span>
+就是一条割边。其他的和割点一模一样。</p>
+<h3 id="点双连通分量">点双连通分量</h3>
+<p>现在你有两个点。如果你从点 <span class="math inline">\(x\)</span>
+到点 <span class="math inline">\(y\)</span> 可以通过大于 <span
+class="math inline">\(1\)</span>
+条点不重复的路径，那么我们就说这两个点<strong>点双连通</strong>。而很多个这样子的点组合起来就变成了<strong>点双连通分量</strong>。根据定义，如果你删掉了这个点双连通分量的任意一个点，那么这个图的连通性不会改变。也就是说，<strong>点双连通分量没有割点</strong>。</p>
+<p>对应的，还有<strong>边双连通分量</strong>。这个就是删除了任意一条边，连通性不会改变，边双连通分量里面没有割边。</p>
+<p>我们根据<strong>点双连通分量没有割点</strong>这个定理，就说明一个割点就连接了多个点双连通分量。那就可以使用和之前求割点类似的方法来求。</p>
+<p>方法如下：</p>
+<p>我们用一个栈，来存储目前已经遍历过的点。你调用 dfs
+函数一次，栈就把这个点给 <code>push</code> 进去。容易发现，当 dfs 函数从
+<span class="math inline">\(x\)</span> 的儿子 <span
+class="math inline">\(v\)</span> 递归回 <span
+class="math inline">\(x\)</span> 的时候，那么就说明 <span
+class="math inline">\(v\)</span> 及 <span
+class="math inline">\(v\)</span> 的后代都已经被装到栈里面了。</p>
+<p>如果这个点是割点（这个时候的割点就不考虑根的限制，某个点成为“割点”的条件只有
+<span class="math inline">\(low_v \ge dfn_x\)</span>），那么就说明点
+<span class="math inline">\(x\)</span>、点 <span
+class="math inline">\(v\)</span> 及 <span
+class="math inline">\(v\)</span> 的后代就是一个点双连通分量。首先把
+<span class="math inline">\(v\)</span> 及 <span
+class="math inline">\(v\)</span> 的后代都从栈里面 <code>pop</code>
+出来，然后再把它们 <code>push_back</code>
+到新的一个点双连通分量存储数组（<code>vector</code> 型）里面去。然后再把
+<span class="math inline">\(x\)</span> <code>push_back</code>
+到存储数组里。<strong>注意这里的 <span class="math inline">\(x\)</span>
+不用从栈里 pop 出来！！！</strong></p>
+<p>这样也可以规避 <span class="math inline">\(v\)</span>
+的后代也有割点的问题，因为 <span class="math inline">\(v\)</span>
+的后代的那个割点的后代已经不在栈里面了。就相当于是已经被分成了两部分。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/27/pA4sNND.png"
+                      
+                ></p>
+<p><strong>注意：一个单独的点，他也可以成为一个点双连通分量。</strong></p>
+<p>于是我们就可以愉快的写代码了：</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> low[N], dfn[N];</span><br><span class="line"><span class="type">int</span> idx;</span><br><span class="line"><span class="type">int</span> st[N], pos;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; ans[N];</span><br><span class="line"><span class="type">int</span> anslen;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123;</span><br><span class="line">	low[x] = dfn[x] = ++idx;</span><br><span class="line">	st[++pos] = x;</span><br><span class="line">	<span class="type">int</span> soncnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">		<span class="type">int</span> v = edge[i].to;</span><br><span class="line">		<span class="keyword">if</span>(!dfn[v])&#123;</span><br><span class="line">			soncnt ++;</span><br><span class="line">			<span class="built_in">dfs</span>(v, x);</span><br><span class="line">			low[x] = <span class="built_in">min</span>(low[x], low[v]);</span><br><span class="line">			<span class="keyword">if</span>(low[v] &gt;= dfn[x])&#123;</span><br><span class="line">				++anslen;</span><br><span class="line">				<span class="type">int</span> lstpop;</span><br><span class="line">				<span class="keyword">do</span>&#123;</span><br><span class="line">					lstpop = st[pos--];</span><br><span class="line">					ans[anslen].<span class="built_in">push_back</span>(lstpop);</span><br><span class="line">				&#125;<span class="keyword">while</span>(lstpop != v);</span><br><span class="line">				ans[anslen].<span class="built_in">push_back</span>(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(v != fa)&#123;</span><br><span class="line">			low[x] = <span class="built_in">min</span>(low[x], dfn[v]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(soncnt == <span class="number">0</span> &amp;&amp; fa == <span class="number">0</span>)&#123;</span><br><span class="line">		ans[++anslen].<span class="built_in">push_back</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="边双连通分量">边双连通分量</h3>
+<p>这个和点双连通分量相似，一条割边连接了多个边双连通分量。</p>
+<p>于是我们可以把割边全部删除，剩下的连通块个数就是边双连通分量个数，然后每一个连通块就是一个边双连通分量！</p>
+<p>于是，代码来了：</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> low[N], dfn[N], idx;</span><br><span class="line"><span class="type">bool</span> iscuted[M&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> lastedge)</span></span>&#123;</span><br><span class="line">    low[x] = dfn[x] = ++idx;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])&#123;</span><br><span class="line">            <span class="built_in">dfs</span>(v, i);</span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x], low[v]);</span><br><span class="line">            <span class="keyword">if</span>(low[v] &gt; dfn[x])&#123;</span><br><span class="line">                iscuted[i] = iscuted[i^<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i != (lastedge^<span class="number">1</span>))&#123;</span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x], dfn[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; ans[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfstoget</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> idx)</span></span>&#123;</span><br><span class="line">    vis[x] = <span class="number">1</span>;</span><br><span class="line">    ans[idx].<span class="built_in">push_back</span>(x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="keyword">if</span>(iscuted[i]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfstoget</span>(v, idx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>无向图的介绍先到这里，我们来介绍有向图。</p>
+<h2 id="有向图">有向图</h2>
+<p><strong>有向图</strong>有一种连通状态，叫<strong>强连通</strong>。强连通就是两个点互相可达。</p>
+<p>而<strong>强连通分量</strong>（SCC）就是一个图的子图，这个子图是强连通图并且这个子图扩展到了最大，那么这个子图就是原图的一个强连通分量。一个有向图里面可能有很多个强连通分量。</p>
+<p>于是我们接下来的问题就是怎么求一个有向图中的所有强连通分量。</p>
+<h3 id="强连通分量">强连通分量</h3>
+<p>强连通分量有一个非常重要的定理：</p>
+<blockquote>
+<p>在一个强连通分量里，从一个点出发，一定能通过某条路径到达他自己。</p>
+</blockquote>
+<p>于是我们可以用之前求割点的 <span class="math inline">\(low\)</span>
+和 <span class="math inline">\(dfn\)</span> 技术，来解这一道题。</p>
+<p>根据上面的这个定理，我们可以得到，如果一些点的 <span
+class="math inline">\(low\)</span>
+值相同，那么这些点都属于一个强连通分量。</p>
+<p>我们可以这个时候我们可以暴力，处理完了之后将相同的 <span
+class="math inline">\(low\)</span> 值分到一起，然后每一个 <span
+class="math inline">\(low\)</span>
+相同的就是一个强连通分量，最后统计就行。</p>
+<p>但是有一个更好的方法：</p>
+<p>我们建一个栈，像求割点一样。这个栈每遍历一个点，就把这个点加进栈里面。考虑最先入栈的点
+<span class="math inline">\(x\)</span>，他一定是所有 <span
+class="math inline">\(low\)</span> 值等于 <span
+class="math inline">\(x\)</span> 的强连通分量的最老的祖先。这个祖先的
+<span class="math inline">\(low_x = dfn_x\)</span>。</p>
+<p>然后把这个子树里面的所有点全部加进一个强连通分量。直到栈中的点等于
+<span class="math inline">\(x\)</span>（此时 <span
+class="math inline">\(x\)</span> 也应该被 <code>pop</code> 出去）。</p>
+<p>然后我们就可以愉快的写代码了：</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123;</span><br><span class="line">    low[x] = dfn[x] = ++idx;</span><br><span class="line">    st[++pos] = x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])&#123;</span><br><span class="line">            <span class="built_in">dfs</span>(v, x);</span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x], low[v]);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!sccin[v])&#123;</span><br><span class="line">            low[x] = <span class="built_in">min</span>(low[x], dfn[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(low[x] == dfn[x])&#123;</span><br><span class="line">        <span class="type">int</span> lstpop=<span class="number">0</span>;</span><br><span class="line">        len++;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            lstpop = st[pos];</span><br><span class="line">            pos--;</span><br><span class="line">            scc[len].<span class="built_in">push_back</span>(lstpop);</span><br><span class="line">            sccin[lstpop] = len;</span><br><span class="line">        &#125;<span class="keyword">while</span>(lstpop != x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>注释：这里的 <code>!sccin[v]</code>
+的意思就是这个你要递归下去的那个点是否已经被确定为一个强连通分量。如果他已经被定性为属于一个强连通分量，那么那个点已经被更新完毕，不能用来更新当前点。跳过。</p>
+<h3 id="小拓展缩点">小拓展：缩点</h3>
+<p>缩点就是利用强连通分量的点两两可互相到达的性质，把一个强连通分量缩成一个点。</p>
+<p>需要重新建一个图，然后遍历原来的那个图的所有边，每一条边判一下连接的两个点是否在一个强连通分量里。如果在则新图不连边，否则连边。</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">    <span class="type">int</span> u = edge[i].from, v = edge[i].to;</span><br><span class="line">    <span class="type">int</span> uidx = sccin[u], vidx = sccin[v];</span><br><span class="line">    <span class="keyword">if</span>(uidx != vidx)&#123;</span><br><span class="line">        <span class="built_in">readd</span>(uidx, vidx);</span><br><span class="line">        <span class="comment">// cerr&lt;&lt;uidx&lt;&lt;&quot; -&gt; &quot;&lt;&lt;vidx&lt;&lt;&#x27;\n&#x27;;</span></span><br><span class="line">        indeg[vidx] ++, outdeg[uidx] ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>接下来我们以几道例题来讲一讲这些玩意的用法。</p>
+<h2 id="p3225"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3225" >P3225<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题因为题目说了，“<strong>使得无论哪一个挖煤点坍塌之后，其他挖煤点的工人都有一条道路通向救援出口</strong>”，所以很容易想到，一个点到出口有至少两条路径可达。所以我们很容易想到点双连通分量和割点。</p>
+<p>然后如果整个图是一个点双连通分量，这个分量首先可以放一个点，如果其他某点消失了剩余的点也可以到达出口。但是如果这个出口消失了那么就没路可走了。于是你只能放两个出口。放置方案数即为
+<span class="math inline">\(C_{n}^{2}\)</span>。</p>
+<p>而如果一堆的割点和一堆的点双连通分量一起组成了一棵树状结构的话，那么你肯定至少是有
+<span class="math inline">\(2\)</span>
+个点双的。这个时候，你只需要在每一个“叶子”点双（就是这个点双里只有 <span
+class="math inline">\(1\)</span> 个割点）里放 <span
+class="math inline">\(1\)</span>
+个出口就行了。因为如果他不是“叶子”点双的话，你可以通过其他的点双转移过来。因为他至少有
+<span class="math inline">\(2\)</span> 个割点，就说明有 <span
+class="math inline">\(2\)</span>
+个其他点双连接到他上面。就算你把某一个割点给堵了，也可以通过另外的割点到达其他出口。</p>
+<p>所以我们只需判断所有的“叶子”点双，然后出口总数就是叶子点双的数量。放置方案数就是每一个叶子点双的
+<span class="math inline">\(size - 1\)</span>
+的乘积。因为割点不能选。</p>
+<p>于是就做出来了。</p>
+<h2 id="p2812"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2812" >P2812<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>此题比上一道题简单。这个就是把所有强连通分量缩点了之后，第一问的答案就是入度为
+<span class="math inline">\(0\)</span> 的点的个数，第二问的答案就是
+<span
+class="math inline">\(\max(入度为0的点的个数,出度为0的点的个数)\)</span>。</p>
+<p>此外需要特判如果这个图就是一个强连通图。这个时候第一问的答案就是
+<span class="math inline">\(1\)</span>。因为这时第一问的答案是 <span
+class="math inline">\(1\)</span> 没错，但是第二问的答案会变成 <span
+class="math inline">\(1\)</span>。所以要特判一下，因为第二问的正确答案是
+<span class="math inline">\(0\)</span>。</p>
+<h2 id="p4819"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4819" >P4819<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题我们先缩点，然后一个很显然的事情是这个时候，你只要把入度为
+<span class="math inline">\(0\)</span>
+的所有强连通分量给选了，统计它的个数为 <span
+class="math inline">\(c\)</span>，如果还没有死，那么杀手就一定能根据现有的数据推出来，因为选的都是起点。我们要选
+<span class="math inline">\(c\)</span> 个点，而杀手会在 <span
+class="math inline">\(n\)</span>
+个点里面等概率出现。所以，概率<strong>至少</strong>是 <span
+class="math inline">\(1 - \frac{c}{n}\)</span>。</p>
+<p>而有一种特殊情况，请看下图：</p>
+<figure>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/29/pA5NjQf.png"
+                     
+alt="一种特殊情况。最优的选法是选 5,6 这个分量，然后不选。" 
+                >
+<figcaption aria-hidden="true">一种特殊情况。最优的选法是选 5,6
+这个分量，然后不选。</figcaption>
+</figure>
+<p>容易发现，这种情况的最优选项应该是先选 <span
+class="math inline">\(5,6\)</span> 这个分量，然后不选。因为 <span
+class="math inline">\(1\)</span>
+这个点是可以通过<strong>排除法</strong>排除出来的。如果 <span
+class="math inline">\(5, 6\)</span> 说出了杀手的位置，那么就一定在 <span
+class="math inline">\(2,3,4,5,6\)</span>
+这些点里。而如果这些点没有杀手，那杀手就只能是 <span
+class="math inline">\(1\)</span> 了。我们没必要，也不能去冒这个险选
+<span class="math inline">\(1\)</span>。</p>
+<p>所以这种情况的概率就是 <span class="math inline">\(1 -
+\frac{c-1}{n}\)</span>。</p>
+<p>把他推广到全局上来，什么样的情况的概率才是 <span
+class="math inline">\(1 - \frac{c-1}{n}\)</span>
+呢？还是用上面的<strong>排除法</strong>。你要减去 <span
+class="math inline">\(1\)</span>，那就说明有一个大小为 <span
+class="math inline">\(1\)</span> 并且入度为 <span
+class="math inline">\(0\)</span>
+的分量在最后还没有被确定。但是也不是所有大小为 <span
+class="math inline">\(1\)</span> 并且入度为 <span
+class="math inline">\(0\)</span> 的分量都可以这样。比如说这个样子：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/29/pA5UZOU.png"
+                      
+                ></p>
+<p>这样的话点 <span class="math inline">\(1\)</span>
+不能被排除，因为有一个点 <span class="math inline">\(2\)</span>
+很碍事，在这里挡着。点 <span class="math inline">\(5\)</span>
+也不能被排除，因为这个点 <span class="math inline">\(4\)</span>
+也在这里挡着。那么第一张图为什么就有点可以排除呢？因为你发现，大小为
+<span class="math inline">\(1\)</span> 连着的分量 <span
+class="math inline">\(2,3,4\)</span> 他有 <span
+class="math inline">\(\ge2\)</span> 个入度！</p>
+<p><span class="math inline">\(\ge 2\)</span>
+个入度就说明，一个入度是大小为 <span class="math inline">\(1\)</span>
+的分量贡献给他的，另外的入度（们）就是其他入度为 <span
+class="math inline">\(0\)</span>
+的分量一直往下搜，可以搜到他。所以他最后可以被排除。</p>
+<p>所以我们可以得出结论，一个图他要是概率为 <span
+class="math inline">\(1 -
+\frac{c-1}{n}\)</span>，那么就必须存在一个分量，他连着的所有点的入度都必须
+<span class="math inline">\(\ge 2\)</span>。</p>
+<p>于是就可以做。</p>
+<p>并且这道题有些小细节：建新图时要去除重边！</p>
+<h2 id="p3119"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3119" >P3119<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题还是先缩点。缩了就变成了一个 DAG。</p>
+<p>因为是<strong>最多</strong>只能有一次逆行，所以答案 <span
+class="math inline">\(ans\)</span> 的初始值就是起点 <span
+class="math inline">\(s\)</span> 所在的强连通分量的大小 <span
+class="math inline">\(w_s\)</span>。</p>
+<p>注意到这道题要求出的是类似这样的环的分量的总点数：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/29/pA5rY8J.png"
+                      
+                ></p>
+<p>于是我们可以求出起点 <span class="math inline">\(s\)</span>
+到每一个点 <span class="math inline">\(x\)</span> 的最长路 <span
+class="math inline">\(dis_{0, x}\)</span>，和每一个点 <span
+class="math inline">\(y\)</span> 到起点 <span
+class="math inline">\(s\)</span> 的最长路 <span
+class="math inline">\(dis_{1, y}\)</span>。</p>
+<p>然后枚举每一条边 <span class="math inline">\(u →
+v\)</span>，那么当前答案 <span class="math inline">\(pans_{cnt}\)</span>
+就是 <span class="math inline">\(dis_{0, v} + dis_{1, u} -
+w_s\)</span>。这里的 <span class="math inline">\(w_s\)</span>
+指的就是起点所在的强连通分量的大小。因为算重复了一次，所以要把他减掉。</p>
+<p>因为这个图是一个 DAG，求最长路可以用拓扑排序解决。</p>
+<p>最后答案就是 <span class="math inline">\(\max(w_s, \max_{i=1}^{m}
+pans_i)\)</span>。</p>
+<hr />
+<p>以上。</p>
+<p><code>Auth0r: 11400F, 11490DX.</code></p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 关于图的连通性：连通分量、割点、割边……</li>
+        <li><strong>Author:</strong> 11400F</li>
+        <li><strong>Created at
+                :</strong> 2024-11-26 21:04:05</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-11-29 17:00:19
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://11400f.github.io/2024/11/26/graph-connecting/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/C/">#C++</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2024/12/07/vector/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">一点点计算几何：向量的入门</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2024/11/23/point-divide/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">点分治的一堆玩意</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '11400F/giscus-save',
+                'data-repo-id': 'R_kgDONty5DQ',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDONty5Dc4CmOyS',
+                'data-mapping': 'pathname',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'en',
+                'data-input-position': 'top',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">关于图的连通性：连通分量、割点、割边……</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%90%91%E5%9B%BE"><span class="nav-text">无向图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E9%80%9A%E6%97%A0%E5%90%91%E5%9B%BE%E6%B1%82%E5%89%B2%E7%82%B9"><span class="nav-text">连通无向图求割点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E9%80%9A%E6%97%A0%E5%90%91%E5%9B%BE%E6%B1%82%E5%89%B2%E8%BE%B9"><span class="nav-text">连通无向图求割边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="nav-text">点双连通分量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="nav-text">边双连通分量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE"><span class="nav-text">有向图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%8B%93%E5%B1%95%E7%BC%A9%E7%82%B9"><span class="nav-text">小拓展：缩点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3225"><span class="nav-text">P3225</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2812"><span class="nav-text">P2812</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4819"><span class="nav-text">P4819</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3119"><span class="nav-text">P3119</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">Chu2thm Rating 14.99...</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">11400F</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        39 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/build/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/build/plugins/masonry.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

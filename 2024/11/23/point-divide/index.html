@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Maimai">
+    
+    <meta name="author" content="11400F">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://11400f.github.io/2024/11/23/point-divide/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="点分治的一堆玩意">
+<meta property="og:url" content="https://11400f.github.io/2024/11/23/point-divide/index.html">
+<meta property="og:site_name" content="11400F&#39;s Blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://11400f.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2024-11-23T02:34:14.000Z">
+<meta property="article:modified_time" content="2024-11-23T12:48:21.519Z">
+<meta property="article:author" content="11400F">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="分治">
+<meta property="article:tag" content="树形结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://11400f.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <meta name="theme-color" content="#181A1B">
+    <link rel="shortcut icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            点分治的一堆玩意 | 11400F&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"11400f.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#181A1B","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to my NEW sekai!","subtitle":{"text":["要开始了哟~","欢迎回来！","加入游戏！可玩乐曲数增加","噔↑噔↓噔↑噔↓ 用游客模式吗？","啊~啊~啊咦~啊咦~啊→啊↑啊→啊↓嗯哎","憋 -我ら神祖と共に玩む原な神-","I LOVE CHUNITHM","很简单对吧~（中二企鹅音）","企鹅演示中……","ねっ、簡単でしょ？","→↓↑→→↓→→↑↑↓↓←→←→","------SAKUZYO---BEAM------■","兄弟，提一把？"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#101010","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/11400f","Blog":"https://www.11490dx.net","Friends":"/friends"}},"Links":{"icon":"fa-regular fa-link","submenus":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Gallery":{"path":"/gallery","icon":"fa-solid fa-image"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/02/08 10:51:40"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                11400F&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400f">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.11490dx.net">
+                                                    BLOG
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    FRIENDS
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">
+                                                    ATCODER
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">
+                                                    CODEFORCES
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400F">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">
+                                                    LUOGU
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400f">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.11490dx.net">BLOG</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">FRIENDS</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">ATCODER</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">CODEFORCES</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400F">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">LUOGU</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/gallery"
+                        >
+                            <span>Gallery</span>
+                            <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">29</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">点分治的一堆玩意</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="https://cdn.luogu.com.cn/upload/image_hosting/ftr99ezk.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">11400F</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-11-23 10:34:14</span>
+        <span class="mobile">2024-11-23 10:34:14</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-11-23 20:48:21</span>
+            <span class="mobile">2024-11-23 20:48:21</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%88%86%E6%B2%BB/">分治</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/">树形结构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p> </p>
+<span id="more"></span>
+<p>点分治，顾名思义，就是对每一个点进行分治操作。</p>
+<p>一般是用来求树上距离的有关问题（目前是这样的）</p>
+<p>首先以一道例题来讲解点分治的基本操作。</p>
+<h2 id="p3806"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3806" >P3806<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>给定一棵有 <span class="math inline">\(n\)</span>
+个点的树，询问树上距离为 <span class="math inline">\(k\)</span>
+的点对是否存在。</p>
+<hr />
+<p>暴力是 <span class="math inline">\(O(n^2)\)</span> 的，然后就会发现你
+TLE 了。</p>
+<p>考虑点分治。</p>
+<p>点分治的基本思想是：我们对于每一个点，可以通过枚举他的<strong>子树</strong>来枚举所有经过这个点的边，然后计算答案。之后再把以这个节点为根的子树分成两个子树，继续分治。这样的复杂度就变为了
+<span class="math inline">\(O(n\log n)\)</span>。</p>
+<p>而分治肯定是尽量把他分成两个大小差不多的子树，所以这个点就要设为这棵树的重心。</p>
+<p>我们怎么枚举经过这个点 <span class="math inline">\(rt\)</span>
+的所有边呢？我们可以一个子树一个子树的看：</p>
+<p>我们存储一个桶
+<code>nowhave</code>，表示之前遍历过的点到这个距离。就是如果这个距离
+<span class="math inline">\(d\)</span> 在之前遍历过的子树存在的话，就设
+<span class="math inline">\(nowhave_d\)</span> 的值为 <span
+class="math inline">\(1\)</span>。然后这个子树的所有点到根的距离用一个数组
+<code>nowdis</code> 存。然后我们开始遍历这个数组。如果 <span
+class="math inline">\(nowhave_{k - nowdis_i} =
+1\)</span>，那么就说明树上存在距离为 <span
+class="math inline">\(k\)</span> 的点对。</p>
+<p>然后这个点分治完了之后，就可以去分治子树了。我们继续找到子树上的重心，然后向之前一样继续分治，然后再找子树的重心的子树……直到把所有点都分治完。然后就可以得到答案。</p>
+<p>主要用到了 <span class="math inline">\(4\)</span> 个函数：</p>
+<ul>
+<li>获取该树重心：</li>
+</ul>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getzx</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123; <span class="comment">//get 重心</span></span><br><span class="line">    siz[x] = <span class="number">1</span>;</span><br><span class="line">    maxsiz[x] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v==fa||vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">getzx</span>(v, x);</span><br><span class="line">        siz[x] += siz[v];</span><br><span class="line">        maxsiz[x] = <span class="built_in">max</span>(maxsiz[x], siz[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    maxsiz[x] = <span class="built_in">max</span>(maxsiz[x], nown - siz[x]);</span><br><span class="line">    <span class="keyword">if</span>(maxsiz[x] &lt; maxsiz[rt]) rt = x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>获取该节点的子树到该节点的距离集合：</li>
+</ul>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getdis</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dis[x] &gt; MAXNUM) <span class="keyword">return</span> ;</span><br><span class="line">    nowtrdis[++len] = dis[x];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v==fa||vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        dis[v] = dis[x] + edge[i].w;</span><br><span class="line">        <span class="built_in">getdis</span>(v, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>对某一个点分治：</li>
+</ul>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">eachsolve</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> tmpcnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        len = <span class="number">0</span>, dis[v] = edge[i].w;</span><br><span class="line">        <span class="built_in">getdis</span>(v, x);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=len;j++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=q;k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(que[k] &gt;= nowtrdis[j])&#123;</span><br><span class="line">                    ans[k] |= (nowhave[que[k]-nowtrdis[j]]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=len;j++)&#123;</span><br><span class="line">            tmp[++tmpcnt] = nowtrdis[j];</span><br><span class="line">            nowhave[nowtrdis[j]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=tmpcnt;i++)&#123;</span><br><span class="line">        nowhave[tmp[i]] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>对所有点进行分治：</li>
+</ul>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    vis[x] = <span class="number">1</span>;</span><br><span class="line">    nowhave[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">eachsolve</span>(x);</span><br><span class="line">    <span class="comment">// cout&lt;&lt;&quot;! &quot;&lt;&lt;x&lt;&lt;&#x27;\n&#x27;;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        maxsiz[<span class="number">0</span>] = n;</span><br><span class="line">        nown = siz[v];</span><br><span class="line">        rt = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">getzx</span>(v, x);</span><br><span class="line">        <span class="built_in">solve</span>(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>Tips:</p>
+<p>主函数要先设置<code>nown = n; maxsiz[0] = n; rt = 0;</code>！！！初始化要记得有！</p>
+<p>然后再 <code>getzx(1,0); solve(rt);</code></p>
+<p>最后输出答案。</p>
+<p>注意当 <code>dis &gt; k</code> 的时候要剪枝！！不然会 <code>RE</code>
+或 <code>TLE</code>！</p>
+</blockquote>
+<p>该题 Code：</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e4</span><span class="number">+4</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> to, nxt, w;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> h[N], cnt;</span><br><span class="line"><span class="type">void</span> _add(<span class="type">int</span> u, <span class="type">int</span> v ,<span class="type">int</span> w)&#123;</span><br><span class="line">    edge[++cnt] = &#123;v, h[u], w&#125;;</span><br><span class="line">    h[u]  = cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v, <span class="type">int</span> w)</span></span>&#123;</span><br><span class="line">    _add(u, v, w), _add(v, u, w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> vis[N];</span><br><span class="line"><span class="type">int</span> rt=<span class="number">0</span>, n, q;</span><br><span class="line"><span class="type">int</span> siz[N];</span><br><span class="line"><span class="type">int</span> maxsiz[N];</span><br><span class="line"><span class="type">int</span> nown;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getzx</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123; <span class="comment">//get 重心</span></span><br><span class="line">    siz[x] = <span class="number">1</span>;</span><br><span class="line">    maxsiz[x] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v==fa||vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">getzx</span>(v, x);</span><br><span class="line">        siz[x] += siz[v];</span><br><span class="line">        maxsiz[x] = <span class="built_in">max</span>(maxsiz[x], siz[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    maxsiz[x] = <span class="built_in">max</span>(maxsiz[x], nown - siz[x]);</span><br><span class="line">    <span class="keyword">if</span>(maxsiz[x] &lt; maxsiz[rt]) rt = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> nowtrdis[N];</span><br><span class="line"><span class="type">int</span> len = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> dis[N];</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXNUM = <span class="number">1e7</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getdis</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dis[x] &gt; MAXNUM) <span class="keyword">return</span> ;</span><br><span class="line">    nowtrdis[++len] = dis[x];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(v==fa||vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        dis[v] = dis[x] + edge[i].w;</span><br><span class="line">        <span class="built_in">getdis</span>(v, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e7</span><span class="number">+5</span>;</span><br><span class="line"><span class="type">bool</span> ans[<span class="number">105</span>];</span><br><span class="line"><span class="type">bool</span> nowhave[MAXN];</span><br><span class="line"><span class="type">int</span> que[<span class="number">105</span>];</span><br><span class="line"><span class="type">int</span> tmp[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">eachsolve</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> tmpcnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        len = <span class="number">0</span>, dis[v] = edge[i].w;</span><br><span class="line">        <span class="built_in">getdis</span>(v, x);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=len;j++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=q;k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(que[k] &gt;= nowtrdis[j])&#123;</span><br><span class="line">                    ans[k] |= (nowhave[que[k]-nowtrdis[j]]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=len;j++)&#123;</span><br><span class="line">            tmp[++tmpcnt] = nowtrdis[j];</span><br><span class="line">            nowhave[nowtrdis[j]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=tmpcnt;i++)&#123;</span><br><span class="line">        nowhave[tmp[i]] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    vis[x] = <span class="number">1</span>;</span><br><span class="line">    nowhave[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">eachsolve</span>(x);</span><br><span class="line">    <span class="comment">// cout&lt;&lt;&quot;! &quot;&lt;&lt;x&lt;&lt;&#x27;\n&#x27;;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        maxsiz[<span class="number">0</span>] = n;</span><br><span class="line">        nown = siz[v];</span><br><span class="line">        rt = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">getzx</span>(v, x);</span><br><span class="line">        <span class="built_in">solve</span>(rt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;P3806_1.in&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;P3806.out&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;q;</span><br><span class="line">    nown = n;</span><br><span class="line">    maxsiz[<span class="number">0</span>] = n;</span><br><span class="line">    <span class="type">int</span> u, v, w;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        <span class="built_in">add</span>(u,v,w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">        cin&gt;&gt;que[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">getzx</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">solve</span>(rt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">        cout&lt;&lt;(ans[i]?<span class="string">&quot;AYE\n&quot;</span>:<span class="string">&quot;NAY\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="p4149"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4149" >P4149<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题就把那个桶存储的值从 <span class="math inline">\(0/1\)</span>
+改为最小的边值。然后计算答案。</p>
+<h2 id="p4178"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4178" >P4178<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题和之前的做法比较不一样。还是先找点 <span
+class="math inline">\(x\)</span> 然后分治。然后就是
+<code>eachsolve</code> 函数里面要改一下。</p>
+<p>这个函数还是先把所有的边都遍历一遍。然后我们要设置一个
+<strong>color</strong> 数组，将每一个<strong>子树</strong>的
+<strong>color</strong> 染色染成同一种颜色，不同的子树，color
+也是不同的。（特别的，<strong>分治点要单独赋一种颜色</strong>。）</p>
+<p>于是我们就把这棵树染成了：根一个颜色，这个根连边到的每一个点的树一种颜色。这样就会有分治点的出度
+<span class="math inline">\(+1\)</span> 种颜色。</p>
+<p>我们首先把这些距离都整合到一个数组里面，然后把这些按距离从小到大排序。然后就可以开始算距离
+<span class="math inline">\(\le k\)</span> 的点对数了。</p>
+<p>我们从左往右遍历 <span class="math inline">\(dis_i\)</span>
+，然后只要加起来（<span class="math inline">\(dis_i + dis_j\)</span>）值
+<span class="math inline">\(\le k\)</span>
+的都可以。所以我们可以求出一个极限值 <span
+class="math inline">\(j\)</span>，就是 <span class="math inline">\(dis_i
++ dis_j \le k\)</span> 并且 <span class="math inline">\(dis_i +
+dis_{j+1} &gt; k\)</span>。因为数组是递增的，所以 <span
+class="math inline">\(j\)</span> 会随着 <span
+class="math inline">\(i\)</span> 的增大而减小。所以每次遍历 <span
+class="math inline">\(i\)</span> 的时候 <span
+class="math inline">\(j\)</span> 就用 <code>while</code>
+判一下。这样遍历的复杂度就是 <span
+class="math inline">\(O(siz_x)\)</span>。</p>
+<p>如果不考虑是否两个点在同一个子树的情况下，对于每一个 <span
+class="math inline">\(i\)</span>，答案就是 <span
+class="math inline">\(j-i+1\)</span>。但是有两个点在同一个子树的情况，所以就会有一些情况是非法的。所以我们就可以求出中间的颜色和
+<span class="math inline">\(i\)</span> 一样的点的总数 <span
+class="math inline">\(cnt\)</span>，那么答案就变成了 <span
+class="math inline">\(\sum_{[i\le j]}
+(j-i+1-cnt_i)\)</span>。那么我们怎么才能把 <span
+class="math inline">\(cnt\)</span> 快速求出来呢？我们记录一个数组 <span
+class="math inline">\(f_{col}\)</span>，表示当前区间的，每种颜色 <span
+class="math inline">\(col\)</span> 的总数。最开始先遍历一遍数组，然后把
+<span class="math inline">\(f_{col}\)</span> 求出来。然后再让他随着
+<span class="math inline">\(i\)</span> 和 <span
+class="math inline">\(j\)</span> 的更新而实时更新。就是当 <span
+class="math inline">\(i\)</span> 或者 <span
+class="math inline">\(j\)</span> 改变的时候，就让 <span
+class="math inline">\(f_{col_{改变的那个地方}}\)</span> 减 <span
+class="math inline">\(1\)</span>。最后该节点 <span
+class="math inline">\(x\)</span> 答案就是 <span
+class="math inline">\(\sum_{[i\le j]}
+(j-i+1-f_{col_i})\)</span>。<strong>注意 f 数组是随着 i 和 j
+的更新而实时更新的！</strong></p>
+<ul>
+<li>eachsolve 函数的代码：</li>
+</ul>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">eachsolve</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    tmpcnt = <span class="number">0</span>;</span><br><span class="line">    tmp[++tmpcnt] = &#123;<span class="number">0</span>,x&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="type">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        len = <span class="number">0</span>;</span><br><span class="line">        dis[v] = edge[i].w;</span><br><span class="line">        <span class="built_in">getdis</span>(v, x);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=len;j++)&#123;</span><br><span class="line">            tmp[++tmpcnt] = &#123;nowdis[j], v&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(tmp<span class="number">+1</span>, tmp<span class="number">+1</span>+tmpcnt, cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=tmpcnt;i++)&#123;</span><br><span class="line">        f[tmp[i].col] ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>,j=tmpcnt;i&lt;=j;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(tmp[i].dis + tmp[j].dis &gt; k)&#123;</span><br><span class="line">            f[tmp[j].col] --;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;j) <span class="keyword">break</span>;</span><br><span class="line">        ans += (j-i<span class="number">+1</span>-f[tmp[i].col]);</span><br><span class="line">        f[tmp[i].col] --;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 点分治的一堆玩意</li>
+        <li><strong>Author:</strong> 11400F</li>
+        <li><strong>Created at
+                :</strong> 2024-11-23 10:34:14</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-11-23 20:48:21
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://11400f.github.io/2024/11/23/point-divide/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/C/">#C++</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%88%86%E6%B2%BB/">#分治</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/">#树形结构</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2024/11/26/graph-connecting/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">关于图的连通性：连通分量、割点、割边……</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2024/11/23/others-1/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">杂项</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '11400F/giscus-save',
+                'data-repo-id': 'R_kgDONty5DQ',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDONty5Dc4CmOyS',
+                'data-mapping': 'pathname',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'en',
+                'data-input-position': 'top',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">点分治的一堆玩意</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3806"><span class="nav-text">P3806</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4149"><span class="nav-text">P4149</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4178"><span class="nav-text">P4178</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">Chu2thm Rating 14.99...</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">11400F</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        39 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/build/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/build/plugins/masonry.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

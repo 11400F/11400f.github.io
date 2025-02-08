@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Maimai">
+    
+    <meta name="author" content="11400F">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://11400f.github.io/2025/01/22/r701-practice-log/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1 月做题记录">
+<meta property="og:url" content="https://11400f.github.io/2025/01/22/R701-practice-log/index.html">
+<meta property="og:site_name" content="11400F&#39;s Blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://11400f.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-01-22T00:44:05.000Z">
+<meta property="article:modified_time" content="2025-02-06T23:47:49.571Z">
+<meta property="article:author" content="11400F">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="杂项">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://11400f.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <meta name="theme-color" content="#181A1B">
+    <link rel="shortcut icon" href="https://userpic.codeforces.org/3341546/title/57460c9e3f79e7fe.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            1 月做题记录 | 11400F&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"11400f.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#181A1B","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to my NEW sekai!","subtitle":{"text":["要开始了哟~","欢迎回来！","加入游戏！可玩乐曲数增加","噔↑噔↓噔↑噔↓ 用游客模式吗？","啊~啊~啊咦~啊咦~啊→啊↑啊→啊↓嗯哎","憋 -我ら神祖と共に玩む原な神-","I LOVE CHUNITHM","很简单对吧~（中二企鹅音）","企鹅演示中……","ねっ、簡単でしょ？","→↓↑→→↓→→↑↑↓↓←→←→","------SAKUZYO---BEAM------■","兄弟，提一把？"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#101010","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/11400f","Blog":"https://www.11490dx.net","Friends":"/friends"}},"Links":{"icon":"fa-regular fa-link","submenus":{"Atcoder":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Gallery":{"path":"/gallery","icon":"fa-solid fa-image"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/02/08 10:51:40"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                11400F&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400f">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.11490dx.net">
+                                                    BLOG
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    FRIENDS
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">
+                                                    ATCODER
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">
+                                                    CODEFORCES
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/11400F">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">
+                                                    LUOGU
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400f">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.11490dx.net">BLOG</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">FRIENDS</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://atcoder.jp/users/tofsox">ATCODER</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://codeforces.com/profile/11490DX">CODEFORCES</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/11400F">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/688271">LUOGU</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/gallery"
+                        >
+                            <span>Gallery</span>
+                            <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">29</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">39</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">1 月做题记录</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="https://cdn.luogu.com.cn/upload/image_hosting/ftr99ezk.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">11400F</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-01-22 08:44:05</span>
+        <span class="mobile">2025-01-22 08:44:05</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-02-07 07:47:49</span>
+            <span class="mobile">2025-02-07 07:47:49</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p> </p>
+<span id="more"></span>
+<p>一点动态规划：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://oi-wiki.org/dp/basic/" >动态规划基础 - OI
+Wiki<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr />
+<h3 id="abc339e-smooth-subsequence"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc339_e" >[ABC339E] Smooth
+Subsequence<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>dp 式子是可以看出来的。设 <span class="math inline">\(dp_{i}\)</span>
+为在以位置 <span class="math inline">\(i\)</span>
+结尾的最长光滑序列的长度。</p>
+<p>于是式子可以列出来： <span class="math display">\[
+dp_i = \max_{j&lt;i \land a_j \in [a_i-D, a_i + D]}(dp_j + 1)
+\]</span> 直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2)\)</span> 的，过不了此题。</p>
+<p>于是开始优化：这里使用线段树优化。创建一个值域线段树。对于值域线段树的位置
+<span class="math inline">\(a_x\)</span>，存储的是 <span
+class="math inline">\(dp_x\)</span>。于是我们每次只用查找在位置 <span
+class="math inline">\([a_i - D, a_i +D]\)</span> 里面的最大值，然后加上
+<span class="math inline">\(1\)</span> 就是 <span
+class="math inline">\(dp_i\)</span> 了。最后只需要求 <span
+class="math inline">\(dp\)</span> 序列的最大值。</p>
+<p>时间复杂度 <span class="math inline">\(O(n\log n)\)</span>。</p>
+<p>Double Exp: <a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abl_d" >Flat
+Subsequence<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<hr />
+<h3 id="abc353g-merchant-takahashi"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc353_g" >[ABC353G] Merchant
+Takahashi<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>Tips：最开始高桥的初始位置为村庄 <span
+class="math inline">\(1\)</span>。题目翻译忽略了这一点。</p>
+<p>设 <span class="math inline">\(dp_i\)</span> 为赶了第 <span
+class="math inline">\(i\)</span>
+次集所持有的钱数。因为钱数可以为负数，所以最开始先 <code>memset</code>
+dp 序列为负无穷，<span class="math inline">\(dp_0 = 0, t_0 =
+0\)</span>。</p>
+<p>然后得出 dp 转移式子： <span class="math display">\[
+dp_i = \max_{j &lt; i} (dp_j - |t_i - t_j|)) + p_i
+\]</span> 直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2)\)</span> 的，过不了此题。</p>
+<p>于是开始优化：这个绝对值是非常烦的鬼玩意，于是我们将绝对值拆开：
+<span class="math display">\[
+dp_i =p_i + \max \left\{
+\begin{aligned}
+dp_j - t_i + t_j) &amp;(t_j \le t_i)\\
+dp_j - t_j + t_i) &amp;(t_j &gt; t_i)
+\end{aligned}
+\right.
+\]</span> 于是我们可以将其转移到线段树上。节点 <span
+class="math inline">\(t_x\)</span> 存储两个东西： <span
+class="math display">\[
+pre_{t_x} = dp_x + t_x\\
+suf_{t_x} = dp_x - t_x
+\]</span> 然后每次查询的时候就查 <span class="math inline">\([0,
+t_i]\)</span> 的 <span class="math inline">\(pre\)</span> 的最大值减去
+<span class="math inline">\(t_i\)</span>，再查 <span
+class="math inline">\((t_{i}, MAXN]\)</span> 的<span
+class="math inline">\(suf\)</span> 的最大值加上 <span
+class="math inline">\(t_i\)</span>，然后两者取 <span
+class="math inline">\(\max\)</span>，最后加上 <span
+class="math inline">\(p_i\)</span> 就得到 <span
+class="math inline">\(dp_i\)</span> 了。</p>
+<p>最后答案还是整个 <span class="math inline">\(dp\)</span> 序列的 <span
+class="math inline">\(\max\)</span>。时间复杂度 <span
+class="math inline">\(O(n\log n)\)</span>。</p>
+<hr />
+<h3 id="linear-kingdom-races"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF115E" >Linear Kingdom
+Races<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题是一种新的设 DP 状态的一道基础题。</p>
+<p>跟 THUWC 2025 D1T1 比较像（给我气笑了(╬▔皿▔)╯）。</p>
+<p>还是先设 dp 状态。设 <span class="math inline">\(dp_i\)</span>
+为修复了前 <span class="math inline">\(i\)</span>
+条路的一些路，所得到的最大收益。</p>
+<p>于是可以得出下列转移式子： <span class="math display">\[
+dp_i = \max(\max(dp_j + 在 [j+1, i] 的区间收益), dp_{i-1})
+\]</span> 第一项就是修 <span class="math inline">\(j \sim i\)</span>
+的路所带来的钱值的变化，第二项就是啥都不修，<del>光吉猛修。</del></p>
+<p>直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2)\)</span> 的，过不了此题。</p>
+<p>于是考虑优化：还是把它搬到线段树上。每一个线段树节点 <span
+class="math inline">\(x\)</span> 存储 <span class="math inline">\(dp_j +
+在[j+1, i] 的区间收益\)</span>，所以这个东西是随着 <span
+class="math inline">\(i\)</span> 实时更新的。当 <span
+class="math inline">\(i\)</span> 为某个区间 <span
+class="math inline">\(x = [l,i]\)</span> 的终点的时候，就把这颗线段树的
+<span class="math inline">\([1,l-1]\)</span> 全部加上 <span
+class="math inline">\(p_x\)</span>。</p>
+<p>然后就和平常的线段树优化一样搞就可以了。时间复杂度 <span
+class="math inline">\(O(n\log n)\)</span>。</p>
+<hr />
+<h3 id="p9871-noip2023-天天爱打卡"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P9871" >P9871 [NOIP2023]
+天天爱打卡<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题是上一道题的升级版。就是加了一个 <span
+class="math inline">\(k\)</span> 的限制条件和范围为 <span
+class="math inline">\(1e9\)</span> 的 <span
+class="math inline">\(n\)</span>。后者可以用离散化解决，前者就用双指针
+<span class="math inline">\(x, i\)</span> 来维护。这里的 <span
+class="math inline">\(x\)</span> 表示连续跑步范围边界。当 <span
+class="math inline">\(dis_i - dis_x + 1 &gt; k\)</span> 时，<span
+class="math inline">\(x\)</span> 自加，知道连续跑步的时间小于等于 <span
+class="math inline">\(k\)</span> 天。</p>
+<hr />
+<h3 id="intervals"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_w" >Intervals<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>设 <span class="math inline">\(dp_{i,j}\)</span> 为考虑区间范围 <span
+class="math inline">\([1, i]\)</span>，最后一个 <span
+class="math inline">\(1\)</span> 放置于 <span
+class="math inline">\(j\)</span> 处的答案。</p>
+<p>于是可以得出： <span class="math display">\[
+dp_{i ,j} = \max_{x \in [1,j]}(dp_{j,x}) + 在 [1,i] 区间内包含点 j
+的区间所带来的贡献
+\]</span> 直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2)\)</span> 的，过不了此题。</p>
+<p>于是考虑优化：建一个线段树，线段树的每一个节点 <span
+class="math inline">\(x\)</span> 表示考虑区间 <span
+class="math inline">\([1,i]\)</span> 时，的 <span
+class="math inline">\(\max_{y \in[1,x]}(dp_{x,y}) + 在[1,i]区间内包含点
+j的区间所带来的贡献\)</span>。这棵线段树是随着 <span
+class="math inline">\(i\)</span> 的改变而改变的。每一次遇到以 <span
+class="math inline">\(i\)</span> 为终点的区间时，将线段树区间 <span
+class="math inline">\([u,i]\)</span> 加上该区间的值。然后第一维 <span
+class="math inline">\(i\)</span> 的最大值就是 <span
+class="math inline">\(tr_1\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(n\log n)\)</span>。</p>
+<hr />
+<h3 id="agc044e-random-pawn"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_agc044_e" >[AGC044E] Random
+Pawn<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>学长讲题一则。</p>
+<p>题目描述的不是很清楚，我在这里重新描述一下：</p>
+<p>有一个长为 <span class="math inline">\(n\)</span>
+的环，环上的每一个位置上面有权值 <span
+class="math inline">\(a_p\)</span> 和代价 <span
+class="math inline">\(b_p\)</span>。一开始你会在这 <span
+class="math inline">\(n\)</span>
+个位置随机一个位置作为起始点。每次你到一个点 <span
+class="math inline">\(x\)</span> 的时候，你有两种选择：</p>
+<ul>
+<li><p>继续走其他点，你会随机到达这个位置的相邻的两个位置的其中一个。你会花费
+<span class="math inline">\(b_x\)</span> 的代价。</p></li>
+<li><p>在该点停止，并且获得该点的权值 <span
+class="math inline">\(a_x\)</span>，游戏结束。</p></li>
+</ul>
+<p>求最大的期望价值。</p>
+<p>首先我们设在点 <span class="math inline">\(x\)</span>
+获得的最大期望价值为 <span class="math inline">\(f_x\)</span>。</p>
+<p>一个环上是不好搞的，于是我们要先拆环为链。</p>
+<p>又因为，在这道题很容易发现的、如果一个位置它的值是这个序列最大的，那么我们也就没必要跳到其他点去得到更小的值。</p>
+<p>于是我们就设这条链的两端就为这个最大值，再以这个最大值为开头重新排列。于是把长为
+<span class="math inline">\(n\)</span> 的环拆为了长为 <span
+class="math inline">\(n+1\)</span> 的一条链。（同时 <span
+class="math inline">\(a, b\)</span> 序列也重新排列。）</p>
+<p>为了更好的描述，下面把 <span class="math inline">\(n \gets
+n+1\)</span>。</p>
+<p>于是就可以得到： <span class="math display">\[
+\left\{
+\begin{aligned}
+&amp;f_0 = a_0, f_n = a_n\\
+&amp;f_i = \max(a_i, \frac{f_{i-1} + f_{i+1}}{2} - b_i) (i \neq 0 \land
+i \neq n)
+\end{aligned}
+\right.
+\]</span> 我们发现后面的那一坨 $ -b_i$ 很烦，我们现在要把它给消掉。</p>
+<p>设 <span class="math inline">\(g_i = f_i + d_i, c_i = a_i +
+d_i\)</span>。</p>
+<p>于是原式就变为了： <span class="math display">\[
+\left\{
+\begin{aligned}
+g_0 &amp;= c_0, g_n = c_n\\
+g_i &amp;= \max(c_i, \frac{f_{i-1} + f_{i+1}}{2} - b_i + d_i) (i \neq 0
+\land i \neq n) \\
+&amp;= \max(c_i, \frac{g_{i-1} + g_{i+1}}{2} + \frac{d_{i-1} +
+d_{i+1}}{2} - b_i + d_i)
+\end{aligned}
+\right.
+\]</span></p>
+<p>然后为了消掉这个烦人的 <span
+class="math inline">\(b_i\)</span>，就要使 <span
+class="math inline">\(\frac{d_{i-1} + d_{i+1}}{2} - b_i + d_i=
+0\)</span>。那么它的递推式就是： <span class="math display">\[
+d_{i+1} = 2(b_i - d_i) - d_{i-1}
+\]</span> 于是我们随便设 <span class="math inline">\(d_0\)</span> 和
+<span class="math inline">\(d_1\)</span>，然后后面的 <span
+class="math inline">\(d\)</span> 就可以通过这两个 <span
+class="math inline">\(d\)</span> 和整个 <span
+class="math inline">\(b\)</span> 序列推出来。</p>
+<p>于是就变为了： <span class="math display">\[
+\left\{
+\begin{aligned}
+g_0 &amp;= c_0, g_n = c_n\\
+g_i &amp;= \max(c_i, \frac{g_{i-1} + g_{i+1}}{2}) (i \neq 0
+\land i \neq n)
+\end{aligned}
+\right.
+\]</span> 发现 <span class="math inline">\(g_i\)</span>
+的转移式后面的那个玩意像中点公式，于是就可以把它转移到二维平面上：</p>
+<p>每一个 <span class="math inline">\(g\)</span>
+在二维平面上就转移成了点 <span class="math inline">\((i,
+g_i)\)</span>。如果不考虑 <span
+class="math inline">\(c_i\)</span>，那么每一个点就是它的左右两个点的中点，整个
+<span class="math inline">\(g\)</span>
+序列在二维平面上会变为一条线段。</p>
+<p>现在，<span class="math inline">\(c_i\)</span> 来了。如果这个时候的
+<span class="math inline">\(c_i\)</span>
+大于这个时候的在线段上的值，那么就将这个 <span
+class="math inline">\(x\)</span> 值在线段上的点拔高至 <span
+class="math inline">\(c_i\)</span>。</p>
+<p>具体地、</p>
+<p>最开始有两个点，<span class="math inline">\((0,2)\)</span> 和 <span
+class="math inline">\((n,2)\)</span>。现在 <span
+class="math inline">\((1,1)\)</span>
+来了。因为不大于这个时候的线段最大值 <span
+class="math inline">\(2\)</span>，所以 <span class="math inline">\(g_1 =
+2\)</span>：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2025/01/22/pEAdliq.png"
+                      
+                ></p>
+<p>现在，第二个点 <span class="math inline">\((2,4)\)</span>
+来了。它因为大于这个时候的线段最大值，所以就把 <span
+class="math inline">\(x=2\)</span> 的值拔高到 <span
+class="math inline">\(4\)</span>，同时修改 <span
+class="math inline">\(g_1\)</span>：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2025/01/22/pEAd1J0.png"
+                      
+                ></p>
+<p>然后第三个点 <span
+class="math inline">\((3,3)\)</span>，因为它不大于这个时候 <span
+class="math inline">\(l_{CZ}\)</span> 的值，所以它的值是 <span
+class="math inline">\(l_{CZ}(3)\)</span>：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2025/01/22/pEAd3WV.png"
+                      
+                ></p>
+<p>第四个点 <span
+class="math inline">\((4,5)\)</span>。很明显它大于这个时候的 <span
+class="math inline">\(l_{CZ}\)</span>。所以拔高，<span
+class="math inline">\(g_4 = 5\)</span>，同时修改 <span
+class="math inline">\(g_3\)</span>：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2025/01/22/pEAd8zT.png"
+                      
+                ></p>
+<p>最后，我们发现，这玩意其实就是一个凸包。我们就求凸包推出 <span
+class="math inline">\(g\)</span> 序列，再从 <span
+class="math inline">\(g\)</span> 反推回 <span
+class="math inline">\(f\)</span>。最后因为是随机的一个起点，所以最后答案是整个
+<span class="math inline">\(f\)</span> 序列的平均值。</p>
+<hr />
+<h3 id="abc389e-square-price"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc389_e" >[ABC389E] Square
+Price<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>ABC 389。这场我打了 1147 名。恶臭，E 题比 F 题难。</p>
+<p>因为购买 <span class="math inline">\(k\)</span> 个第 <span
+class="math inline">\(i\)</span> 种商品开销 <span
+class="math inline">\(k^2P_i\)</span> 元，所以可以看作每买第 <span
+class="math inline">\(k\)</span> 个第 <span
+class="math inline">\(i\)</span> 种商品开销 <span
+class="math inline">\((k^2-(k-1)^2)P_i = (2k-1)P_i\)</span> 元。</p>
+<p>那么我们就可以贪心选了。在这 <span class="math inline">\(n\)</span>
+种商品里面选开销最小的选，然后一直选到不能选为止。</p>
+<p>但是暴力做是可以构造一组价格全是 <span
+class="math inline">\(1\)</span>，<span class="math inline">\(m
+=10^{18}\)</span> 的数据来卡你的。所以要优化。</p>
+<p>我们枚举我们能买到的最大价格 <span
+class="math inline">\(x\)</span>。就相当于是，价格为 <span
+class="math inline">\(x\)</span> 及以下的商品全买。价格为 <span
+class="math inline">\(x+1\)</span>
+及以上的<strong>不能全买</strong>（但是可以买一些）。我们用二分搜索可以
+<span class="math inline">\(O(n \log n)\)</span> 查找出来这个 <span
+class="math inline">\(x\)</span>。然后再 <span
+class="math inline">\(O(n)\)</span>
+遍历每一个商品，看看有没有并且能不能买价格为 <span
+class="math inline">\(x+1\)</span> 的商品。如果有就买。</p>
+<p>于是这道题就做完了。</p>
+<hr />
+<h3 id="abc389f-rated-range"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_abc389_f" >[ABC389F] Rated
+Range<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>原神题。</p>
+<p>有了数据结构，就不需要脑子了！</p>
+<p>因为值域是在 <span class="math inline">\(5\times
+10^5\)</span>，于是我们就可以开一棵线段树，每个线段树的节点 <span
+class="math inline">\(x\)</span> 表示的就是初始 Rating 为 <span
+class="math inline">\(x\)</span> 时，经过这些 Contest 之后它的最终
+Rating 是多少。</p>
+<p>因为不管举行多少次，不管加分的 Rating
+范围是多少，最终的序列一定是单调的。于是我们就可以线段树二分找到要修改的最小下标和最大下标。然后区间加。最后查询的时候就查线段树上的叶子节点就行了。</p>
+<p>所以这道题其实是线段树上二分板子题。然后就做完了。</p>
+<hr />
+<h3 id="p4159-scoi2009-迷路"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4159" >P4159 [SCOI2009]
+迷路<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题如果没有边权，那么这道题就是邻接矩阵快速幂板子。但是现在有边权。</p>
+<p>于是因为边长在 <span class="math inline">\([1,9]\)</span>
+之间，所以可以把一个点拆成 <span class="math inline">\(9\)</span>
+个点。我们设这九个点为 <span class="math inline">\(a_{x,1}, a_{x,2},
+\cdots, a_{x,9}\)</span>。</p>
+<p>然后初始时 <span class="math inline">\(a_{x,i+1}\)</span> 向 <span
+class="math inline">\(a_{x,i}\)</span> 连边。</p>
+<p>当我们要连边 <span class="math inline">\((u,v,w)\)</span>
+时，就可以从 <span class="math inline">\(a_{u, 1}\)</span> 连到 <span
+class="math inline">\(a_{v,w}\)</span>。因为 <span
+class="math inline">\(a_{v,w}\)</span> 向 <span
+class="math inline">\(a_{v,1}\)</span> 距离为 <span
+class="math inline">\(w-1\)</span>，再加上 <span
+class="math inline">\(a_{u,1}\)</span> 到 <span
+class="math inline">\(a_{v,w}\)</span> 的边，那么距离刚好就是 <span
+class="math inline">\(w\)</span>。然后就可以用邻接矩阵快速幂做了。</p>
+<p>快速幂复杂度 <span class="math inline">\(O((9n)^{2}\log
+t)\)</span>。</p>
+<hr />
+<h3 id="power-of-matrix"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA11149" >Power of
+Matrix<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题让我们求 <span class="math inline">\(A + A^2 + A^3 + \cdots +
+A^k\)</span>。<span class="math inline">\(k\)</span>
+太大，那么就用分治。</p>
+<ul>
+<li><p>当 <span class="math inline">\(k\)</span> 为偶数的时候，那么设
+<span class="math inline">\(mid = \frac{k}{2}\)</span>，那么原式就为
+<span class="math inline">\((A+A^2+\cdots+A^{mid}) + A^{mid} \times (A +
+A^2 + \cdots + A^{mid})\)</span>。</p></li>
+<li><p>当 <span class="math inline">\(k\)</span> 为奇数的时候，那么设
+<span class="math inline">\(mid = \frac{k+1}{2}\)</span>，原式就为 <span
+class="math inline">\((A+A^2+\cdots +A^{mid-1}) + A^{mid} +
+A^{mid+1}(A+A^2+\cdots +A^{mid-1})\)</span>。</p></li>
+</ul>
+<p>然后就可以分治做了。</p>
+<hr />
+<h3 id="p2886-usaco07nov-cow-relays-g"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2886" >P2886 [USACO07NOV] Cow
+Relays G<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>离散化后的邻接矩阵快速幂。</p>
+<p>但是这里使用的是 Floyd 算法，所以要将乘号重定义。</p>
+<hr />
+<h3 id="the-battle-of-chibi"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA12983" >The Battle of
+Chibi<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题还是 dp。</p>
+<p>设 <span class="math inline">\(dp_{i, j}\)</span> 为以 <span
+class="math inline">\(i\)</span> 结尾的，长度为 <span
+class="math inline">\(j\)</span>
+的严格上升子序列的个数，那么就有转移式子为： <span
+class="math display">\[
+dp_{i, j} = \sum_{k &lt; i \land a_k &lt; a_i} dp_{k, j-1}
+\]</span> 初始状态设 <span class="math inline">\(dp_{i, 1} =
+1\)</span>。</p>
+<p>直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2m)\)</span> 的，过不了此题。</p>
+<p>于是开始优化：可以用树状数组优化。因为求的是前缀和。但是值域太大，需要先离散化。</p>
+<p>时间复杂度 <span class="math inline">\(O(nm\log n)\)</span>。</p>
+<hr />
+<h3 id="p2605-zjoi2010-基站选址"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2605" >P2605 [ZJOI2010]
+基站选址<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题依然是一道 dp。</p>
+<p>开始设状态：设 <span class="math inline">\(dp_{i, j}\)</span> 为将第
+<span class="math inline">\(j\)</span> 个通讯基站设在 <span
+class="math inline">\(i\)</span> 位置、并且只考虑区间 <span
+class="math inline">\([1,i]\)</span>时，需要花费的最小钱数。那么就可以开始转移：
+<span class="math display">\[
+dp_{i, j} = c_i + \left\{
+\begin{aligned}
+&amp;\text{将基站设置在位置 i 时前面没照顾到的人要赔的钱} &amp;(j = 1)\\
+&amp;\min_{l &lt; i}(dp_{l, j-1} + \text{将基站设在位置 k, i
+时中间没照顾到的人要赔的钱}) &amp;(j &gt; 1)
+\end{aligned}
+\right.
+\]</span> 直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2k)\)</span> 的，过不了此题。</p>
+<p>于是考虑优化：我们首先求出对于村庄 <span
+class="math inline">\(i\)</span>，这个村庄能允许的修基站的范围 <span
+class="math inline">\([st_i,
+ed_i]\)</span>，超过这个范围，你就要赔钱。</p>
+<p>然后当 <span class="math inline">\(i &gt; 1\)</span>
+时，因为这个是个带范围的 <span class="math inline">\(\min\)</span>
+式，所以可以将其搬到线段树上去做。</p>
+<p>具体地、首先将上一个 <span class="math inline">\(j\)</span> 的 dp
+状态搬到线段树上，即节点 <span class="math inline">\(x\)</span>
+设初始值为 <span class="math inline">\(dp_{x,j-1}\)</span>。然后每次算完
+<span class="math inline">\(dp_{i,j}\)</span> 时，就可以看哪些范围 <span
+class="math inline">\([st, ed]\)</span> 的 <span
+class="math inline">\(ed\)</span> 值为 <span
+class="math inline">\(i\)</span>。若存在，就在节点 <span
+class="math inline">\([1,st-1]\)</span> 区间加上该区间对应的 <span
+class="math inline">\(w\)</span>。然后算 <span
+class="math inline">\(dp_{i,j}\)</span> 就直接查区间 <span
+class="math inline">\(\min\)</span> 即可。</p>
+<p>而当 <span class="math inline">\(i=1\)</span>
+时，方法就不一样，但思路是类似的。因为这是建的第一个基站，所以就不存在什么
+<span class="math inline">\(dp_{l, j-1}\)</span>
+一说。而赔的钱，自然也就是把基站建在 <span
+class="math inline">\(i\)</span>
+的前面所有在范围外的村庄的赔的钱的总和了。</p>
+<hr />
+<h3 id="p3287-scoi2014-方伯伯的玉米田"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3287" >P3287 [SCOI2014]
+方伯伯的玉米田<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题也是一道 dp。用人话来说，就是可以执行最多 <span
+class="math inline">\(k\)</span> 次区间加 <span
+class="math inline">\(1\)</span>。然后求最长单调不下降序列。</p>
+<p>我们还是先设 dp 状态：设 <span class="math inline">\(dp_{i,
+j}\)</span> 为以 <span class="math inline">\(i\)</span> 结尾，并且 <span
+class="math inline">\(i\)</span> 被拔高了 <span
+class="math inline">\(j\)</span> 次所构成的最长单调不下降序列。</p>
+<p>我们能发现一个性质：就是你要拔高一个区间，那么拔 <span
+class="math inline">\([i, n]\)</span> 肯定是最优的。因为如果你不是以
+<span class="math inline">\(n\)</span>
+结尾，那么中间的数和右边的数的相对大小关系就会改变，就会使右边的数相对中间的数变小。这样肯定是不优的，因为我们要求最长单调不下降序列。</p>
+<p>然后就可以得出 dp 转移式： <span class="math display">\[
+dp_{i, j} = \max_{p &lt; i, q \le j, a_{p} + q \le  a_i+j}(dp_{p, q})+1
+\]</span>
+（不用考虑是不是不连续了，因为反正中间的那些你都不管，那么根据之前的性质，就让它加上
+<span class="math inline">\(j\)</span>。）</p>
+<p>但是，直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^2k)\)</span> 的，过不了此题。</p>
+<p>于是考虑优化：我们可以看到转移式是个 <span
+class="math inline">\(\max\)</span> 式，限制条件有 <span
+class="math inline">\(3\)</span> 个（其实从左到右枚举可以消掉第一个变成
+<span class="math inline">\(2\)</span> 个）。然后如果只有 <span
+class="math inline">\(1\)</span>
+个限制条件就可以把它放到树状数组上做，那现在 <span
+class="math inline">\(2\)</span> 个限制条件就可以把它放到 <span
+class="math inline">\(2\)</span> 维树状数组上做。</p>
+<p>于是这道题就做出来了，时间复杂度 <span class="math inline">\(O(nk\log
+n\log k)\)</span>。</p>
+<hr />
+<h3 id="codeforces-2063-d"><a class="link" 
+ target="_blank" rel="noopener" href="https://codeforces.com/contest/2063/problem/D" >Codeforces
+2063-D<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题赛时想到了思路，但是因为时间不够没有调出来。然后掉到了 1800
+多名去了（Codeforces Round 1000）。Yee tour fen.</p>
+<p>容易发现，选线段肯定是选最两边的，选点肯定是选最中间的。这样是最优的。那么我们<strong>首先给点排序</strong>（题目里没说序列有序！！），然后就可以开始贪心选：每次选线段就比较一下
+<span class="math inline">\(a\)</span> 侧的两端的距离和 <span
+class="math inline">\(b\)</span>
+侧两端的距离。然后选最长的那一端，假设为 <span
+class="math inline">\(a\)</span> 端。然后把两端的两个点和 <span
+class="math inline">\(b\)</span>
+端的中间的那一个点给删掉。然后把这个三角形记录到 <span
+class="math inline">\(a\)</span> 栈里面（栈的作用后面再说）。如果在
+<span class="math inline">\(b\)</span> 端同理。</p>
+<p>但是这个时候，你会遇到在 <span class="math inline">\(a\)</span>
+端选完了，但是 <span class="math inline">\(b\)</span>
+端还剩一堆点的情况。这个时候因为还没有达到 <span
+class="math inline">\(k_{max}\)</span>，所以肯定是要强制选对面的一些点的。那么我们就从
+<span class="math inline">\(a\)</span>
+栈里面弹出来一个三角形（就是删除一个三角形。根据从大到小选的原则，这个三角形是面积最小的）。这样就给对面的点创造出来了
+<span class="math inline">\(2\)</span> 个 <span
+class="math inline">\(a\)</span> 点。然后对面的 <span
+class="math inline">\(4\)</span> 个 <span
+class="math inline">\(b\)</span> 点再和这 <span
+class="math inline">\(2\)</span> 个 <span
+class="math inline">\(a\)</span> 点相组合，就是 <span
+class="math inline">\(2\)</span>
+个新的三角形。再减去弹出来的那个三角形，就相当于这就是多了一个三角形的最优答案。</p>
+<p>那么边界 <span class="math inline">\(k_{max}\)</span>
+如何算？这个其实是好算的。设最终选的最多次在 <span
+class="math inline">\(a\)</span> 端选了 <span
+class="math inline">\(p\)</span> 条线段，在 <span
+class="math inline">\(b\)</span> 端选了 <span
+class="math inline">\(q\)</span> 条线段。</p>
+<p>那么就可以列出不等式：</p>
+<ul>
+<li><span class="math inline">\(2p + q \le n\)</span></li>
+<li><span class="math inline">\(2q+p \le m\)</span></li>
+</ul>
+<p>联立可得 <span class="math inline">\(k_{max} = p+q \le
+\frac{n+m}{3}\)</span>。</p>
+<p>又因为两侧选点的极限是 <span class="math inline">\(n,
+m\)</span>，所以 <span class="math inline">\(k_{max} =
+\min(\lfloor\frac{n+m}{3}\rfloor, n, m)\)</span>。</p>
+<p>于是这道题就做完了。</p>
+<hr />
+<h3 id="at_dp_s-digit-sum"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_s" >AT_dp_s Digit
+Sum<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>从这里开始似乎就都是 AT_dp 比赛的题了。</p>
+<p>这道题一眼数位 dp。</p>
+<p>首先设状态：设 <span class="math inline">\(dp_{pre, now,
+remain}\)</span> 为在没有到边界的情况下，当前面的数的总和 <span
+class="math inline">\(\bmod d = pre\)</span> 时，并且取的上一个数为
+<span class="math inline">\(now\)</span>，并且还剩下 <span
+class="math inline">\(remain\)</span>
+个数没有取时的答案。然后像一般的数位 DP 记忆化 + 转移即可。</p>
+<hr />
+<h3 id="at_dp_t-permutation"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_t" >AT_dp_t
+Permutation<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题的 DP 状态比较巧妙。</p>
+<p>设 <span class="math inline">\(dp_{i, j}\)</span> 表示现在一共填了
+<span class="math inline">\(i\)</span> 个数，并且刚刚新加进来的数是在这
+<span class="math inline">\(i\)</span> 个数里面从小到大的第 <span
+class="math inline">\(j\)</span> 个。</p>
+<p>为什么这么设状态呢？因为其实这些大于号小于号是用来限制它们的相对大小关系的。只要相对大小关系对了，怎么填都可以。</p>
+<p>于是我们就可以轻松得出式子： <span class="math display">\[
+dp_{1, 1} = 1
+\]</span></p>
+<p><span class="math display">\[
+dp_{i, j} = \left\{
+\begin{aligned}
+&amp;\sum_{k=1}^{j-1} dp_{i-1, k} &amp;(s_{i-1} = &#39;&lt;&#39;) \\
+&amp;\sum_{k=j}^{i-1} dp_{i-1, k} &amp;(s_{i-1} = &#39;&gt;&#39;)
+\end{aligned}
+\right.
+\]</span></p>
+<p>直接用这个鬼玩意的复杂度是 <span
+class="math inline">\(O(n^3)\)</span> 的，过不了此题。</p>
+<p>于是考虑优化：这道题的优化是最简单的。直接前缀和优化即可。时间复杂度
+<span class="math inline">\(O(n^2)\)</span>。</p>
+<p>三倍 EXP：<a class="link"   target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA1650" >UVA1650
+Number String<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，<a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2467" >P2467 地精部落<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="at_dp_u-grouping"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_u" >AT_dp_u
+Grouping<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题可以想到一个非常简单的 dp：假设 <span
+class="math inline">\(val_S\)</span> 代表只考虑 <span
+class="math inline">\(S\)</span> 这个集合的最大贡献。于是列式子： <span
+class="math display">\[
+val_{S\cup T} = \max_{S \cap T \neq \emptyset}(val_{S\cup T}, val_{S} +
+val_{T})
+\]</span> （初始设 <span class="math inline">\(val_{S}\)</span> 为把
+<span class="math inline">\(S\)</span> 集合整体分为一组所得的值。）</p>
+<p>但是不好枚举，然后转化一下： <span class="math display">\[
+val_{S} = \max_{T \subseteq S}(val_{S}, val_{T} + val_{\complement_S T})
+\]</span> 这样是好枚举的。</p>
+<p>直接用这个鬼玩意的理论复杂度是初始化 <span
+class="math inline">\(O(n^2 2^n)\)</span> 和 DP 复杂度 <span
+class="math inline">\(O(2^{2n})\)</span> 的，但是过得了此题（可能是因为
+ATCoder 机子非常的强大）。</p>
+<p>但是运行了 1.3s，还是要考虑优化：这个 DP
+非常浪费的一个地方就是枚举了非常多的不包含于 <span
+class="math inline">\(S\)</span> 的 <span
+class="math inline">\(T\)</span>。那么怎么才能枚举所有的 <span
+class="math inline">\(T\)</span> 让它们都属于 <span
+class="math inline">\(S\)</span> 呢？</p>
+<p>有一个方法：因为这里的集合使用一个二进制数表示的，所以可以先从 <span
+class="math inline">\(S\)</span> 开始枚举，然后下一个是
+<code>(T-1) &amp; S</code>。这种方法可以完美的枚举所有 <span
+class="math inline">\(S\)</span> 的子集。</p>
+<p>时间复杂度预处理 <span class="math inline">\(O(n^2 2^n)\)</span>，DP
+<span class="math inline">\(O(3^n)\)</span>。</p>
+<p>证明枚举子集的复杂度为 <span class="math inline">\(O(3^n)\)</span>
+的博客：<a class="link" 
+ target="_blank" rel="noopener" href="https://www.cnblogs.com/CDOI-24374/p/15876755.html" >枚举子集为什么是
+O(3^n) 的 - yspm - 博客园<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="at_dp_v-subtree"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_v" >AT_dp_v Subtree<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>这道题就是在树上做 dp。（感觉说了和没说一样</p>
+<p>因为这是一棵无根树，所以就先钦定节点 1
+为根。然后设状态。又因为是在强制把这个节点染成黑色的情况，所以连通要么黑色点连在下面，要么连在上面。而因为遍历一棵树最常用的方法是
+DFS，所以我们把 dp 状态分成两个：</p>
+<ol type="1">
+<li><span class="math inline">\(dpin_x\)</span>：设其为当黑色点全在以
+<span class="math inline">\(x\)</span> 为根的子树内（包含点 <span
+class="math inline">\(x\)</span>）的方案数。</li>
+<li><span class="math inline">\(dpout_x\)</span>：设其为当黑色点全在以
+<span class="math inline">\(x\)</span> 为根的子树外（也包含点 <span
+class="math inline">\(x\)</span>）的方案数。</li>
+</ol>
+<p>然后总答案就是 <span class="math inline">\(dpin_x \times
+dpout_x\)</span> 了。</p>
+<p>那我们该如何求呢？首先，对于 <span
+class="math inline">\(dpin_x\)</span>，它的答案是根据它的儿子决定的。很容易得出：<span
+class="math inline">\(dpin_x = \prod_{v \in son_x} (dpin_v +
+1)\)</span>。而这个 <span class="math inline">\(+1\)</span> 就是当儿子
+<span class="math inline">\(v\)</span> 取白色的情况，其他就是儿子 <span
+class="math inline">\(v\)</span>
+取黑色的情况。这就相当于是，它有它的儿子的个数种选择，然后求方案数。而当
+<span class="math inline">\(x\)</span> 为叶子节点时，很明显，<span
+class="math inline">\(dpin_x = 1\)</span>。</p>
+<p>而对于 <span
+class="math inline">\(dpout_x\)</span>，因为它要和不是它的子树的点连通，所以肯定就要经过它的父亲。那么就相当于是变为了它的直系兄弟的
+<span class="math inline">\((dpin_x + 1)\)</span> 之积。而又因为 <span
+class="math inline">\(dpout\)</span>
+是向外面连通的，父亲的祖先也不例外，所以还要多一个选择，即再乘上 <span
+class="math inline">\(dpout_{fa_x}\)</span>。最后再加上 <span
+class="math inline">\(1\)</span>，表示只选 <span
+class="math inline">\(x\)</span> 点，不选 <span
+class="math inline">\(fa\)</span> 及其他点。而当 <span
+class="math inline">\(x\)</span> 为根时，明显的、<span
+class="math inline">\(dpout_x = 1\)</span>。</p>
+<h3 id="at_dp_x-tower"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_x" >AT_dp_x Tower<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p>我们可以想到一个朴素的算法：先定一个 <span
+class="math inline">\(dp\)</span> 数组，<span
+class="math inline">\(dp_i\)</span> 表示目前箱子总重量 <span
+class="math inline">\(i\)</span>
+所可以获得的最大价值。假如说新加了一个箱子 <span
+class="math inline">\(j\)</span>，那么我们可以将 <span
+class="math inline">\(dp_0 \sim dp_{s_j}\)</span>
+全部更新一遍。（要反序因为是背包）最后求最大值。因为 <span
+class="math inline">\(n\le 10^3\)</span>，<span class="math inline">\(w,
+s\le 10^4\)</span>，所以时间复杂度就算是 <span
+class="math inline">\(O(nw)\)</span> 或 <span
+class="math inline">\(O(ns)\)</span> 也可以接受。</p>
+<p>但是遇到了一个问题：如何确定放箱子的顺序使最终答案最优？</p>
+<p>不容易想到（我看了 tj），现在有两个箱子 <span
+class="math inline">\(x, y\)</span>，让 <span
+class="math inline">\(x\)</span> 在 <span
+class="math inline">\(y\)</span>
+前面使这样更优的情况可以做如下解释：现在你假定 <span
+class="math inline">\(x\)</span> 和 <span
+class="math inline">\(y\)</span>
+都要选，那么如何安排顺序使最终答案更优？那就分两种情况讨论：</p>
+<ul>
+<li>若 <span class="math inline">\(x\)</span> 在 <span
+class="math inline">\(y\)</span> 上面，那么还可以放 <span
+class="math inline">\(s_y - w_x\)</span> 的重量在 <span
+class="math inline">\(y\)</span> 上。</li>
+<li>若 <span class="math inline">\(y\)</span> 在 <span
+class="math inline">\(x\)</span> 上面，那么还可以放 <span
+class="math inline">\(s_x - w_y\)</span> 的重量在 <span
+class="math inline">\(x\)</span> 上。</li>
+</ul>
+<p>这样就好理解了，哪个的剩余重量大就选哪种情况。所以将 <span
+class="math inline">\(x\)</span> 优先于 <span
+class="math inline">\(y\)</span> 的情况则当： <span
+class="math display">\[
+s_y - w_x \le s_x - w_y
+\]</span> 于是在开头的 <code>init</code>
+部分排序排一下优先级，就做出来了。</p>
+<h3 id="at_dp_z-frog-3"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_dp_z" >AT_dp_z Frog 3<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3>
+<p><a class="link" 
+ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CM4y147Ef/?spm_id_from=333.1387.search.video_card.click&amp;vd_source=42a3882aafa4e64ae7190b678f4c1d19" >董晓算法：E51【模板】斜率优化DP
+打印文章_bilibili<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 1 月做题记录</li>
+        <li><strong>Author:</strong> 11400F</li>
+        <li><strong>Created at
+                :</strong> 2025-01-22 08:44:05</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-02-07 07:47:49
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://11400f.github.io/2025/01/22/R701-practice-log/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/C/">#C++</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%9D%82%E9%A1%B9/">#杂项</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/02/05/R702-practice-log/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">2 月做题记录</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/01/21/20250121-T1/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">20250121T1 一道期望题</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '11400F/giscus-save',
+                'data-repo-id': 'R_kgDONty5DQ',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDONty5Dc4CmOyS',
+                'data-mapping': 'pathname',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'en',
+                'data-input-position': 'top',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">1 月做题记录</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#abc339e-smooth-subsequence"><span class="nav-text">[ABC339E] Smooth
+Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abc353g-merchant-takahashi"><span class="nav-text">[ABC353G] Merchant
+Takahashi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-kingdom-races"><span class="nav-text">Linear Kingdom
+Races</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p9871-noip2023-%E5%A4%A9%E5%A4%A9%E7%88%B1%E6%89%93%E5%8D%A1"><span class="nav-text">P9871 [NOIP2023]
+天天爱打卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intervals"><span class="nav-text">Intervals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#agc044e-random-pawn"><span class="nav-text">[AGC044E] Random
+Pawn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abc389e-square-price"><span class="nav-text">[ABC389E] Square
+Price</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abc389f-rated-range"><span class="nav-text">[ABC389F] Rated
+Range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p4159-scoi2009-%E8%BF%B7%E8%B7%AF"><span class="nav-text">P4159 [SCOI2009]
+迷路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-of-matrix"><span class="nav-text">Power of
+Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p2886-usaco07nov-cow-relays-g"><span class="nav-text">P2886 [USACO07NOV] Cow
+Relays G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-battle-of-chibi"><span class="nav-text">The Battle of
+Chibi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p2605-zjoi2010-%E5%9F%BA%E7%AB%99%E9%80%89%E5%9D%80"><span class="nav-text">P2605 [ZJOI2010]
+基站选址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p3287-scoi2014-%E6%96%B9%E4%BC%AF%E4%BC%AF%E7%9A%84%E7%8E%89%E7%B1%B3%E7%94%B0"><span class="nav-text">P3287 [SCOI2014]
+方伯伯的玉米田</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codeforces-2063-d"><span class="nav-text">Codeforces
+2063-D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at_dp_s-digit-sum"><span class="nav-text">AT_dp_s Digit
+Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at_dp_t-permutation"><span class="nav-text">AT_dp_t
+Permutation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at_dp_u-grouping"><span class="nav-text">AT_dp_u
+Grouping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at_dp_v-subtree"><span class="nav-text">AT_dp_v Subtree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at_dp_x-tower"><span class="nav-text">AT_dp_x Tower</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#at_dp_z-frog-3"><span class="nav-text">AT_dp_z Frog 3</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">Chu2thm Rating 14.99...</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2025</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">11400F</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        39 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/build/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/build/plugins/masonry.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>
