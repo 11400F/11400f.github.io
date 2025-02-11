@@ -23,14 +23,14 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈欧拉路的板子">
+<meta property="og:title" content="求欧拉路的板子">
 <meta property="og:url" content="https://www.11490dx.net/2024/11/05/euler-path-stt/index.html">
 <meta property="og:site_name" content="11400F&#39;s Blog">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.11490dx.net/images/redefine-og.webp">
 <meta property="article:published_time" content="2024-11-05T07:13:47.000Z">
-<meta property="article:modified_time" content="2025-01-10T00:55:09.675Z">
+<meta property="article:modified_time" content="2025-02-11T00:19:03.741Z">
 <meta property="article:author" content="11400F">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="图论">
@@ -47,7 +47,7 @@
     
     <title>
         
-            浅谈欧拉路的板子 | 11490DX&#39;s Blog
+            求欧拉路的板子 | 11490DX&#39;s Blog
         
     </title>
 
@@ -106,7 +106,119 @@
     
     
     
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 
@@ -491,7 +603,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">浅谈欧拉路的板子</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">求欧拉路的板子</h1>
 			</div>
 			
 		</div>
@@ -519,8 +631,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-01-10 08:55:09</span>
-            <span class="mobile">2025-01-10 08:55:09</span>
+            <span class="desktop">2025-02-11 08:19:03</span>
+            <span class="mobile">2025-02-11 08:19:03</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -577,46 +689,26 @@
 <p>而你是从起点出来，最终回到终点。那就有两种情况：</p>
 <ul>
 <li>若起点和终点是同一个点：那么<strong>图上所有的点入度和出度都相等</strong>。因为你从这个点出去，最后回到这个点，就是出度
-<span class="math inline">\(+1\)</span>，入度 <span
-class="math inline">\(+1\)</span>，最后入度还是等于出度。</li>
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 1278 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>，入度 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 1278 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>，最后入度还是等于出度。</li>
 <li>若起点和终点不是同一个点：那么<strong>起点的出度比入度大1，终点的入度比出度大1</strong>。因为你从起点出来，起点入度
-<span class="math inline">\(+1\)</span>，最后回到终点，终点入度 <span
-class="math inline">\(+1\)</span>。</li>
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 1278 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>，最后回到终点，终点入度 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 1278 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>。</li>
 </ul>
 <p>那么如果他有一个起点和一个终点（或是没有起点<strong>和</strong>终点），并且其他的点入度等于出度，那么他就有欧拉路。否则就没有。</p>
 <p>并且还要判断它是否连通！如果不连通那就没有欧拉路。</p>
-<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断一个连通有向图有无欧拉回路</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">    cin&gt;&gt;u&gt;&gt;v;<span class="comment">// u-&gt;v</span></span><br><span class="line">    <span class="comment">//indeg[v]++, outdeg[u] ++;</span></span><br><span class="line">    deg[v] ++, deg[u] --;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> stt=<span class="number">0</span>, edd=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(deg[i] == <span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(stt)&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        stt = i;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(edd)&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        edd = i;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] != <span class="number">0</span>)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(stt == <span class="number">0</span> &amp;&amp; edd == <span class="number">0</span>)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Yes\n&quot;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(stt == <span class="number">0</span> || edd == <span class="number">0</span>)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> cout&lt;&lt;<span class="string">&quot;Yes\n&quot;</span>;</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断一个连通有向图有无欧拉回路</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">    cin&gt;&gt;u&gt;&gt;v;<span class="comment">// u-&gt;v</span></span><br><span class="line">    <span class="comment">//indeg[v]++, outdeg[u] ++;</span></span><br><span class="line">    deg[v] ++, deg[u] --;</span><br><span class="line">}</span><br><span class="line"><span class="type">int</span> stt=<span class="number">0</span>, edd=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">    <span class="keyword">if</span>(deg[i] == <span class="number">-1</span>){</span><br><span class="line">        <span class="keyword">if</span>(stt){</span><br><span class="line">            cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        stt = i;</span><br><span class="line">    }<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] == <span class="number">1</span>){</span><br><span class="line">        <span class="keyword">if</span>(edd){</span><br><span class="line">            cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        edd = i;</span><br><span class="line">    }<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] != <span class="number">0</span>){</span><br><span class="line">        cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">if</span>(stt == <span class="number">0</span> &amp;&amp; edd == <span class="number">0</span>){</span><br><span class="line">    cout&lt;&lt;<span class="string">"Yes\n"</span>;</span><br><span class="line">}<span class="keyword">else</span> <span class="keyword">if</span>(stt == <span class="number">0</span> || edd == <span class="number">0</span>){</span><br><span class="line">    cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">}<span class="keyword">else</span> cout&lt;&lt;<span class="string">"Yes\n"</span>;</span><br></pre></td></tr></table></figure></div>
 <h2 id="输出一条欧拉路">输出一条欧拉路</h2>
 <p>根据上面的推断就可以确定这个欧拉路的起点和终点了。如果它是欧拉回路，那就随便选一个点作为起点。</p>
 <p>从这个点开始
 DFS，经过一条边就给这条边打标记，然后从这个点发散出的所有边搜索完了之后就输出这个点。</p>
 <p>这相当于就是 DFS 回溯。而回溯的顺序正好是欧拉回路的逆序。</p>
-<center>
-<img  style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s21.ax1x.com/2024/11/05/pAsYIu8.md.png"
-                      width = "65%" alt=""
-                >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">
-<pre><code>  给欧拉图 DFS 的一种顺序和其回溯的顺序
-&lt;/div&gt;</code></pre>
-</center>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2024/11/05/pAsYIu8.md.png" alt="img"> （图为给欧拉图 DFS 的一种顺序和其回溯的顺序）</p>
 <p>于是就可以愉快地写代码了：</p>
-<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> st[N], len; <span class="comment">//一只栈</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123; <span class="comment">// 若这条边没有被访问</span></span><br><span class="line">            vis[i] = <span class="number">1</span>; <span class="comment">// 打上标记</span></span><br><span class="line">            <span class="built_in">dfs</span>(edge[i].to); <span class="comment">// 然后给这条边的终点 DFS</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    st[++len] = x; <span class="comment">// 回溯顺序的逆序就是欧拉路径的顺序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="模板题p7771-欧拉路径">模板题：<a class="link" 
- target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7771" >P7771 欧拉路径<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> st[N], len; <span class="comment">//一只栈</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i;i=edge[i].nxt){</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]){ <span class="comment">// 若这条边没有被访问</span></span><br><span class="line">            vis[i] = <span class="number">1</span>; <span class="comment">// 打上标记</span></span><br><span class="line">            <span class="built_in">dfs</span>(edge[i].to); <span class="comment">// 然后给这条边的终点 DFS</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    st[++len] = x; <span class="comment">// 回溯顺序的逆序就是欧拉路径的顺序</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+<h2 id="模板题p7771-欧拉路径">模板题：<a class="link" target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7771">P7771 欧拉路径<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
 <p>这道题和上面讲的不一样的是：这道题要求我们输出<strong>字典序最小的欧拉路径</strong>。</p>
 <p>字典序最小是好办的，就让这个点能够到达的边编号最小的先
 DFS，然后编号次小的再 DFS……这样就解决了字典序最小的问题。</p>
-<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span><span class="number">+5</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; edge[N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> st[N&lt;&lt;<span class="number">1</span>], len;</span><br><span class="line"><span class="type">int</span> sttvis[N];<span class="comment">//Where can i start?</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> siz = edge[x].<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=sttvis[x];i&lt;siz;i=sttvis[x])&#123;</span><br><span class="line">        sttvis[x] = i<span class="number">+1</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(edge[x][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    st[++len] = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> deg[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v;</span><br><span class="line">        edge[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">        <span class="comment">//indeg[v]++, outdeg[u] ++;</span></span><br><span class="line">        deg[v] ++, deg[u] --;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> stt=<span class="number">0</span>, edd=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(deg[i] == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(stt)&#123;</span><br><span class="line">                cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            stt = i;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(edd)&#123;</span><br><span class="line">                cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            edd = i;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] != <span class="number">0</span>)&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(stt == <span class="number">0</span> &amp;&amp; edd == <span class="number">0</span>)&#123;</span><br><span class="line">        stt = edd = <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(stt == <span class="number">0</span> || edd == <span class="number">0</span>)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">sort</span>(edge[i].<span class="built_in">begin</span>(), edge[i].<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(stt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=len;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        cout&lt;&lt;st[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-</div>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span><span class="number">+5</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; edge[N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> st[N&lt;&lt;<span class="number">1</span>], len;</span><br><span class="line"><span class="type">int</span> sttvis[N];<span class="comment">//Where can i start?</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span></span>{</span><br><span class="line">    <span class="type">int</span> siz = edge[x].<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=sttvis[x];i&lt;siz;i=sttvis[x]){</span><br><span class="line">        sttvis[x] = i<span class="number">+1</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(edge[x][i]);</span><br><span class="line">    }</span><br><span class="line">    st[++len] = x;</span><br><span class="line">}</span><br><span class="line"><span class="type">int</span> deg[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v;</span><br><span class="line">        edge[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">        <span class="comment">//indeg[v]++, outdeg[u] ++;</span></span><br><span class="line">        deg[v] ++, deg[u] --;</span><br><span class="line">    }</span><br><span class="line">    <span class="type">int</span> stt=<span class="number">0</span>, edd=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="keyword">if</span>(deg[i] == <span class="number">-1</span>){</span><br><span class="line">            <span class="keyword">if</span>(stt){</span><br><span class="line">                cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            }</span><br><span class="line">            stt = i;</span><br><span class="line">        }<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] == <span class="number">1</span>){</span><br><span class="line">            <span class="keyword">if</span>(edd){</span><br><span class="line">                cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            }</span><br><span class="line">            edd = i;</span><br><span class="line">        }<span class="keyword">else</span> <span class="keyword">if</span>(deg[i] != <span class="number">0</span>){</span><br><span class="line">            cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(stt == <span class="number">0</span> &amp;&amp; edd == <span class="number">0</span>){</span><br><span class="line">        stt = edd = <span class="number">1</span>;</span><br><span class="line">    }<span class="keyword">else</span> <span class="keyword">if</span>(stt == <span class="number">0</span> || edd == <span class="number">0</span>){</span><br><span class="line">        cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">sort</span>(edge[i].<span class="built_in">begin</span>(), edge[i].<span class="built_in">end</span>());</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">dfs</span>(stt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=len;i&gt;=<span class="number">1</span>;i--){</span><br><span class="line">        cout&lt;&lt;st[i]&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
 
 		</div>
 
@@ -624,14 +716,14 @@ DFS，然后编号次小的再 DFS……这样就解决了字典序最小的问�
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> 浅谈欧拉路的板子</li>
+        <li><strong>Title:</strong> 求欧拉路的板子</li>
         <li><strong>Author:</strong> 11490DX</li>
         <li><strong>Created at
                 :</strong> 2024-11-05 15:13:47</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-01-10 08:55:09
+                    :</strong> 2025-02-11 08:19:03
             </li>
         
         <li>
@@ -763,7 +855,7 @@ DFS，然后编号次小的再 DFS……这样就解决了字典序最小的问�
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">浅谈欧拉路的板子</div>
+		<div class="page-title">求欧拉路的板子</div>
 		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%AC%A7%E6%8B%89%E8%B7%AF"><span class="nav-text">判断是否存在欧拉路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E4%B8%80%E6%9D%A1%E6%AC%A7%E6%8B%89%E8%B7%AF"><span class="nav-text">输出一条欧拉路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E9%A2%98p7771-%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84"><span class="nav-text">模板题：P7771 欧拉路径</span></a></li></ol>
 
 	</div>
