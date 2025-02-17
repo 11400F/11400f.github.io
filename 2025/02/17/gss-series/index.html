@@ -30,10 +30,13 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.11490dx.net/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-02-17T04:54:42.000Z">
-<meta property="article:modified_time" content="2025-02-17T06:17:47.794Z">
+<meta property="article:modified_time" content="2025-02-17T14:00:06.856Z">
 <meta property="article:author" content="11400F">
+<meta property="article:tag" content="树链剖分">
+<meta property="article:tag" content="组合数学">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="线段树">
+<meta property="article:tag" content="平衡树">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.11490dx.net/images/redefine-og.webp">
     
@@ -449,7 +452,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">29</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">30</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -508,8 +511,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-02-17 14:17:47</span>
-            <span class="mobile">2025-02-17 14:17:47</span>
+            <span class="desktop">2025-02-17 22:06</span>
+            <span class="mobile">2025-02-17 22:06</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -547,11 +550,23 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                        <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/">树链剖分</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">组合数学</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
                     </li>
                 
                     <li>
                         | <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/">平衡树</a>&nbsp;
                     </li>
                 
             </ul>
@@ -561,12 +576,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>971 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>8 Mins</span>
         </span>
     
     
@@ -592,7 +607,11 @@
 Lv.13<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
 <p>这道题的关键其实就是区间合并。</p>
 <p>定义区间结构体（这里命名为
-<code>QJ</code>），内部存储从左端点开始的最大值、和从右端点开始的最大值、区间和和区间答案。</p>
+<code>QJ</code>），内部存储从左端点开始的最大值 <span
+class="math inline">\(lftans\)</span>、和从右端点开始的最大值 <span
+class="math inline">\(rgtans\)</span>、区间和 <span
+class="math inline">\(sum\)</span> 和区间答案 <span
+class="math inline">\(ans\)</span>。</p>
 <p>合并的时候分类讨论取 <span class="math inline">\(\max\)</span>
 即可。</p>
 <h2 id="gss2-sp1557-in-lv.15"><a class="link" 
@@ -666,6 +685,77 @@ class="math inline">\(\le
 class="math inline">\(6n\)</span> 次，就算带个 <span
 class="math inline">\(\log\)</span> 甚至 <span
 class="math inline">\(\log^2\)</span> 也不会超时。</p>
+<h2 id="gss5-sp2916-in-lv.15"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP2916" >GSS5 SP2916 IN
+Lv.15<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题其实就是标准的查询区间子段和和一些分讨。</p>
+<ul>
+<li>若 <span class="math inline">\(x_1 \le y_2 &lt; x_2 \le
+y_2\)</span>，即两个区间没有交。那么答案就是 <span
+class="math inline">\(rgtans_{[x_1,y_1]} + sum_{(y_1, x_2)} +
+lftans_{[x_2, y_2]}\)</span>。</li>
+<li>否则，两个区间有交。于是现在大小关系就变为 <span
+class="math inline">\(x_1 \le x_2 \le y_1 \le
+y_2\)</span>。讨论两个端点在哪个区间的情况。设 <span
+class="math inline">\(Q_1 = [x_1, x_2), Q_2 = [x_2,y_1], Q_3 = (y_1,
+y_2]\)</span>：
+<ul>
+<li>左端点在 <span class="math inline">\(Q_1\)</span>，右端点在 <span
+class="math inline">\(Q_2 \cup Q_3\)</span>，答案为 <span
+class="math inline">\(rgtans_{Q_1} + lftans_{Q_2 \cup
+Q_3}\)</span>。</li>
+<li>左端点在 <span class="math inline">\(Q_1 \cup Q_2\)</span>，右端点在
+<span class="math inline">\(Q_3\)</span>，答案为 <span
+class="math inline">\(rgtans_{Q_1 \cup Q_2} +
+lftans_{Q_3}\)</span>。</li>
+<li>左端点和右端点均在 <span class="math inline">\(Q_2\)</span>，答案为
+<span class="math inline">\(ans_{Q_2}\)</span>。</li>
+</ul></li>
+</ul>
+<h2 id="gss6-sp4487-in-lv.15"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP4487" >GSS6 SP4487 IN
+Lv.15<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>这道题让<del>好不容易</del>忘了平衡树的我重新打开了 <a class="link" 
+ target="_blank" rel="noopener" href="https://11400f.github.io/2024/10/31/fhqtreap-sum/" >FHQ
+平衡树博客<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
+<p>注意：这道题描述的“在 <span class="math inline">\(p\)</span>
+处插入一个元素”是指在 <span class="math inline">\(p-1\)</span> 和 <span
+class="math inline">\(p\)</span> 中插入。</p>
+<p>这道题因为要实现单点<strong>插入</strong>、单点修改、单点删除和区间查询，所以可以想到用平衡树来做这道题。因为平衡树可以高效查找，并且可以维护区间。</p>
+<p>我们定义每一个平衡树节点，除了需要维护平衡树基本的
+<code>ls, rs, pri, val, siz</code>，因为要维护区间最大子段和，所以还要加上
+<code>lftans, rgtans, sum, ans</code>。</p>
+<p>因为每一个 <code>pushup</code> 是要涉及到 3 个节点：<span
+class="math inline">\(x, ls,
+rs\)</span>。所以要把维护区间最大子段和稍微修改修改。我们可以在最开始
+<code>newnode(int w)</code> 的时候，<code>lftans</code> 和
+<code>rgtans</code> 取 <span class="math inline">\(\max(0,
+w)\)</span>。因为有可能是负数。而 <code>ans</code> 则要取 <span
+class="math inline">\(w\)</span>，因为它的子段大小不能等于 <span
+class="math inline">\(0\)</span>。</p>
+<p>然后 <code>pushup</code> 的时候还是正常 <code>pushup</code>：</p>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    tr[x].siz = tr[tr[x].ls].siz + tr[tr[x].rs].siz + <span class="number">1</span>;</span><br><span class="line">    tr[x].lftans = <span class="built_in">max</span>(tr[<span class="built_in">ls</span>(x)].lftans, tr[<span class="built_in">ls</span>(x)].sum + tr[x].val + tr[<span class="built_in">rs</span>(x)].lftans);</span><br><span class="line">    tr[x].rgtans = <span class="built_in">max</span>(tr[<span class="built_in">rs</span>(x)].rgtans, tr[<span class="built_in">rs</span>(x)].sum + tr[x].val + tr[<span class="built_in">ls</span>(x)].rgtans);</span><br><span class="line">    tr[x].sum = tr[<span class="built_in">ls</span>(x)].sum + tr[x].val + tr[<span class="built_in">rs</span>(x)].sum;</span><br><span class="line">    tr[x].ans = <span class="built_in">max</span>(&#123;tr[<span class="built_in">ls</span>(x)].ans, tr[<span class="built_in">rs</span>(x)].ans, tr[<span class="built_in">ls</span>(x)].rgtans + tr[x].val + tr[<span class="built_in">rs</span>(x)].lftans&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后因为是根据位置插入、删除或修改，所以分裂的时候只能按
+<code>siz</code> 来分裂。接下来详细说明操作步骤：</p>
+<ol type="1">
+<li><code>I p x</code>：分裂前 <span class="math inline">\(p-1\)</span>
+和后面的，然后中间插入 <span
+class="math inline">\(x\)</span>，最后合并。</li>
+<li><code>D p</code>：分裂前 <span class="math inline">\(p\)</span>
+和后面的 <span
+class="math inline">\(len-p\)</span>，为两棵树。再把第一棵树分裂前 <span
+class="math inline">\(p-1\)</span> 和后 <span
+class="math inline">\(1\)</span>，也为两棵树。最后合并前 <span
+class="math inline">\(p-1\)</span> 和后面的 <span
+class="math inline">\(len-p\)</span> 那棵。</li>
+<li><code>R p x</code>：像操作 2 一样分裂。分裂后按照
+<code>newnode</code> 步骤修改中间的 <span class="math inline">\(siz =
+1\)</span> 的树。最后依次合并 <span class="math inline">\(p-1, 1,
+len-p\)</span>。</li>
+<li><code>Q l r</code>：依次分裂出 <span class="math inline">\(l-1,
+r-l+1, len-r\)</span> 三棵。最后直接输出中间那棵的
+<code>ans</code>，最后依次合并即可。</li>
+</ol>
 <h2 id="gss7-sp6779-in-lv.16"><a class="link" 
  target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP6779" >GSS7 SP6779 IN
 Lv.16<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
@@ -675,6 +765,48 @@ GSS）</p>
 <p>这道题还是典型的区间合并 + 树链剖分问题。但是这里有一个小细节：</p>
 <p>因为每一个点的权值可以为负，所以在设 Lazytag
 的时候一定要把初始值设为极大值或是极小值。要不然你会死掉。</p>
+<h2 id="gss8-sp19543-in-lv.16"><a class="link" 
+ target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP19543" >GSS8 SP19543 IN
+Lv.16<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h2>
+<p>注意：这道题下标从 <span class="math inline">\(0\)</span> 开始。</p>
+<p>这道题和 GSS6 非常像。但是它要询问一个非常抽象的玩意。</p>
+<p>因为 <span class="math inline">\(k \le
+10\)</span>，所以我们可以在平衡树节点中，开一个大小为 <span
+class="math inline">\(11\)</span> 的数组，存储对于每一个 <span
+class="math inline">\(k\)</span>
+的这个区间的答案。这个式子非常抽象，所以我们转化一下式子。 <span
+class="math display">\[
+\begin{aligned}
+ans_x &amp;= \sum_{i=l}^{r} a_i (i-l+1)^k \\ &amp;= \sum_{i=l}^{mid}
+a_i(i-l+1)^{k} + \sum_{i=mid+1}^{r} a_i(i-l+1)^k \\
+&amp;= ans_{ls} + val_{mid} \times (mid-l+1)^{k} + \sum_{i=mid+1}^{r}
+a_i[(mid-l+1)+(i-mid)]^k
+\end{aligned}
+\]</span> 因为 <span class="math inline">\(ans_{ls} + val_{mid} \times
+(mid-l+1)^{k}\)</span>
+是一个定值，所以可以先求出这个。然后后面的式子，根据二项式定理 <span
+class="math inline">\((n+m)^k = \sum_{j=0}^{k}
+C_{k}^{j}n^{k-j}m^{j}\)</span>，可得： <span class="math display">\[
+\begin{aligned}
+\sum_{i=mid+1}^{r} a_i[(mid-l+1)+(i-mid)]^k &amp;= \sum_{i=mid+1}^{r}
+a_i \sum_{j=0}^{k}C_{k}^{j}(mid-l+1)^{k-j}(i-mid)^{j}\\
+&amp;= \sum_{j=0}^{k}C_{k}^{j}(mid-l+1)^{k-j}\sum_{i=mid+1}^{r}
+a_i(i-(mid+1)+1)^{j}\\
+&amp;= \sum_{j=0}^{k}C_{k}^{j}(mid-k+1)^{k-j}ans_{rs}
+\end{aligned}
+\]</span> 于是就可以根据这个式子，<span
+class="math inline">\(k^2\)</span> 实现 <code>pushup</code> 过程。<span
+class="math inline">\(mid-k+1\)</span> 的幂次可以 <span
+class="math inline">\(O(k)\)</span> 预处理。</p>
+<p>然后剩下的就和 GSS6 差不多了。</p>
+<h2 id="后记">后记</h2>
+<p>终于做完了。8 道题硬控了我 2 天。</p>
+<p>据说以前，GSS 的每一道题难度都是现在难度上一级，5
+道黑。只不过现在黑降紫，紫降蓝了。</p>
+<p>不过当我开始做 GSS7，手搓出来 IN
+Lv.16，心里是非常激动的，毕竟还是第一次手搓出来一道这样的题。</p>
+<p>8 道题做完了，对于线段树维护区间子段和的旅程就先告一段落了。希望等
+GSS9 正式上线洛谷的时候，也能将其做出来！( •̀ ω •́ )y</p>
 
 		</div>
 
@@ -689,7 +821,7 @@ GSS）</p>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-02-17 14:17:47
+                    :</strong> 2025-02-17 22:00:06
             </li>
         
         <li>
@@ -715,11 +847,23 @@ GSS）</p>
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/">#树链剖分</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">#组合数学</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
 				<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
 			</li>
 			
 			<li class="tag-item mx-0.5">
 				<a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">#线段树</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/">#平衡树</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -814,8 +958,11 @@ GSS）</p>
 Lv.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss2-sp1557-in-lv.15"><span class="nav-text">GSS2 SP1557 IN
 Lv.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss3-sp1716-in-lv.13"><span class="nav-text">GSS3 SP1716 IN
 Lv.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss4-sp2713-in-lv.14"><span class="nav-text">GSS4 SP2713 IN
-Lv.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss7-sp6779-in-lv.16"><span class="nav-text">GSS7 SP6779 IN
-Lv.16</span></a></li></ol>
+Lv.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss5-sp2916-in-lv.15"><span class="nav-text">GSS5 SP2916 IN
+Lv.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss6-sp4487-in-lv.15"><span class="nav-text">GSS6 SP4487 IN
+Lv.15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss7-sp6779-in-lv.16"><span class="nav-text">GSS7 SP6779 IN
+Lv.16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gss8-sp19543-in-lv.16"><span class="nav-text">GSS8 SP19543 IN
+Lv.16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li></ol>
 
 	</div>
 </div>
@@ -848,7 +995,7 @@ Lv.16</span></a></li></ol>
                     </span>
                     
                         <span>
-                            76.8k words in total
+                            78k words in total
                         </span>
                     
                 </p>
