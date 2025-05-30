@@ -503,7 +503,8 @@
 			<div class="w-full border-border-color rounded-xl rounded-tl-none shadow-redefine-flat overflow-hidden">
 				<!-- Pass the raw date here in a data attribute -->
 				<div class="essay-date px-4 py-1.5 text-sm border-b border-border-color bg-zinc-50 dark:bg-zinc-800 text-third-text-color" data-date="2025-05-30T10:10:00Z">Loading Date...</div>
-				<div id="shuoshuo-content" class="px-4 py-2"><p>才想起来 Mas 14.1 100,7 还没有上 SSS 上次打好几把都不知道哪里漏键了</p>
+				<div id="shuoshuo-content" class="px-4 py-2"><p>才想起来 Mas 14.1 100,7 还没有上 SSS
+上次打好几把都不知道哪里漏键了</p>
 <p>甚至自检手元也没看 qwq</p>
 </div>
 			</div>
@@ -894,6 +895,21 @@
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
