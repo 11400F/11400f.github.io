@@ -6,6 +6,116 @@
     <meta name="keywords" content="Maimai">
     
     <meta name="author" content="11490DX">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set data attribute for CSS variables
+                root.setAttribute("data-theme", theme);
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes once DOM is ready
+            if (document.readyState !== "loading") {
+                document.body.classList.add(theme + "-mode");
+            } else {
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.body.classList.add(theme + "-mode");
+                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+                });
+            }
+        })();
+    </script>
+    
+    <!-- Critical CSS to prevent flash -->
+    <style>
+        :root[data-theme="dark"] {
+            --background-color: #202124;
+            --background-color-transparent: rgba(32, 33, 36, 0.6);
+            --second-background-color: #2d2e32;
+            --third-background-color: #34353a;
+            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #ffffff;
+            --second-text-color: #eeeeee;
+            --third-text-color: #bebec6;
+            --fourth-text-color: #999999;
+            --default-text-color: #bebec6;
+            --invert-text-color: #373D3F;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(255, 255, 255, 0.08);
+            --shadow-color-2: rgba(255, 255, 255, 0.05);
+        }
+        
+        :root[data-theme="light"] {
+            --background-color: #fff;
+            --background-color-transparent: rgba(255, 255, 255, 0.6);
+            --second-background-color: #f8f8f8;
+            --third-background-color: #f2f2f2;
+            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #16171a;
+            --second-text-color: #2f3037;
+            --third-text-color: #5e5e5e;
+            --fourth-text-color: #eeeeee;
+            --default-text-color: #373D3F;
+            --invert-text-color: #bebec6;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(0, 0, 0, 0.08);
+            --shadow-color-2: rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+        
+        /* Apply body classes as soon as DOM is ready */
+        :root[data-theme="dark"] body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+    </style>
+    
     <!-- preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +194,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"www.11490dx.net","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Re: Master Lv.15"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#2ea3ff","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"images/AC-nobg.png","description":"I can't play XL TECHNO -More Dance Remix-"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://s21.ax1x.com/2024/12/23/pAXswtJ.jpg","dark":"https://s21.ax1x.com/2024/12/23/pAXswtJ.jpg"},"title":"Path = D:\\File\\HexoBlogRdf","subtitle":{"text":["欢迎回来！","企鹅演示中……","LF?CRLF?LF?CRLF?","→↓↑→→↓→→↑↑↓↓←→←→","Make some noise, all-in-fight!","子任务依赖情况：Pure","Yooooooooooooooooooo","你看这个巨型みるく，它已经喝了2147483647瓶牛奶了……嗯怎么突然消失了！","assert(\"11490DX AK IOI\" is false)","注意，苹果 16 已经问世。可悲的是……","无法访问此网站 || github.com 的响应时间过长。","[Error] iconv.h: No such file or directory","PANDORA 11490DXXX","十年 OI 一场空，……","繝槭う繝槭う縺ｧ繧峨▲縺上☆縲∬ｵｷ蜍包ｼ?","[Error] no match for ‘operator>>’ (operand types are ‘std::istream’ {aka ‘std::basic_istream<char>’} and ‘char*’) cin>>(s+1);","#define int long long","DABCABCDABCADBAA","11400F 依然存活，Tofso-x 已经消失。那么下一个会是谁呢？","usign namesapce sdt; itn mian(){","Base.Base.64.64.Base.64.64","Re: End Of File","\"嘿 Siri，打开网易云音乐\"","(Not) Sound Only","我去，是吴奇隆！","你看这个巨型みるく，它已经喝了-1瓶牛奶了……？","WA = Wonderful Answer, TLE = Time Limit Enough","XL TECHNOPOLIS -2085-","You have +4000! Wow!","Unrated -> Newbie -> Pupil -> Specialist -> Expert -> Master -> Re: Master","Where is Miruku?","home_banner.subtitle.text = rand()","唉大家都就坏被了","求出答案 mod 998442353 的值","Visual Basic Script = Vivid Bad Squad","922337203685477580……8？","const int N = 1e6; int a[N];","auto it = *new unsigned; mt19937 rnd(it);","U, S, M, POWER!","啊！要给你看什么Tip好呢...(翻","子任务依赖：子任务 2 依赖 1，3 依赖 2，1 依赖 3","Hello (BPM) 2085","> hexo s","少打音游多读书，","读的是舞萌说明书。","c***f**ces people donot have brain that's why they ...","Look at my fly knife skill!  ——I die big brother.","求出答案 mod 1 的值","疲惫不堪的 Track 4，求求你别开大歌了！","@MilkBot /b50","11490DX.speak(rand())","公式化批话：(大家)都会[string]，就我不会([string])，坏了，(又)被(强制)[XX/偏序]了","\"引导式访问开始\"","喵喵喵喵~（摇摇尾巴）","exit(1);","#include ext/pb_ds/as……什么来着？","print D(D(D(D(D(99)))));","---TRACK   LOST---","Come around let's hang out, start the tape and break it down!","Alea jacta est!","localhost 拒绝了我们的连接请求。","少打音游多读书","WA -我ら机友と共に爆む零なり-","#include bits[甩头]dc++.h","由于技(ben)术(ren)原(tai)因(cai)，Tips 里的所有小于号和大于号状物均有可能不会正常显示","#define luogu.com.cn/discuss/x lglg.top/x","18,446,744,073,709,551,——617！","我打的最烂的一次 Div.3，是我打的最好的一次 Div.3。 ——Tofso-x","天苍苍，野茫茫，??ZX出nn","[此条Tip已被隐藏]","看，那里有一只 みるく","cd D:\\HexoBlogRdf\\source\\_posts"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":95,"backing_speed":75,"starting_delay":500,"backing_delay":2000,"loop":true,"smart_backspace":true},"text_color":{"light":"#2ea3ff","dark":"#2ea3ff"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"Atcoder(Tofso-x)":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","lrcType":3,"audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Blue":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"This Blog":"/about","M4T21X":"/m4t21x"}},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"I LOVE GEKI-CHU-MAI & MIRUKU","show_on_mobile":true,"links":{"Blue":{"path":"/archives","icon":"fa-regular fa-archive"},"Gallery":{"path":"/gallery","icon":"fa-solid fa-image"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Essays":{"path":"/essays","icon":"fa-regular fa-comment"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/02/08 10:51:40"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Re: Master Lv.15"]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#2ea3ff","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"images/AC-nobg.png","description":"I can't play XL TECHNO -More Dance Remix-"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://s21.ax1x.com/2024/12/23/pAXswtJ.jpg","dark":"https://s21.ax1x.com/2024/12/23/pAXswtJ.jpg"},"title":"Path = D:\\File\\HexoBlogRdf","subtitle":{"text":["欢迎回来！","企鹅演示中……","LF?CRLF?LF?CRLF?","→↓↑→→↓→→↑↑↓↓←→←→","Make some noise, all-in-fight!","子任务依赖情况：Pure","Yooooooooooooooooooo","你看这个巨型みるく，它已经喝了2147483647瓶牛奶了……嗯怎么突然消失了！","assert(\"11490DX AK IOI\" is false)","注意，苹果 16 已经问世。可悲的是……","无法访问此网站 || github.com 的响应时间过长。","[Error] iconv.h: No such file or directory","PANDORA 11490DXXX","十年 OI 一场空，……","繝槭う繝槭う縺ｧ繧峨▲縺上☆縲∬ｵｷ蜍包ｼ?","[Error] no match for ‘operator>>’ (operand types are ‘std::istream’ {aka ‘std::basic_istream<char>’} and ‘char*’) cin>>(s+1);","#define int long long","DABCABCDABCADBAA","11400F 依然存活，Tofso-x 已经消失。那么下一个会是谁呢？","usign namesapce sdt; itn mian(){","Base.Base.64.64.Base.64.64","Re: End Of File","\"嘿 Siri，打开网易云音乐\"","(Not) Sound Only","我去，是吴奇隆！","你看这个巨型みるく，它已经喝了-1瓶牛奶了……？","WA = Wonderful Answer, TLE = Time Limit Enough","XL TECHNOPOLIS -2085-","You have +4000! Wow!","Unrated -> Newbie -> Pupil -> Specialist -> Expert -> Master -> Re: Master","Where is Miruku?","home_banner.subtitle.text = rand()","唉大家都就坏被了","求出答案 mod 998442353 的值","Visual Basic Script = Vivid Bad Squad","922337203685477580……8？","const int N = 1e6; int a[N];","auto it = *new unsigned; mt19937 rnd(it);","U, S, M, POWER!","啊！要给你看什么Tip好呢...(翻","子任务依赖：子任务 2 依赖 1，3 依赖 2，1 依赖 3","Hello (BPM) 2085","> hexo s","少打音游多读书，","读的是舞萌说明书。","c***f**ces people donot have brain that's why they ...","Look at my fly knife skill!  ——I die big brother.","求出答案 mod 1 的值","疲惫不堪的 Track 4，求求你别开大歌了！","@MilkBot /b50","11490DX.speak(rand())","公式化批话：(大家)都会[string]，就我不会([string])，坏了，(又)被(强制)[XX/偏序]了","\"引导式访问开始\"","喵喵喵喵~（摇摇尾巴）","exit(1);","#include ext/pb_ds/as……什么来着？","print D(D(D(D(D(99)))));","---TRACK   LOST---","Come around let's hang out, start the tape and break it down!","Alea jacta est!","localhost 拒绝了我们的连接请求。","少打音游多读书","WA -我ら机友と共に爆む零なり-","#include bits[甩头]dc++.h","由于技(ben)术(ren)原(tai)因(cai)，Tips 里的所有小于号和大于号状物均有可能不会正常显示","#define luogu.com.cn/discuss/x lglg.top/x","18,446,744,073,709,551,——617！","我打的最烂的一次 Div.3，是我打的最好的一次 Div.3。 ——Tofso-x","天苍苍，野茫茫，??ZX出nn","[此条Tip已被隐藏]","看，那里有一只 みるく","cd D:\\HexoBlogRdf\\source\\_posts"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":95,"backing_speed":75,"starting_delay":500,"backing_delay":2000,"loop":true,"smart_backspace":true},"text_color":{"light":"#2ea3ff","dark":"#2ea3ff"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"Atcoder(Tofso-x)":"https://atcoder.jp/users/tofsox","Codeforces":"https://codeforces.com/profile/11490DX","Github":"https://github.com/11400F","Luogu":"https://www.luogu.com.cn/user/688271"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","lrcType":3,"audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Blue":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"This Blog":"/about","M4T21X":"/m4t21x"}},"Bookmarks":{"icon":"fa-solid fa-bookmark","path":"/bookmarks"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"I LOVE GEKI-CHU-MAI & MIRUKU","show_on_mobile":true,"links":{"Blue":{"path":"/archives","icon":"fa-regular fa-archive"},"Gallery":{"path":"/gallery","icon":"fa-solid fa-image"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"},"Essays":{"path":"/essays","icon":"fa-regular fa-comment"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2025/02/08 10:51:40"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":true};
   </script>
@@ -133,7 +243,7 @@
         <div class="left">
             
                 <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
-                    <img src="/images/milk-nobg.png" class="w-full h-full rounded-sm">
+                    <img src="/images/milk-nobg.png" class="w-full h-full rounded-xs">
                 </a>
             
             <a class="logo-title" href="/">
@@ -542,88 +652,132 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYAtQe.png"
-                      alt=""
+                      
                 ></p>
 <p>这是 QT 的主页面。</p>
-<h2 id="创建-Qt-Widgets-Application"><a href="#创建-Qt-Widgets-Application" class="headerlink" title="创建 Qt Widgets Application"></a>创建 Qt Widgets Application</h2><p>如果你想创建一个项目，那么先点【创建项目】，然后跟着它的步骤走。注意到当前你想创建的是一个窗口 APP，所以选择 Application (Qt) → Qt Widgets Application。</p>
+<h2 id="创建-qt-widgets-application">创建 Qt Widgets Application</h2>
+<p>如果你想创建一个项目，那么先点【创建项目】，然后跟着它的步骤走。注意到当前你想创建的是一个窗口
+APP，所以选择 Application (Qt) → Qt Widgets Application。</p>
 <p>之后就分成七步：</p>
-<ol>
+<ol type="1">
 <li>Location：确定你的项目的名称和路径。可以设置默认项目路径。</li>
-<li>构建系统：用的什么东西来构建系统。如 qmake、CMake、Qbs。这里我用的是 qmake。</li>
-<li>Details：设置你的类的种类和类名称。类种类分为 QMainWindow、QWidget、QDialog。QMainWindow 和 QWidget 的区别就是前者是那种类似于大型窗口，拥有「文件(F)、编辑(E)」等的菜单，而 QWidget 就是类似于 Win+R 呼唤出来的运行的小窗口一样。QDialog 则是对话框，很少用。</li>
+<li>构建系统：用的什么东西来构建系统。如 qmake、CMake、Qbs。这里我用的是
+qmake。</li>
+<li>Details：设置你的类的种类和类名称。类种类分为
+QMainWindow、QWidget、QDialog。QMainWindow 和 QWidget
+的区别就是前者是那种类似于大型窗口，拥有「文件(F)、编辑(E)」等的菜单，而
+QWidget 就是类似于 Win+R 呼唤出来的运行的小窗口一样。QDialog
+则是对话框，很少用。</li>
 <li>Translation：目前没有做外语翻译的打算。</li>
-<li>构建套件(Kit)：构建套件。我使用的是 MinGW 64-bit。毕竟对我来说比较友好嘛。</li>
+<li>构建套件(Kit)：构建套件。我使用的是 MinGW
+64-bit。毕竟对我来说比较友好嘛。</li>
 <li>汇总：这里我啥都没选。最下面可以看见你这个项目要添加的文件。</li>
 </ol>
-<h2 id="项目编辑界面"><a href="#项目编辑界面" class="headerlink" title="项目编辑界面"></a>项目编辑界面</h2><p><img  
+<h2 id="项目编辑界面">项目编辑界面</h2>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYA5F0.png"
-                      alt=""
+                      
                 ></p>
-<p>对于一个新创建的一个项目，你拥有 <code>&#123;name&#125;.pro</code> 文件，即你这个项目的工程文件。以及你的 <code>main.cpp</code> 和 <code>widget.cpp</code>（这里使用 QWidget），以及一个界面文件 <code>widget.ui</code>。整个窗口的 UI 设计就在 widget.ui 里面改。</p>
-<p>当然，人家是 Qt，不是一个死记事本。点进这个 <code>widget.ui</code> 可以可视化编辑你的窗口 UI。</p>
+<p>对于一个新创建的一个项目，你拥有 <code>&#123;name&#125;.pro</code>
+文件，即你这个项目的工程文件。以及你的 <code>main.cpp</code> 和
+<code>widget.cpp</code>（这里使用 QWidget），以及一个界面文件
+<code>widget.ui</code>。整个窗口的 UI 设计就在 widget.ui 里面改。</p>
+<p>当然，人家是 Qt，不是一个死记事本。点进这个 <code>widget.ui</code>
+可以可视化编辑你的窗口 UI。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYAxFx.png"
-                      alt=""
+                      
                 ></p>
-<p>我钦定这些，以及 Vertical Layout 和 Horizontal Layout 的是入门所必会的对象。你可以在右下角来看某一个对象的所有属性，以便后面执行程序的时候访问。</p>
+<p>我钦定这些，以及 Vertical Layout 和 Horizontal Layout
+的是入门所必会的对象。你可以在右下角来看某一个对象的所有属性，以便后面执行程序的时候访问。</p>
 <p>假如说某个对象发出指令，你欲接收，可以右键发指令的对象然后点击【转到槽】来看具体发出的是什么指令。</p>
-<h2 id="非常重要的一点"><a href="#非常重要的一点" class="headerlink" title="非常重要的一点"></a>非常重要的一点</h2><p>如果你不知道某一个类，或者是某一个指令等等该怎么用，<strong>一定要点左侧菜单栏的【帮助】去搜！！！帮助里面的文档是最全的！！！</strong></p>
-<h2 id="示例：超级弱化版执行-sys32-目录下子任务"><a href="#示例：超级弱化版执行-sys32-目录下子任务" class="headerlink" title="示例：超级弱化版执行 sys32 目录下子任务"></a>示例：超级弱化版执行 sys32 目录下子任务</h2><p><img  
+<h2 id="非常重要的一点">非常重要的一点</h2>
+<p>如果你不知道某一个类，或者是某一个指令等等该怎么用，<strong>一定要点左侧菜单栏的【帮助】去搜！！！帮助里面的文档是最全的！！！</strong></p>
+<h2 id="示例超级弱化版执行-sys32-目录下子任务">示例：超级弱化版执行
+sys32 目录下子任务</h2>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://imgbed.yiyunt.cn/img/3472"
-                      alt=""
+                      
                 ></p>
 <p>首先设计 UI。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYE30s.png"
-                      alt=""
+                      
                 ></p>
-<p>点一下 PressButton 和 Label 的文字部分可以修改文字。更换字体则是在右下角的属性里的 QWidget 里的 Font 处修改。</p>
-<p>为了排版美观，我将最下面的三个 Button 给整合起来做了一个 Horizontal Layout。不过目前不知道 Horizontal Spacer 干什么用的。</p>
+<p>点一下 PressButton 和 Label
+的文字部分可以修改文字。更换字体则是在右下角的属性里的 QWidget 里的 Font
+处修改。</p>
+<p>为了排版美观，我将最下面的三个 Button 给整合起来做了一个 Horizontal
+Layout。不过目前不知道 Horizontal Spacer 干什么用的。</p>
 <p>注意如果你要调用某一个对象请给这个对象赋一个好一点的名字，这样写代码的时候你就不容易死。</p>
-<h3 id="【确定】部分"><a href="#【确定】部分" class="headerlink" title="【确定】部分"></a>【确定】部分</h3><p>你要实现的功能是点击【确定】后系统就会自动给你打开你输入框内的东西。那么首先需要了解信号和槽是个什么东西。</p>
-<p>信号的话就是你对这个 UI 做了些什么操作，而槽函数就是这个程序，为了响应你的某些信号，而调用的函数。就比如说，你点了个按钮，就是发出信号。你欲点击按钮后弹出一个框框，那么你就先写一个弹出框框的函数，作为槽函数，然后再将这两个东西连接在一起，就可以正常运行了。</p>
+<h3 id="确定部分">【确定】部分</h3>
+<p>你要实现的功能是点击【确定】后系统就会自动给你打开你输入框内的东西。那么首先需要了解信号和槽是个什么东西。</p>
+<p>信号的话就是你对这个 UI
+做了些什么操作，而槽函数就是这个程序，为了响应你的某些信号，而调用的函数。就比如说，你点了个按钮，就是发出信号。你欲点击按钮后弹出一个框框，那么你就先写一个弹出框框的函数，作为槽函数，然后再将这两个东西连接在一起，就可以正常运行了。</p>
 <p>那么如何写一个关于按下【确定】按钮后关联的槽函数呢？首先右击【确定】，然后点击转到槽。</p>
-<p>这时你可以看到一车的函数。因为你欲的是单击后反应，所以选择 <code>clicked()</code> 后点击确定。这时，你回去查看源代码可以发现，<code>widget.h</code> 里面多了一个 <code>on_commitButton_clicked</code> 的函数的声明，<code>widget.cpp</code> 里面多了一个该函数的主体。</p>
-<p>然后先编写 <code>void Widget::on_commitButton_clicked()</code> 函数主体：</p>
+<p>这时你可以看到一车的函数。因为你欲的是单击后反应，所以选择
+<code>clicked()</code>
+后点击确定。这时，你回去查看源代码可以发现，<code>widget.h</code>
+里面多了一个 <code>on_commitButton_clicked</code>
+的函数的声明，<code>widget.cpp</code> 里面多了一个该函数的主体。</p>
+<p>然后先编写 <code>void Widget::on_commitButton_clicked()</code>
+函数主体：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Widget::on_commitButton_clicked</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 获取 Lineedit 数据</span></span><br><span class="line">    QString program = ui -&gt; cmdLineEdit -&gt; <span class="built_in">text</span>();</span><br><span class="line">    <span class="comment">// 创建一个 process 对象</span></span><br><span class="line">    QProcess *myProcess = <span class="keyword">new</span> <span class="built_in">QProcess</span>(<span class="keyword">this</span>);</span><br><span class="line">    myProcess-&gt;<span class="built_in">start</span>(program);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>槽函数写好了，于是你编译运行一下，就能实现效果了。</p>
-<p>但是你现在想实现回车就可以跳出窗口怎么做？目前已知在 LineEdit 内回车发出的信号是 <code>SIGNAL(returnPressed())</code>。</p>
-<p>你欲连接这个新信号和之前写的槽函数。此时你就可以在最上面 <code>Widget::Widget(QWidget *parent)</code> 函数里面创建连接了。</p>
+<p>但是你现在想实现回车就可以跳出窗口怎么做？目前已知在 LineEdit
+内回车发出的信号是 <code>SIGNAL(returnPressed())</code>。</p>
+<p>你欲连接这个新信号和之前写的槽函数。此时你就可以在最上面
+<code>Widget::Widget(QWidget *parent)</code> 函数里面创建连接了。</p>
 <p>连接的基本格式是这样的，让我们看看声明：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(<span class="type">const</span> QObject *sender, <span class="type">const</span> QMetaMethod &amp;signal, <span class="type">const</span> QObject *receiver, <span class="type">const</span> QMetaMethod &amp;method, Qt::ConnectionType type = Qt::Auto Connection) -&gt; QMetaObject::Connection</span><br></pre></td></tr></table></figure></div>
 <p>从简而说，就是【谁发出信号？发出什么信号？谁处理？如何处理？】四大问题。第五个参数可以不填。</p>
 <p>那么你就可以在 <code>Widget</code> 函数内这样做：</p>
 <div class="code-container" data-rel="Diff"><figure class="iseeu highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">    , ui(new Ui::Widget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line"><span class="addition">+   connect(ui-&gt;cmdLineEdit, SIGNAL(returnPressed()), this, SLOT(on_commitButton_clicked()));;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>写好了之后，再编译运行一下，就能实现回车后跳出的效果了！</p>
-<h3 id="【取消】部分"><a href="#【取消】部分" class="headerlink" title="【取消】部分"></a>【取消】部分</h3><p>欲实现的功能是点击【取消】后该窗口关闭。这里再讲解另一种方法：</p>
-<p>先在 <code>widget.h</code> 的 <code>private slots:</code> 里面加一个 <code>void on_cancelButton_clicked()</code> 的声明。</p>
+<h3 id="取消部分">【取消】部分</h3>
+<p>欲实现的功能是点击【取消】后该窗口关闭。这里再讲解另一种方法：</p>
+<p>先在 <code>widget.h</code> 的 <code>private slots:</code> 里面加一个
+<code>void on_cancelButton_clicked()</code> 的声明。</p>
 <p>然后去 <code>Widget.cpp</code> 里面编写该函数。</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Widget::on_cancelButton_clicked</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>写完了之后，编译运行后就可以过了。不过如果你这个函数名字改了怎么办？这个时候可以使用地址连接法。即为：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(ui-&gt;cancelButton, &amp;QPushButton::clicked, <span class="keyword">this</span>, &amp;Widget::on_cancelButton_clicked);</span><br></pre></td></tr></table></figure></div>
 <p>亦可过。</p>
-<h3 id="【我要打舞萌】部分"><a href="#【我要打舞萌】部分" class="headerlink" title="【我要打舞萌】部分"></a>【我要打舞萌】部分</h3><p>欲实现按下【我要打舞萌】弹出一个自定义标题、内容、按钮说明的信息框，实现这种函数内写的东西比较少的就没必要再写一个函数了。可以使用 lambda 表达式来做。</p>
-<p>回忆一下，写排序的时候，你的 lambda 是怎么写的？<code>[&amp;](auto x, auto y)&#123;...&#125;</code>。<code>[]</code> 是捕获列表，<code>()</code> 是参数列表，<code>&#123;&#125;</code> 内就是函数主体了。</p>
-<p>那么这里也很相似，捕获列表就变成了第三个参数，表达式的函数体就变成了第四个参数。稍微修改一下 lambda 表达式：</p>
+<h3 id="我要打舞萌部分">【我要打舞萌】部分</h3>
+<p>欲实现按下【我要打舞萌】弹出一个自定义标题、内容、按钮说明的信息框，实现这种函数内写的东西比较少的就没必要再写一个函数了。可以使用
+lambda 表达式来做。</p>
+<p>回忆一下，写排序的时候，你的 lambda
+是怎么写的？<code>[&amp;](auto x, auto y)&#123;...&#125;</code>。<code>[]</code>
+是捕获列表，<code>()</code> 是参数列表，<code>&#123;&#125;</code>
+内就是函数主体了。</p>
+<p>那么这里也很相似，捕获列表就变成了第三个参数，表达式的函数体就变成了第四个参数。稍微修改一下
+lambda 表达式：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(ui-&gt;browseButton, &amp;QPushButton::clicked, [<span class="keyword">this</span>]()&#123;</span><br><span class="line">    QMessageBox::<span class="built_in">information</span>(<span class="keyword">this</span>, <span class="string">&quot;舞萌 DX 发来的公告&quot;</span>, <span class="string">&quot;赶快给我去打中二节奏&quot;</span>, <span class="string">&quot;神人舞萌痴&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
 <p>编译运行，可过之。</p>
-<hr>
-<p>最终，你得到了一个神人程序！同时，你也学会了 4 种连接信号、槽的方式：</p>
-<ol>
-<li>在 <code>widget.h</code> 中声明规范名字的函数（可以在 UI 界面自动声明），然后在 <code>widget.cpp</code> 中编写该函数。</li>
-<li>使用 <code>connect(ui-&gt;x, SIGNAL(signal()), receiver, SLOT(function()))</code> 实现。</li>
-<li>使用 <code>connect(ui-&gt;x, &amp;ClassName::signal, receiver, &amp;ClassName::slot)</code> 实现。</li>
-<li>使用 <code>lambda</code> 表达式替换第三、四个参数，即 <code>receiver</code> 和 <code>method</code> 参数。</li>
+<hr />
+<p>最终，你得到了一个神人程序！同时，你也学会了 4
+种连接信号、槽的方式：</p>
+<ol type="1">
+<li>在 <code>widget.h</code> 中声明规范名字的函数（可以在 UI
+界面自动声明），然后在 <code>widget.cpp</code> 中编写该函数。</li>
+<li>使用
+<code>connect(ui-&gt;x, SIGNAL(signal()), receiver, SLOT(function()))</code>
+实现。</li>
+<li>使用
+<code>connect(ui-&gt;x, &amp;ClassName::signal, receiver, &amp;ClassName::slot)</code>
+实现。</li>
+<li>使用 <code>lambda</code> 表达式替换第三、四个参数，即
+<code>receiver</code> 和 <code>method</code> 参数。</li>
 </ol>
-<hr>
+<hr />
 <p>今日源码：<a href="/resources/Chunithm.zip">点击此处</a></p>
 
 		</div>
@@ -686,7 +840,7 @@
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">QT 实操 - 疯狂的 ﾕｳｶ</span>
+						<span class="post-nav-title-item truncate max-w-48">QT 实操 - 疯狂的 ﾕｳｶ</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -696,7 +850,7 @@
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
 				<a class="next" rel="next" href="/2025/07/21/20250721-sum/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">R7-07-21 题目总览</span>
+						<span class="post-nav-title-item truncate max-w-48">R7-07-21 题目总览</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -772,7 +926,8 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">QT 学习 - R70727</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Qt-Widgets-Application"><span class="nav-text">创建 Qt Widgets Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2"><span class="nav-text">项目编辑界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%80%E7%82%B9"><span class="nav-text">非常重要的一点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A%E8%B6%85%E7%BA%A7%E5%BC%B1%E5%8C%96%E7%89%88%E6%89%A7%E8%A1%8C-sys32-%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%AD%90%E4%BB%BB%E5%8A%A1"><span class="nav-text">示例：超级弱化版执行 sys32 目录下子任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90%E7%A1%AE%E5%AE%9A%E3%80%91%E9%83%A8%E5%88%86"><span class="nav-text">【确定】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90%E5%8F%96%E6%B6%88%E3%80%91%E9%83%A8%E5%88%86"><span class="nav-text">【取消】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90%E6%88%91%E8%A6%81%E6%89%93%E8%88%9E%E8%90%8C%E3%80%91%E9%83%A8%E5%88%86"><span class="nav-text">【我要打舞萌】部分</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-qt-widgets-application"><span class="nav-text">创建 Qt Widgets Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2"><span class="nav-text">项目编辑界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%80%E7%82%B9"><span class="nav-text">非常重要的一点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%B6%85%E7%BA%A7%E5%BC%B1%E5%8C%96%E7%89%88%E6%89%A7%E8%A1%8C-sys32-%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%AD%90%E4%BB%BB%E5%8A%A1"><span class="nav-text">示例：超级弱化版执行
+sys32 目录下子任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E9%83%A8%E5%88%86"><span class="nav-text">【确定】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E9%83%A8%E5%88%86"><span class="nav-text">【取消】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E8%A6%81%E6%89%93%E8%88%9E%E8%90%8C%E9%83%A8%E5%88%86"><span class="nav-text">【我要打舞萌】部分</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -805,7 +960,7 @@
                     </span>
                     
                         <span>
-                            179.2k words in total
+                            183k words in total
                         </span>
                     
                 </p>
@@ -830,7 +985,7 @@
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
-            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.5</a></span>
         </div>
         
         
@@ -911,7 +1066,7 @@
 
 	<ul class="visible-tools-list">
 		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
-			<i class="fa-regular fa-cog fa-spin"></i>
+			<i class="fa-regular fa-cog "></i>
 		</li>
 		
 		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
