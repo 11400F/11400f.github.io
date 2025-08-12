@@ -652,132 +652,88 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYAtQe.png"
-                      
+                      alt=""
                 ></p>
 <p>这是 QT 的主页面。</p>
-<h2 id="创建-qt-widgets-application">创建 Qt Widgets Application</h2>
-<p>如果你想创建一个项目，那么先点【创建项目】，然后跟着它的步骤走。注意到当前你想创建的是一个窗口
-APP，所以选择 Application (Qt) → Qt Widgets Application。</p>
+<h2 id="创建-Qt-Widgets-Application"><a href="#创建-Qt-Widgets-Application" class="headerlink" title="创建 Qt Widgets Application"></a>创建 Qt Widgets Application</h2><p>如果你想创建一个项目，那么先点【创建项目】，然后跟着它的步骤走。注意到当前你想创建的是一个窗口 APP，所以选择 Application (Qt) → Qt Widgets Application。</p>
 <p>之后就分成七步：</p>
-<ol type="1">
+<ol>
 <li>Location：确定你的项目的名称和路径。可以设置默认项目路径。</li>
-<li>构建系统：用的什么东西来构建系统。如 qmake、CMake、Qbs。这里我用的是
-qmake。</li>
-<li>Details：设置你的类的种类和类名称。类种类分为
-QMainWindow、QWidget、QDialog。QMainWindow 和 QWidget
-的区别就是前者是那种类似于大型窗口，拥有「文件(F)、编辑(E)」等的菜单，而
-QWidget 就是类似于 Win+R 呼唤出来的运行的小窗口一样。QDialog
-则是对话框，很少用。</li>
+<li>构建系统：用的什么东西来构建系统。如 qmake、CMake、Qbs。这里我用的是 qmake。</li>
+<li>Details：设置你的类的种类和类名称。类种类分为 QMainWindow、QWidget、QDialog。QMainWindow 和 QWidget 的区别就是前者是那种类似于大型窗口，拥有「文件(F)、编辑(E)」等的菜单，而 QWidget 就是类似于 Win+R 呼唤出来的运行的小窗口一样。QDialog 则是对话框，很少用。</li>
 <li>Translation：目前没有做外语翻译的打算。</li>
-<li>构建套件(Kit)：构建套件。我使用的是 MinGW
-64-bit。毕竟对我来说比较友好嘛。</li>
+<li>构建套件(Kit)：构建套件。我使用的是 MinGW 64-bit。毕竟对我来说比较友好嘛。</li>
 <li>汇总：这里我啥都没选。最下面可以看见你这个项目要添加的文件。</li>
 </ol>
-<h2 id="项目编辑界面">项目编辑界面</h2>
-<p><img  
+<h2 id="项目编辑界面"><a href="#项目编辑界面" class="headerlink" title="项目编辑界面"></a>项目编辑界面</h2><p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYA5F0.png"
-                      
+                      alt=""
                 ></p>
-<p>对于一个新创建的一个项目，你拥有 <code>&#123;name&#125;.pro</code>
-文件，即你这个项目的工程文件。以及你的 <code>main.cpp</code> 和
-<code>widget.cpp</code>（这里使用 QWidget），以及一个界面文件
-<code>widget.ui</code>。整个窗口的 UI 设计就在 widget.ui 里面改。</p>
-<p>当然，人家是 Qt，不是一个死记事本。点进这个 <code>widget.ui</code>
-可以可视化编辑你的窗口 UI。</p>
+<p>对于一个新创建的一个项目，你拥有 <code>&#123;name&#125;.pro</code> 文件，即你这个项目的工程文件。以及你的 <code>main.cpp</code> 和 <code>widget.cpp</code>（这里使用 QWidget），以及一个界面文件 <code>widget.ui</code>。整个窗口的 UI 设计就在 widget.ui 里面改。</p>
+<p>当然，人家是 Qt，不是一个死记事本。点进这个 <code>widget.ui</code> 可以可视化编辑你的窗口 UI。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYAxFx.png"
-                      
+                      alt=""
                 ></p>
-<p>我钦定这些，以及 Vertical Layout 和 Horizontal Layout
-的是入门所必会的对象。你可以在右下角来看某一个对象的所有属性，以便后面执行程序的时候访问。</p>
+<p>我钦定这些，以及 Vertical Layout 和 Horizontal Layout 的是入门所必会的对象。你可以在右下角来看某一个对象的所有属性，以便后面执行程序的时候访问。</p>
 <p>假如说某个对象发出指令，你欲接收，可以右键发指令的对象然后点击【转到槽】来看具体发出的是什么指令。</p>
-<h2 id="非常重要的一点">非常重要的一点</h2>
-<p>如果你不知道某一个类，或者是某一个指令等等该怎么用，<strong>一定要点左侧菜单栏的【帮助】去搜！！！帮助里面的文档是最全的！！！</strong></p>
-<h2 id="示例超级弱化版执行-sys32-目录下子任务">示例：超级弱化版执行
-sys32 目录下子任务</h2>
-<p><img  
+<h2 id="非常重要的一点"><a href="#非常重要的一点" class="headerlink" title="非常重要的一点"></a>非常重要的一点</h2><p>如果你不知道某一个类，或者是某一个指令等等该怎么用，<strong>一定要点左侧菜单栏的【帮助】去搜！！！帮助里面的文档是最全的！！！</strong></p>
+<h2 id="示例：超级弱化版执行-sys32-目录下子任务"><a href="#示例：超级弱化版执行-sys32-目录下子任务" class="headerlink" title="示例：超级弱化版执行 sys32 目录下子任务"></a>示例：超级弱化版执行 sys32 目录下子任务</h2><p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://imgbed.yiyunt.cn/img/3472"
-                      
+                      alt=""
                 ></p>
 <p>首先设计 UI。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://s21.ax1x.com/2025/07/27/pVYE30s.png"
-                      
+                      alt=""
                 ></p>
-<p>点一下 PressButton 和 Label
-的文字部分可以修改文字。更换字体则是在右下角的属性里的 QWidget 里的 Font
-处修改。</p>
-<p>为了排版美观，我将最下面的三个 Button 给整合起来做了一个 Horizontal
-Layout。不过目前不知道 Horizontal Spacer 干什么用的。</p>
+<p>点一下 PressButton 和 Label 的文字部分可以修改文字。更换字体则是在右下角的属性里的 QWidget 里的 Font 处修改。</p>
+<p>为了排版美观，我将最下面的三个 Button 给整合起来做了一个 Horizontal Layout。不过目前不知道 Horizontal Spacer 干什么用的。</p>
 <p>注意如果你要调用某一个对象请给这个对象赋一个好一点的名字，这样写代码的时候你就不容易死。</p>
-<h3 id="确定部分">【确定】部分</h3>
-<p>你要实现的功能是点击【确定】后系统就会自动给你打开你输入框内的东西。那么首先需要了解信号和槽是个什么东西。</p>
-<p>信号的话就是你对这个 UI
-做了些什么操作，而槽函数就是这个程序，为了响应你的某些信号，而调用的函数。就比如说，你点了个按钮，就是发出信号。你欲点击按钮后弹出一个框框，那么你就先写一个弹出框框的函数，作为槽函数，然后再将这两个东西连接在一起，就可以正常运行了。</p>
+<h3 id="【确定】部分"><a href="#【确定】部分" class="headerlink" title="【确定】部分"></a>【确定】部分</h3><p>你要实现的功能是点击【确定】后系统就会自动给你打开你输入框内的东西。那么首先需要了解信号和槽是个什么东西。</p>
+<p>信号的话就是你对这个 UI 做了些什么操作，而槽函数就是这个程序，为了响应你的某些信号，而调用的函数。就比如说，你点了个按钮，就是发出信号。你欲点击按钮后弹出一个框框，那么你就先写一个弹出框框的函数，作为槽函数，然后再将这两个东西连接在一起，就可以正常运行了。</p>
 <p>那么如何写一个关于按下【确定】按钮后关联的槽函数呢？首先右击【确定】，然后点击转到槽。</p>
-<p>这时你可以看到一车的函数。因为你欲的是单击后反应，所以选择
-<code>clicked()</code>
-后点击确定。这时，你回去查看源代码可以发现，<code>widget.h</code>
-里面多了一个 <code>on_commitButton_clicked</code>
-的函数的声明，<code>widget.cpp</code> 里面多了一个该函数的主体。</p>
-<p>然后先编写 <code>void Widget::on_commitButton_clicked()</code>
-函数主体：</p>
+<p>这时你可以看到一车的函数。因为你欲的是单击后反应，所以选择 <code>clicked()</code> 后点击确定。这时，你回去查看源代码可以发现，<code>widget.h</code> 里面多了一个 <code>on_commitButton_clicked</code> 的函数的声明，<code>widget.cpp</code> 里面多了一个该函数的主体。</p>
+<p>然后先编写 <code>void Widget::on_commitButton_clicked()</code> 函数主体：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Widget::on_commitButton_clicked</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 获取 Lineedit 数据</span></span><br><span class="line">    QString program = ui -&gt; cmdLineEdit -&gt; <span class="built_in">text</span>();</span><br><span class="line">    <span class="comment">// 创建一个 process 对象</span></span><br><span class="line">    QProcess *myProcess = <span class="keyword">new</span> <span class="built_in">QProcess</span>(<span class="keyword">this</span>);</span><br><span class="line">    myProcess-&gt;<span class="built_in">start</span>(program);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>槽函数写好了，于是你编译运行一下，就能实现效果了。</p>
-<p>但是你现在想实现回车就可以跳出窗口怎么做？目前已知在 LineEdit
-内回车发出的信号是 <code>SIGNAL(returnPressed())</code>。</p>
-<p>你欲连接这个新信号和之前写的槽函数。此时你就可以在最上面
-<code>Widget::Widget(QWidget *parent)</code> 函数里面创建连接了。</p>
+<p>但是你现在想实现回车就可以跳出窗口怎么做？目前已知在 LineEdit 内回车发出的信号是 <code>SIGNAL(returnPressed())</code>。</p>
+<p>你欲连接这个新信号和之前写的槽函数。此时你就可以在最上面 <code>Widget::Widget(QWidget *parent)</code> 函数里面创建连接了。</p>
 <p>连接的基本格式是这样的，让我们看看声明：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(<span class="type">const</span> QObject *sender, <span class="type">const</span> QMetaMethod &amp;signal, <span class="type">const</span> QObject *receiver, <span class="type">const</span> QMetaMethod &amp;method, Qt::ConnectionType type = Qt::Auto Connection) -&gt; QMetaObject::Connection</span><br></pre></td></tr></table></figure></div>
 <p>从简而说，就是【谁发出信号？发出什么信号？谁处理？如何处理？】四大问题。第五个参数可以不填。</p>
 <p>那么你就可以在 <code>Widget</code> 函数内这样做：</p>
 <div class="code-container" data-rel="Diff"><figure class="iseeu highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Widget::Widget(QWidget *parent)</span><br><span class="line">    : QWidget(parent)</span><br><span class="line">    , ui(new Ui::Widget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    </span><br><span class="line"><span class="addition">+   connect(ui-&gt;cmdLineEdit, SIGNAL(returnPressed()), this, SLOT(on_commitButton_clicked()));;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>写好了之后，再编译运行一下，就能实现回车后跳出的效果了！</p>
-<h3 id="取消部分">【取消】部分</h3>
-<p>欲实现的功能是点击【取消】后该窗口关闭。这里再讲解另一种方法：</p>
-<p>先在 <code>widget.h</code> 的 <code>private slots:</code> 里面加一个
-<code>void on_cancelButton_clicked()</code> 的声明。</p>
+<h3 id="【取消】部分"><a href="#【取消】部分" class="headerlink" title="【取消】部分"></a>【取消】部分</h3><p>欲实现的功能是点击【取消】后该窗口关闭。这里再讲解另一种方法：</p>
+<p>先在 <code>widget.h</code> 的 <code>private slots:</code> 里面加一个 <code>void on_cancelButton_clicked()</code> 的声明。</p>
 <p>然后去 <code>Widget.cpp</code> 里面编写该函数。</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Widget::on_cancelButton_clicked</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>写完了之后，编译运行后就可以过了。不过如果你这个函数名字改了怎么办？这个时候可以使用地址连接法。即为：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(ui-&gt;cancelButton, &amp;QPushButton::clicked, <span class="keyword">this</span>, &amp;Widget::on_cancelButton_clicked);</span><br></pre></td></tr></table></figure></div>
 <p>亦可过。</p>
-<h3 id="我要打舞萌部分">【我要打舞萌】部分</h3>
-<p>欲实现按下【我要打舞萌】弹出一个自定义标题、内容、按钮说明的信息框，实现这种函数内写的东西比较少的就没必要再写一个函数了。可以使用
-lambda 表达式来做。</p>
-<p>回忆一下，写排序的时候，你的 lambda
-是怎么写的？<code>[&amp;](auto x, auto y)&#123;...&#125;</code>。<code>[]</code>
-是捕获列表，<code>()</code> 是参数列表，<code>&#123;&#125;</code>
-内就是函数主体了。</p>
-<p>那么这里也很相似，捕获列表就变成了第三个参数，表达式的函数体就变成了第四个参数。稍微修改一下
-lambda 表达式：</p>
+<h3 id="【我要打舞萌】部分"><a href="#【我要打舞萌】部分" class="headerlink" title="【我要打舞萌】部分"></a>【我要打舞萌】部分</h3><p>欲实现按下【我要打舞萌】弹出一个自定义标题、内容、按钮说明的信息框，实现这种函数内写的东西比较少的就没必要再写一个函数了。可以使用 lambda 表达式来做。</p>
+<p>回忆一下，写排序的时候，你的 lambda 是怎么写的？<code>[&amp;](auto x, auto y)&#123;...&#125;</code>。<code>[]</code> 是捕获列表，<code>()</code> 是参数列表，<code>&#123;&#125;</code> 内就是函数主体了。</p>
+<p>那么这里也很相似，捕获列表就变成了第三个参数，表达式的函数体就变成了第四个参数。稍微修改一下 lambda 表达式：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(ui-&gt;browseButton, &amp;QPushButton::clicked, [<span class="keyword">this</span>]()&#123;</span><br><span class="line">    QMessageBox::<span class="built_in">information</span>(<span class="keyword">this</span>, <span class="string">&quot;舞萌 DX 发来的公告&quot;</span>, <span class="string">&quot;赶快给我去打中二节奏&quot;</span>, <span class="string">&quot;神人舞萌痴&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
 <p>编译运行，可过之。</p>
-<hr />
-<p>最终，你得到了一个神人程序！同时，你也学会了 4
-种连接信号、槽的方式：</p>
-<ol type="1">
-<li>在 <code>widget.h</code> 中声明规范名字的函数（可以在 UI
-界面自动声明），然后在 <code>widget.cpp</code> 中编写该函数。</li>
-<li>使用
-<code>connect(ui-&gt;x, SIGNAL(signal()), receiver, SLOT(function()))</code>
-实现。</li>
-<li>使用
-<code>connect(ui-&gt;x, &amp;ClassName::signal, receiver, &amp;ClassName::slot)</code>
-实现。</li>
-<li>使用 <code>lambda</code> 表达式替换第三、四个参数，即
-<code>receiver</code> 和 <code>method</code> 参数。</li>
+<hr>
+<p>最终，你得到了一个神人程序！同时，你也学会了 4 种连接信号、槽的方式：</p>
+<ol>
+<li>在 <code>widget.h</code> 中声明规范名字的函数（可以在 UI 界面自动声明），然后在 <code>widget.cpp</code> 中编写该函数。</li>
+<li>使用 <code>connect(ui-&gt;x, SIGNAL(signal()), receiver, SLOT(function()))</code> 实现。</li>
+<li>使用 <code>connect(ui-&gt;x, &amp;ClassName::signal, receiver, &amp;ClassName::slot)</code> 实现。</li>
+<li>使用 <code>lambda</code> 表达式替换第三、四个参数，即 <code>receiver</code> 和 <code>method</code> 参数。</li>
 </ol>
-<hr />
+<hr>
 <p>今日源码：<a href="/resources/070727/Chunithm.zip">点击此处</a></p>
 
 		</div>
@@ -926,8 +882,7 @@ lambda 表达式：</p>
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">QT 学习 - R70727</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-qt-widgets-application"><span class="nav-text">创建 Qt Widgets Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2"><span class="nav-text">项目编辑界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%80%E7%82%B9"><span class="nav-text">非常重要的一点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%B6%85%E7%BA%A7%E5%BC%B1%E5%8C%96%E7%89%88%E6%89%A7%E8%A1%8C-sys32-%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%AD%90%E4%BB%BB%E5%8A%A1"><span class="nav-text">示例：超级弱化版执行
-sys32 目录下子任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E9%83%A8%E5%88%86"><span class="nav-text">【确定】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E9%83%A8%E5%88%86"><span class="nav-text">【取消】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E8%A6%81%E6%89%93%E8%88%9E%E8%90%8C%E9%83%A8%E5%88%86"><span class="nav-text">【我要打舞萌】部分</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Qt-Widgets-Application"><span class="nav-text">创建 Qt Widgets Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2"><span class="nav-text">项目编辑界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E7%9A%84%E4%B8%80%E7%82%B9"><span class="nav-text">非常重要的一点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A%E8%B6%85%E7%BA%A7%E5%BC%B1%E5%8C%96%E7%89%88%E6%89%A7%E8%A1%8C-sys32-%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%AD%90%E4%BB%BB%E5%8A%A1"><span class="nav-text">示例：超级弱化版执行 sys32 目录下子任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90%E7%A1%AE%E5%AE%9A%E3%80%91%E9%83%A8%E5%88%86"><span class="nav-text">【确定】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90%E5%8F%96%E6%B6%88%E3%80%91%E9%83%A8%E5%88%86"><span class="nav-text">【取消】部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90%E6%88%91%E8%A6%81%E6%89%93%E8%88%9E%E8%90%8C%E3%80%91%E9%83%A8%E5%88%86"><span class="nav-text">【我要打舞萌】部分</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -960,7 +915,7 @@ sys32 目录下子任务</span></a><ol class="nav-child"><li class="nav-item nav
                     </span>
                     
                         <span>
-                            185.8k words in total
+                            182.3k words in total
                         </span>
                     
                 </p>
@@ -1242,21 +1197,6 @@ sys32 目录下子任务</span></a><ol class="nav-child"><li class="nav-item nav
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -760,148 +760,100 @@ mjx-container[display="true"] + br {
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<p>文中知识点包含 QFile 文件处理、点击按钮弹出子窗口、设置快捷键等。</p>
 <span id="more"></span>
-<h2 id="介绍---文件处理相关">介绍 - 文件处理相关</h2>
-<p>在介绍 QFile 之前，先介绍 QByteArray。QByteArray
-是字节数组，一种数据结构，存储一堆字符，相当于是
-<code>const char *</code>。字节数组的最后一般会有一个
-<code>'\0'</code>。但是不用你自己加，当你
-<code>QByteArray ba = "maimai";</code> 的时候，自己会自动在最后添加一个
-<code>\0</code>。</p>
+<h2 id="介绍-文件处理相关"><a href="#介绍-文件处理相关" class="headerlink" title="介绍 - 文件处理相关"></a>介绍 - 文件处理相关</h2><p>在介绍 QFile 之前，先介绍 QByteArray。QByteArray 是字节数组，一种数据结构，存储一堆字符，相当于是 <code>const char *</code>。字节数组的最后一般会有一个 <code>'\0'</code>。但是不用你自己加，当你 <code>QByteArray ba = "maimai";</code> 的时候，自己会自动在最后添加一个 <code>\0</code>。</p>
 <ul>
 <li>在 QByteArray 后加另一个字符串：<code>ba.append(x);</code></li>
 <li>QByteArray 转 QString：<code>QString(ba);</code></li>
 </ul>
 <hr>
-<p>QFile 不用
-<code>#include &lt;QFile&gt;</code>，因为我没加然后编译过了。</p>
-<p>QFile 可以对文件进行读写处理。有没有想到打代码的时候最开始写的
-<code>freopen</code>？</p>
+<p>QFile 不用 <code>#include &lt;QFile&gt;</code>，因为我没加然后编译过了。</p>
+<p>QFile 可以对文件进行读写处理。有没有想到打代码的时候最开始写的 <code>freopen</code>？</p>
 <ul>
 <li>声明变量并且赋上文件的精确位置：<code>QFile file(QString filePath);</code></li>
-<li>打开这个文件：<code>file.open(mode);</code> 这个 <code>mode</code>
-指的是你打开这个文件的方式。比如 <code>QIODevice::ReadOnly</code>
-代表只读、<code>QIODevice::WriteOnly</code> 为只写等。</li>
+<li>打开这个文件：<code>file.open(mode);</code> 这个 <code>mode</code> 指的是你打开这个文件的方式。比如 <code>QIODevice::ReadOnly</code>  代表只读、<code>QIODevice::WriteOnly</code> 为只写等。</li>
 <li>关闭这个文件：<code>file.close();</code></li>
-<li>读取整个文件内容：<code>QByteArray ba = file.readAll();</code></li>
+<li>读取整个文件内容：<code>QByteArray ba = file.readAll();</code> </li>
 <li>写入文件内容：<code>file.write(QByteArray ba);</code></li>
 </ul>
 <hr>
 <ul>
-<li><p>呼出一个资源管理器来选择某个文件并且返回该文件精确位置：<code>QString filePath = QFileDialog::getOpenFileName(*parent, "Title", QString start_Dir, QString FILETYPE);</code>
-其中若选中文件了则返回精确位置，否则返回空串。</p>
-<p><code>start_Dir</code>
-代表这个资源管理器最开始所在的位置，<code>FILETYPE</code>
-为可以选择的文件后缀名，比如
-<code>"文本文档 (*.txt);;C++ 源文件 (*.cpp);;Python 源文件 (*.py)"</code>，其中
-<code>;;</code> 代表分隔两种不同类型，括号里面的种类可以为
-<code>(*.*)</code>，即所有文件。</p></li>
-<li><p>呼出一个资源管理器来设置某个文件的保存位置并且返回该文件精确位置：<code>QString filePath = QFileDialog::getSaveFileName(*parent, "Title", start_Dir, FILETYPE)</code>。</p></li>
-<li><p>获取某个精确位置的文件的文件信息：<code>QFileInfo fileinfo = QFileInfo(filePath);</code>
-然后就可以通过 <code>fileinfo.xxx</code>
-来访问这个文件的信息了。</p></li>
+<li><p>呼出一个资源管理器来选择某个文件并且返回该文件精确位置：<code>QString filePath = QFileDialog::getOpenFileName(*parent, "Title", QString start_Dir, QString FILETYPE);</code> 其中若选中文件了则返回精确位置，否则返回空串。</p>
+<p><code>start_Dir</code> 代表这个资源管理器最开始所在的位置，<code>FILETYPE</code> 为可以选择的文件后缀名，比如 <code>"文本文档 (*.txt);;C++ 源文件 (*.cpp);;Python 源文件 (*.py)"</code>，其中 <code>;;</code> 代表分隔两种不同类型，括号里面的种类可以为 <code>(*.*)</code>，即所有文件。</p>
+</li>
+<li><p>呼出一个资源管理器来设置某个文件的保存位置并且返回该文件精确位置：<code>QString filePath = QFileDialog::getSaveFileName(*parent, "Title", start_Dir, FILETYPE)</code>。</p>
+</li>
+<li><p>获取某个精确位置的文件的文件信息：<code>QFileInfo fileinfo = QFileInfo(filePath);</code> 然后就可以通过 <code>fileinfo.xxx</code> 来访问这个文件的信息了。</p>
+</li>
 </ul>
-<h2 id="介绍---mainwindow-类">介绍 - MainWindow 类</h2>
-<p>不同于 Widget 类，MainWindow 类 拥有一个菜单栏，也就是类似【文件(F)
-编辑(E)】之类的菜单。可以在设计界面更改这些菜单。</p>
-<p>对于每一个菜单里面的每一个元素，类型都是 QAction。点击一个 QAction
-发出的信号就是 <code>QAction::triggered()</code>。因为对于 QAction
-它在设计界面没有【转到槽】的选项，所以只能使用 <code>connect</code>
-方法来 连接信号与槽。</p>
-<h2 id="介绍---其它">介绍 - 其它</h2>
-<h3 id="textedit">TextEdit</h3>
-<ul>
-<li><p>获取某个 TextEdit
-中内容：<code>textEdit-&gt;toPlainText()</code></p></li>
-<li><p>设置这个 TextEdit
-字体：<code>textEdit-&gt;setFont(QFont font);</code></p></li>
-<li><p>复制选中内容到剪贴板：<code>textEdit-&gt;copy();</code></p></li>
-<li><p>粘贴选中内容到剪贴板：<code>textEdit-&gt;paste();</code></p></li>
-<li><p>撤回：<code>textEdit-&gt;undo();</code></p></li>
-<li><p>撤销撤回：<code>textEdit-&gt;redo();</code></p></li>
-<li><p>对于其内容有改变就会发出信号的槽函数：<code>void ClassName::on_textEdit_textChanged();</code></p></li>
+<h2 id="介绍-MainWindow-类"><a href="#介绍-MainWindow-类" class="headerlink" title="介绍 - MainWindow 类"></a>介绍 - MainWindow 类</h2><p>不同于 Widget 类，MainWindow 类 拥有一个菜单栏，也就是类似【文件(F) 编辑(E)】之类的菜单。可以在设计界面更改这些菜单。</p>
+<p>对于每一个菜单里面的每一个元素，类型都是 QAction。点击一个 QAction 发出的信号就是 <code>QAction::triggered()</code>。因为对于 QAction 它在设计界面没有【转到槽】的选项，所以只能使用 <code>connect</code> 方法来 连接信号与槽。</p>
+<h2 id="介绍-其它"><a href="#介绍-其它" class="headerlink" title="介绍 - 其它"></a>介绍 - 其它</h2><h3 id="TextEdit"><a href="#TextEdit" class="headerlink" title="TextEdit"></a>TextEdit</h3><ul>
+<li><p>获取某个 TextEdit 中内容：<code>textEdit-&gt;toPlainText()</code></p>
+</li>
+<li><p>设置这个 TextEdit 字体：<code>textEdit-&gt;setFont(QFont font);</code></p>
+</li>
+<li><p>复制选中内容到剪贴板：<code>textEdit-&gt;copy();</code></p>
+</li>
+<li><p>粘贴选中内容到剪贴板：<code>textEdit-&gt;paste();</code></p>
+</li>
+<li><p>撤回：<code>textEdit-&gt;undo();</code></p>
+</li>
+<li><p>撤销撤回：<code>textEdit-&gt;redo();</code></p>
+</li>
+<li><p>对于其内容有改变就会发出信号的槽函数：<code>void ClassName::on_textEdit_textChanged();</code></p>
+</li>
 <li><p>访问当前光标所在行号和列号：</p>
-<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QTextCursor cursor = ui-&gt;textEdit-&gt;<span class="built_in">textCursor</span>();</span><br><span class="line"><span class="type">int</span> y = cursor.<span class="built_in">blockNumber</span>()<span class="number">+1</span>, x = cursor.<span class="built_in">columnNumber</span>()<span class="number">+1</span>;</span><br><span class="line">ui-&gt;positionDisplay-&gt;<span class="built_in">setText</span>(<span class="string">"行 "</span>+QString::<span class="built_in">number</span>(y)+<span class="string">"，列 "</span>+QString::<span class="built_in">number</span>(x));</span><br></pre></td></tr></table></figure></div></li>
+<div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QTextCursor cursor = ui-&gt;textEdit-&gt;<span class="built_in">textCursor</span>();</span><br><span class="line"><span class="type">int</span> y = cursor.<span class="built_in">blockNumber</span>()<span class="number">+1</span>, x = cursor.<span class="built_in">columnNumber</span>()<span class="number">+1</span>;</span><br><span class="line">ui-&gt;positionDisplay-&gt;<span class="built_in">setText</span>(<span class="string">"行 "</span>+QString::<span class="built_in">number</span>(y)+<span class="string">"，列 "</span>+QString::<span class="built_in">number</span>(x));</span><br></pre></td></tr></table></figure></div>
+</li>
 <li><p>设置自动换行：<code>ui-&gt;textEdit-&gt;setWordWrapMode(mode);</code></p>
 <p>mode 的几种可能取值：</p>
 <ul>
 <li><code>QTextOption::NoWrap</code>：不自动换行</li>
 <li><code>QTextOption::WrapAnywhere</code>：自动换行，可能在一个单词中间的任意位置换行</li>
 <li><code>QTextOption::WordWrap</code>：在单词边界处自动换行</li>
-</ul></li>
 </ul>
-<h3 id="qfont">QFont</h3>
-<ul>
-<li>呼出字体设置框设置字体，返回设置出的字体属性：<code>QFont font = QFontDialog::getfont(&amp;ok, *parent);</code>
-这个 <code>&amp;ok</code> 返回是否修改成功。若点取消则返回
-<code>false</code>。</li>
+</li>
 </ul>
-<h3 id="qmessagebox">QMessageBox</h3>
-<ul>
-<li>呼出问题窗口并且显示三个按钮：<code>int res = QMessageBox::question(*parent, "Title", "Question String", button1, button2, button3);</code>
-返回一个 int 代表你按的是哪个按钮，每一个 button 都是
-<code>QMessageBox::Yes</code>，<code>QMessageBox::No</code>
-之类的按钮。</li>
+<h3 id="QFont"><a href="#QFont" class="headerlink" title="QFont"></a>QFont</h3><ul>
+<li>呼出字体设置框设置字体，返回设置出的字体属性：<code>QFont font = QFontDialog::getfont(&amp;ok, *parent);</code> 这个 <code>&amp;ok</code> 返回是否修改成功。若点取消则返回 <code>false</code>。</li>
+</ul>
+<h3 id="QMessageBox"><a href="#QMessageBox" class="headerlink" title="QMessageBox"></a>QMessageBox</h3><ul>
+<li>呼出问题窗口并且显示三个按钮：<code>int res = QMessageBox::question(*parent, "Title", "Question String", button1, button2, button3);</code> 返回一个 int 代表你按的是哪个按钮，每一个 button 都是 <code>QMessageBox::Yes</code>，<code>QMessageBox::No</code> 之类的按钮。</li>
 <li>判断最终按的是是否为某个按钮：<code>if(res == QMessageBox::Yes){...}</code></li>
 </ul>
-<h3 id="qshortcut">QShortcut</h3>
-<ul>
+<h3 id="QShortcut"><a href="#QShortcut" class="headerlink" title="QShortcut"></a>QShortcut</h3><ul>
 <li>创建一个新快捷键组合：<code>QShortcut *newshortcut = new QShortcut(QKeySequence("ctrl+n"), *parent);</code></li>
 <li>连接这个快捷键组合和某个槽：<code>connect(newShortcut, &amp;QShortcut::activated, *receiver, *method);</code></li>
 </ul>
-<h3 id="新跳出一个窗口">新跳出一个窗口</h3>
-<p>右击该工程文件夹，点击【Add new...】或【添加新文件…】。</p>
-<p>然后选择 Qt -&gt; Qt
-设计师界面类。之后选择你需要的类再取个类名就可以了。我们定原来的主窗口类名为
-<code>mainwindow</code>，新窗口类名为 <code>newwindow</code>。</p>
-<p>在 <code>mainwindow.cpp</code> 里面
-<code>#include "newwindow.h"</code>，然后设置一个全局变量为
-<code>newwindow *cur;</code></p>
-<p>每一次要打开另一个窗口的时候就 <code>cur-&gt;show();</code>，关闭就
-<code>cur-&gt;close();</code></p>
+<h3 id="新跳出一个窗口"><a href="#新跳出一个窗口" class="headerlink" title="新跳出一个窗口"></a>新跳出一个窗口</h3><p>右击该工程文件夹，点击【Add new…】或【添加新文件…】。</p>
+<p>然后选择 Qt -&gt; Qt 设计师界面类。之后选择你需要的类再取个类名就可以了。我们定原来的主窗口类名为 <code>mainwindow</code>，新窗口类名为 <code>newwindow</code>。</p>
+<p>在 <code>mainwindow.cpp</code> 里面 <code>#include "newwindow.h"</code>，然后设置一个全局变量为 <code>newwindow *cur;</code></p>
+<p>每一次要打开另一个窗口的时候就 <code>cur-&gt;show();</code>，关闭就 <code>cur-&gt;close();</code></p>
 <p>由于我实在想不到有什么方法可以检测这个窗口是否存在，所以每一次点击那个按钮的时候，我就先关一次再开一次，这样就可以保证只有一个子窗口。</p>
-<h3 id="点击关闭按钮的时候询问">点击关闭按钮的时候询问</h3>
-<p><code>mainwindow.h</code>：</p>
+<h3 id="点击关闭按钮的时候询问"><a href="#点击关闭按钮的时候询问" class="headerlink" title="点击关闭按钮的时候询问"></a>点击关闭按钮的时候询问</h3><p><code>mainwindow.h</code>：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QCloseEvent&gt;</span></span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">	...</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">closeEvent</span><span class="params">(QCloseEvent *event)</span></span>;</span><br></pre></td></tr></table></figure></div>
 <p><code>mainwindow.cpp</code>：</p>
 <div class="code-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MainWindow::closeEvent</span><span class="params">(QCloseEvent *event)</span></span>{</span><br><span class="line">    <span class="type">int</span> res = QMessageBox::<span class="built_in">question</span>(<span class="keyword">this</span>, <span class="string">"Title"</span>, <span class="string">"确认是否退出？"</span>, QMessageBox::Yes, QMessageBox::No);</span><br><span class="line">    <span class="keyword">if</span>(res == QMessageBox::Yes){</span><br><span class="line">        event-&gt;<span class="built_in">accept</span>();</span><br><span class="line">    }<span class="keyword">else</span> event-&gt;<span class="built_in">ignore</span>();</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
-<h2 id="maipad-记事本程序设计">MaiPad 记事本程序设计</h2>
-<h3 id="ui">UI</h3>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtEDZd.jpg"></p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtkOhV.jpg"></p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtEfsg.jpg"></p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtkH7n.jpg"></p>
-<h3 id="逻辑部分">逻辑部分</h3>
-<p>【文件】部分有下面四个功能【新建】【打开】【保存】【另存为】。我在这里设置了三个全局
-bool 变量，<code>isnewfile</code>
-代表这个文件是否有它的精确路径（若没有为 1），<code>isstarted</code>
-代表现在是否已经打开了一个文件，<code>issaved</code>
-代表这个文件目前是否被保存。</p>
-<p>以及一个 QString
-全局变量代表目前文件的精确路径（<code>isnewfile == 1</code>
-这玩意不管），一个 int 变量存储现在是第几个新建文件，和一个 QFileInfo
-存储现在文件的信息。</p>
+<h2 id="MaiPad-记事本程序设计"><a href="#MaiPad-记事本程序设计" class="headerlink" title="MaiPad 记事本程序设计"></a>MaiPad 记事本程序设计</h2><h3 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h3><p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtEDZd.jpg" alt=""></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtkOhV.jpg" alt=""></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtEfsg.jpg" alt=""></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://s21.ax1x.com/2025/07/30/pVtkH7n.jpg" alt=""></p>
+<h3 id="逻辑部分"><a href="#逻辑部分" class="headerlink" title="逻辑部分"></a>逻辑部分</h3><p>【文件】部分有下面四个功能【新建】【打开】【保存】【另存为】。我在这里设置了三个全局 bool 变量，<code>isnewfile</code> 代表这个文件是否有它的精确路径（若没有为 1），<code>isstarted</code> 代表现在是否已经打开了一个文件，<code>issaved</code> 代表这个文件目前是否被保存。</p>
+<p>以及一个 QString 全局变量代表目前文件的精确路径（<code>isnewfile == 1</code> 这玩意不管），一个 int 变量存储现在是第几个新建文件，和一个 QFileInfo 存储现在文件的信息。</p>
 <ul>
-<li>对于【新建】，需要检查之前是否有内容或者之前的内容是否保存。为了简化，我们设
-<code>issaved</code> 初始值为
-1。若没保存，就问用户要不要保存。成功保存了之后就新建文件，重置三个 bool
-变量的名字，并且让这个 int 变量自增。</li>
+<li>对于【新建】，需要检查之前是否有内容或者之前的内容是否保存。为了简化，我们设 <code>issaved</code> 初始值为 1。若没保存，就问用户要不要保存。成功保存了之后就新建文件，重置三个 bool 变量的名字，并且让这个 int 变量自增。</li>
 <li>对于【打开】，还是检查之前的内容是否保存。然后还是一样的。成功保存了之后就打开文件，更新精确路径和文件信息。</li>
 <li>对于【保存】，就检查是否有精确路径。若无，创建一个。否则基于那个精确路径保存。</li>
 <li>对于【另存为】，就直接创建一个精确路径来基于其保存。</li>
-<li>并且如果中间的文本框的值改了，那么修改标题栏，将其加一个
-<code>*</code> 代表该文件未保存。</li>
+<li>并且如果中间的文本框的值改了，那么修改标题栏，将其加一个 <code>*</code> 代表该文件未保存。</li>
 <li>如果鼠标指针改了，那么更改行号和列号。</li>
-<li>最后加一个帮助 -&gt;
-关于本“MaiPad”跳转至我的第二个窗口，以及关闭之前若未保存询问用户是否保存即可。</li>
+<li>最后加一个帮助 -&gt; 关于本“MaiPad”跳转至我的第二个窗口，以及关闭之前若未保存询问用户是否保存即可。</li>
 </ul>
-<p>这次由于流畅度原因，没有加 Unifont 字体，但是依然加了 Saira 和
-Monocraft 字体。</p>
-<h2 id="后记">后记</h2>
-<p>这次写的是真的比较大了。从中午一直写到现在（是不是都没有之前那个计算器的大）。</p>
+<p>这次由于流畅度原因，没有加 Unifont 字体，但是依然加了 Saira 和 Monocraft 字体。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这次写的是真的比较大了。从中午一直写到现在（是不是都没有之前那个计算器的大）。</p>
 <p>因为自动换行不常用，所以就没有设置快捷键。</p>
 <p>现在已经 6:50 了，我又该走了。</p>
-<p>希望明天的 7 月份的最后一次学习能够搞个大点的出来，但是教练恐怕不允许
-qwq</p>
+<p>希望明天的 7 月份的最后一次学习能够搞个大点的出来，但是教练恐怕不允许 qwq</p>
 <p>唉</p>
 <p><a href="/resources/070730/R70730-Maipad.zip">工程源文件</a> <a href="/resources/070730/R70730-Maipad_boxed.exe">最终程序</a></p>
 
@@ -1051,7 +1003,7 @@ qwq</p>
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">QT 学习及实操 - QFile 实现记事本功能</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D---%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3"><span class="nav-text">介绍 - 文件处理相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D---mainwindow-%E7%B1%BB"><span class="nav-text">介绍 - MainWindow 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D---%E5%85%B6%E5%AE%83"><span class="nav-text">介绍 - 其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#textedit"><span class="nav-text">TextEdit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qfont"><span class="nav-text">QFont</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qmessagebox"><span class="nav-text">QMessageBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qshortcut"><span class="nav-text">QShortcut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E8%B7%B3%E5%87%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3"><span class="nav-text">新跳出一个窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE%E7%9A%84%E6%97%B6%E5%80%99%E8%AF%A2%E9%97%AE"><span class="nav-text">点击关闭按钮的时候询问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maipad-%E8%AE%B0%E4%BA%8B%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-text">MaiPad 记事本程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ui"><span class="nav-text">UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%83%A8%E5%88%86"><span class="nav-text">逻辑部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3"><span class="nav-text">介绍 - 文件处理相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-MainWindow-%E7%B1%BB"><span class="nav-text">介绍 - MainWindow 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-%E5%85%B6%E5%AE%83"><span class="nav-text">介绍 - 其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TextEdit"><span class="nav-text">TextEdit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QFont"><span class="nav-text">QFont</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QMessageBox"><span class="nav-text">QMessageBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QShortcut"><span class="nav-text">QShortcut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E8%B7%B3%E5%87%BA%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3"><span class="nav-text">新跳出一个窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE%E7%9A%84%E6%97%B6%E5%80%99%E8%AF%A2%E9%97%AE"><span class="nav-text">点击关闭按钮的时候询问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MaiPad-%E8%AE%B0%E4%BA%8B%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-text">MaiPad 记事本程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UI"><span class="nav-text">UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%83%A8%E5%88%86"><span class="nav-text">逻辑部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li></ol>
 
 	</div>
 </div>
@@ -1084,7 +1036,7 @@ qwq</p>
                     </span>
                     
                         <span>
-                            185.8k words in total
+                            182.3k words in total
                         </span>
                     
                 </p>
@@ -1366,21 +1318,6 @@ qwq</p>
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
